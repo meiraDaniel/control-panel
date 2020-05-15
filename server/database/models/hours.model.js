@@ -16,14 +16,27 @@ module.exports = (Sequelize, connector) => {
     day: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        validate:{max: 31,
+          min: 1} 
       },
       month: {
         type: Sequelize.INTEGER,
         allowNull: false,
-      },
+        
+        validate:{ max: 12,
+          min: 1}
+        },
       hour: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        validate:{
+       max: 24,
+        min: 0}
+      },
+      year: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        
       },
       account_id: {
         type: Sequelize.INTEGER,
@@ -33,7 +46,10 @@ module.exports = (Sequelize, connector) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
-    
+      approved: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      }    
 
     });
   

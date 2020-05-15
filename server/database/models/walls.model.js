@@ -21,6 +21,10 @@ module.exports = (Sequelize, connector) => {
       account_id : {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      likes: {
+        type: Sequelize.INTEGER,
+       
       }
 
     });

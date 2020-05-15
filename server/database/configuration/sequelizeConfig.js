@@ -39,3 +39,9 @@ db.walls = require("../models/walls.model")(Sequelize, connector);
 db.accounts.hasMany(db.hours, { foreignKey: "account_id", sourceKey: "id" });
 db.accounts.hasMany(db.todos, { foreignKey: "account_id", sourceKey: "id" });
 db.accounts.hasMany(db.walls, { foreignKey: "account_id", sourceKey: "id" });
+
+
+db.walls.belongsTo(db.accounts, { foreignKey: "account_id"});
+
+
+module.exports = db;

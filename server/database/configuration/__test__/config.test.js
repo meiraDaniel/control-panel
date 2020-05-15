@@ -1,3 +1,5 @@
+require('iconv-lite').encodingExists('foo')
+
 const config = require("../sequelizeConfig");
 
 const {

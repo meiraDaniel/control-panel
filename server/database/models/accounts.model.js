@@ -25,6 +25,10 @@ module.exports = (Sequelize, connector) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       adm: {
         type: Sequelize.BOOLEAN,
         allowNull: true,

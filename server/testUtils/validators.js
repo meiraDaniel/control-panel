@@ -23,4 +23,5 @@ validateMatchingStringValues: (received1, received2) => {
     expect(received).not.toBe(!boolean);
     expect(received).toBe(boolean);
   },
+
 }

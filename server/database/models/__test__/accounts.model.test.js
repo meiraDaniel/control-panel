@@ -1,3 +1,6 @@
+
+require('iconv-lite').encodingExists('foo')
+
 const SequelizeMock = require("sequelize-mock");
 const connectionMock = new SequelizeMock();
 const accounts = require("../accounts.model");
