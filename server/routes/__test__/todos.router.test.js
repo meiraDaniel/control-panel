@@ -16,7 +16,7 @@ const {
     
         test('should  the displayTask router',()=>{
             validadeTruthiness(routerArr[0].route.methods.get);
-            validateMatchingStringValues(routerArr[0].route.path, "/todo?:account_id");
+            validateMatchingStringValues(routerArr[0].route.path, "/todo?");
         })
         test('should  the creatTask router',()=>{
           validadeTruthiness(routerArr[1].route.methods.post);

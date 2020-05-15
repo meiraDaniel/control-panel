@@ -6,7 +6,7 @@ const {
    } = require("./helpers/authentication");
 
 
-router.get("/todo?:account_id",authentication, displayTask)
+router.get("/todo?",authentication, displayTask)
 router.post("/todo/post",authentication, creatTask)
 router.delete("/todo/delete",authentication, deleteTask)
 

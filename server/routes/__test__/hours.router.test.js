@@ -24,7 +24,7 @@ const {
       })
       test('should  the display router',()=>{
         validadeTruthiness(routerArr[0].route.methods.post);
-        validateMatchingStringValues(routerArr[2].route.path, "/myhours?:account_id");
+        validateMatchingStringValues(routerArr[2].route.path, "/myhours?");
     })
    
       })

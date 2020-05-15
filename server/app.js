@@ -7,7 +7,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require ('passport');
-const fileUpload = require ('express-fileupload')
 const accountRoutes = require('./routes/account.routes');
 const hoursRoutes = require('./routes/hours.routes');
 const wallsRoutes = require('./routes/walls.routes');

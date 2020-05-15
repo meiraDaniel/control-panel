@@ -30,10 +30,8 @@ module.exports = {
     let errors = {};
 
     if (isObjectEmpty(userInput)) errors.message = `${allMandatory}`;
-    if (isStringEmpty(userInput.day))
-      errors.message = `The field day ${thisMandatory}`;
-    if (isObjectEmpty(userInput.hour))
-      errors.message = `The field hour ${thisMandatory}`;
+    if (isStringEmpty(userInput.day))  errors.message = `The field day ${thisMandatory}`;
+    if (isObjectEmpty(userInput.hour))   errors.message = `The field hour ${thisMandatory}`;
     if (Object.keys(errors).length > 0) return res.status(400).json({ errors });
 
     hours
@@ -151,13 +149,13 @@ module.exports = {
     hours
       .findAll({ where: { year: year, month: month, account_id: account_id } })
       .then((response) => {
-        let data = [];
+           let data = [];
         if (response.length === 0)
           res.status(404).send({ message: "There is no information avaible" });
         else {
           response.map((e) => data.push(e.dataValues));
-          res.status(200).send(data);
-        }
+          res.status(200).send(data.sort((a,b)=> a.day - b.day));
+        } 
       });
   },
   deleteHours: (req, res) => {

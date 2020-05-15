@@ -7,7 +7,7 @@ const {
 
 router.post("/myhours/insert",authentication, insertHours)
 router.put("/myhours/edit",authentication, editHours)
-router.get("/myhours?:account_id",authentication, displayhours)
+router.get("/myhours?",authentication, displayhours)
 router.delete("/myhours/delete",authentication, deleteHours)
 /* router.get("/myhours/total?:account_id",authentication, displayMonthTotal)
  */
