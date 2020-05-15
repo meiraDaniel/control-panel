@@ -10,15 +10,14 @@
 
 module.exports = (Sequelize, connector) => {
     const todos = connector.define("todos", {
-    day: {
-        account_id  : Sequelize.INTEGER,
+        task: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      task  : {
-        type: Sequelize.VARCHAR,
+      account_id  : {
+        type: Sequelize.INTEGER,
         allowNull: false,
       }
-
     });
   
     return todos;

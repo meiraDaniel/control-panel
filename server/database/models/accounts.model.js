@@ -12,7 +12,7 @@
 
 
 module.exports = (Sequelize, connector) => {
-    const Acounts = connector.define("accounts", {
+    const accounts = connector.define("accounts", {
     firstname: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -26,9 +26,10 @@ module.exports = (Sequelize, connector) => {
         allowNull: false,
       },
       adm: {
-        type: Sequelize.BOLEAN,
-        allowNull: TRUE,
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
       },
+    
       role: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -38,7 +39,7 @@ module.exports = (Sequelize, connector) => {
         allowNull: true,
       },
 
-    });
+    }, {timestamps: false});
   
-    return Acounts;
+    return accounts;
   };

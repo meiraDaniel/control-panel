@@ -9,13 +9,13 @@
 
 
 module.exports = (Sequelize, connector) => {
-    const wall = connector.define("walls", {
-    day: {
-        message : Sequelize.VARCHAR,
+    const walls = connector.define("walls", {
+      title: {
+        type : Sequelize.STRING,
         allowNull: false,
       },
-      title : {
-        type: Sequelize.VARCHAR,
+      message : {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       account_id : {
@@ -25,5 +25,5 @@ module.exports = (Sequelize, connector) => {
 
     });
   
-    return wall;
+    return walls;
   };
