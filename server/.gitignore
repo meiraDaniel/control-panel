@@ -1,3 +1,5 @@
 .env
 
-node-modules/
+node_modules/
+
+coverage/
