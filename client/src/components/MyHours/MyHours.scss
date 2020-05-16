@@ -1,0 +1,17 @@
+@import '../../style/global.scss';
+
+.myHours--main{
+    width:100%;
+    height:100vh;
+    background:$darkGreen;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.myHours--center-table{
+background-color: $darkBlue;
+width:60%;
+height:80%;
+}

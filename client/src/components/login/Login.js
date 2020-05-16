@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-
+import loginHelper from '../../services/API/loginHelper'
+import {createSession} from '../../store/actions'
+import gloves from '../../images/Gloves.svg'
+import './Login.scss'
 
 function Login() {
   const [message, setMessage] = useState("");
@@ -18,37 +21,36 @@ function Login() {
 
   const onSubmit = (value, e) => {
     e.preventDefault();
-    loginHelper(value.email, value.password)
-      .then((res) =>
-        dispatch(
+    loginHelper(value.email, value.password).then((res) =>   
+   dispatch(
           createSession(
-            res.data.account_id,
-            res.data.message,
+            res.data.id,
             res.data.token,
             res.data.firstname,
-            res.data.lastname
-          )
-        )
-      )
-      .catch((err) => setMessage(`${err.response.data.message.message}`));
+            res.data.lastname,
+            res.data.adm
+          ) 
+        )).catch((err) => setMessage(err.response.data.message));
+      
   };
 
   return (
-    <main className="main_login">
-      <div className='centrilized-content'>
-      <img src={secure} alt="secure" id="image-login-secure"/>
+    <main className='login-main'>
+      
       <form
-        className="form-login"
-        data-testid="form-component"
+        className='login--center-form'
         onSubmit={handleSubmit(onSubmit)}
       >
-        <p>{message}</p>
-        <div className='input-component'>
-        <label data-testid="test-label" htmlFor="email">
+      <div className='login-center-formInput'>
+        <div className='login--top-circle'>
+          <img src={gloves} alt="gloves"/>
+        </div>
+  <h1>{message}</h1>
+        <label htmlFor="email">
           E-mail
         </label>
         <input
-          data-testid="input-form-email"
+       
           type="text"
           name="email"
           ref={register({ required: true })}
@@ -56,36 +58,21 @@ function Login() {
         {errors.email && "This field is required"}
         
 
-        <label data-testid="test-label" htmlFor="password">
+        <label  htmlFor="password">
           Password
         </label>
         <input
-          data-testid="input-form-password"
+          
           type="password"
           name="password"
           ref={register({ required: true })}
         />
         {errors.password && "This field is required"}
-        </div>
-        <div className='buttonsDiv-login'>
-          <button
-            data-testid="submit-button"
-            type="submit"
-          >
-            {" "}
-            Login{" "}
-          </button>
-          <button
-            onClick={() =>
-              (window.location = "http://localhost:5000/auth/google")
-            }
-          >
-            {" "}
-            Google +
-          </button>
-        </div>
+        
+          <input type='submit' value="login"/>
+          </div>
       </form>
-      </div>
+    
       
     </main>
   );

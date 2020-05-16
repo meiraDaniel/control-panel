@@ -1,0 +1,41 @@
+@import "../../style/global.scss";
+
+.login-main{
+    height:100vh;
+    width:100%;
+    background:$navy;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.login--center-form{
+    width:50%;
+    height:80%;
+    background:$green;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.login-center-formInput{
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    height:80%;
+    align-items:center;
+    justify-content: center;
+}
+
+.login--top-circle{
+    width:30%;
+    height:15%;
+    border-radius:100%;
+    background:$darkBlue;
+}
+.login--top-circle{
+width:60%;
+height:50%;
+}

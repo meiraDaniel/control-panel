@@ -77,30 +77,19 @@ module.exports = {
     const year = date.getFullYear();
     const month = date.getMonth();
 
-    const userInput = {
-      day: req.body.day,
-      month: month,
-      year: year,
-      account_id: req.body.account_id,
-      project: req.body.project,
-      hour: req.body.hour,
-      approved: false,
-    };
+    const id =req.body.data.id
+  
 
     const newInfo = {
-      newProject: req.body.project,
-      newHour: req.body.hour,
+      newProject: req.body.data.newProject,
+      newHour: req.body.data.newHour,
     };
-
     hours
       .update(
-        { hour: newInfo.newHour, project: newInfo.newProject },
+        { hour: newInfo.newHour , project: newInfo.newProject },
         {
           where: {
-            day: userInput.day,
-            month: userInput.month,
-            year: userInput.year,
-            account_id: userInput.account_id,
+           id:id
           },
         }
       )
@@ -123,21 +112,22 @@ module.exports = {
           })
       );
   },
-/* 
+ 
   displayMonthTotal:(req, res) => {
       const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth();
     const account_id = req.query.account_id
 
-    hours.findAll({ 
-      include: {attributes: ['hour', [Sequelize.fn('sum', Sequelize.col('hour')), 'total']]},
-      having : [Sequelize.where({account_id:account_id, month:month,year:year})] }).then(response=> res.status(200).send(response[0].dataValues.total)).catch(err=> res.status(500).send({
+    hours.sum('hour',{where:{account_id:account_id,month:month,year:year}}).then(response=> res.status(200).send({value:response}))
+    .catch(err=> {
+      
+      res.status(500).send({
         message:
           "Something is wrong with our server. Please try again later",
-      }))
+      })})
 
-  }, */
+  }, 
 
   displayhours: (req, res) => {
     const date = new Date();
@@ -159,26 +149,20 @@ module.exports = {
       });
   },
   deleteHours: (req, res) => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const account_id =req.body.account_id
-    const day = req.body.day
-
-     hours.destroy({where:{account_id:account_id,month:month,day:day,year:year}})
-     .then(response=> { 
+    const id = req.body.id
+ 
+     hours.destroy({where:{id:id}}).then(response=> { 
        if (response > 0)
      return res.status(200).send({ message: "Your hour was deleted" });
    if (response=== 0)
      return res.status(404).send({ message: "Some information are missing in the system. Try to insert other date" }); 
- })
- .catch((err) =>
-   res
+ }).catch((err) =>
+  {   res
      .status(500)
      .send({
        message:
          "Something is wrong with our server. Please try again later",
-     })
+     }) }
  );
 },
   

@@ -7,7 +7,7 @@ import throttle from 'lodash/throttle'
 import {BrowserRouter}from "react-router-dom"
 import { createStore } from  'redux';
 import { Provider } from  'react-redux';
-import allReducers from "./reducers/index"
+import allReducers from "./store/index"
 import {loadState, saveState} from './services/loadState'
 
 const store = createStore(allReducers,loadState(), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

@@ -50,7 +50,7 @@ module.exports = {
   
 
   displayPost: (req, res) => {
-const account_id = req.query.account_id
+
      walls.findAll({include: [{model:db.accounts, attributes:['firstname',"avatar"]}], required: true})
       .then((response) => { 
        let data = [];
