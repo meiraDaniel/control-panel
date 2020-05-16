@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./style/dashboard.scss";
+import "./style/AdmDashboard.scss";
 import { connect } from "react-redux";
 import getTotalHoursHelper from "../../services/API/getTotalHoursHelper";
 import getPostWallHelper from "../../services/API/getPostWallHelper";
@@ -10,9 +10,7 @@ import logoutImage from '../../images/logout.svg'
 import {logout} from '../../store/actions'
 import Percentage from '../AprovedHours/Percentage'
 
-function Dashboard({ firstname, token, account_id }) {
-  const [totalHours, setTotalHours] = useState(0);
-  const [post, setPost] = useState([]);
+function AdmAdmDashboard({ firstname, token, account_id }) {
   const dispatch = useDispatch();
 
 
@@ -35,33 +33,33 @@ function Dashboard({ firstname, token, account_id }) {
   }
 
   return (
-    <div className="dashboard-main">
-      <div className="dashboard--top-nav">
+    <div className="AdmDashboard-main">
+      <div className="AdmDashboard--top-nav">
           <img src={logo} alt="logo"/>
-        <h2>My Dashboard</h2>
+        <h2>My AdmAdmDashboard</h2>
       </div>
-      <main className="dashboard--display-main">
-        <div className="dashboard--top">
-          <div className="dashboard--left-top">
+      <main className="AdmDashboard--display-main">
+        <div className="AdmDashboard--top">
+          <div className="AdmDashboard--left-top">
             <h1>Welcolme,{firstname}</h1>
           </div>
 
-          <div className="dashboard--center-top">
+          <div className="AdmDashboard--center-top">
             <h1> You worked {totalHours} hours this month </h1>
           </div>
         </div>
-        <div className="dashboard--bottom">
-          <div className="dashboard--left-bottom">
+        <div className="AdmDashboard--bottom">
+          <div className="AdmDashboard--left-bottom">
           <h1>My Wall</h1>
            {post.map((e,i)=>(
                
                 <PostDash key={i} post={e} token={token}/>
               ))} 
           </div>
-          <div className="dashboard--center-bottom">
+          <div className="AdmDashboard--center-bottom">
             <Percentage token={token} account_id={account_id}/>
           </div>
-          <div className="dashboard--rigth-bottom">
+          <div className="AdmDashboard--rigth-bottom">
               <button onClick={toggleLogout}>
               <img src={logoutImage} alt="logout" />
               </button>
@@ -81,4 +79,4 @@ function mapToProps(state) {
   };
 }
 
-export default connect(mapToProps)(Dashboard);
+export default connect(mapToProps)(AdmAdmDashboard);
