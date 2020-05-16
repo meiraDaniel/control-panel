@@ -5,6 +5,10 @@ import { connect } from "react-redux";
 import Dashboard from './components/Dashboard/Dashboard'
 import './App.scss'
 import MyHours from './components/MyHours/MyHours'
+import Insert from './components/InsertHours/Insert'
+import Wall from './components/Wall/Wall'
+import Settings from './components/Settings/Settings'
+
 
 function mapToProps(state){
   return(
@@ -25,10 +29,10 @@ const toggleonMenu=()=>{
            <button className="app--top-menuButton" onClick={toggleonMenu}>menu</button>
   <nav className= {onMenu?'app-show-menu':'app-hidden-menu'}>
   <button className="app--nav-menuButton" onClick={toggleonMenu}>menu</button>
-    <NavLink to='/myhours'> Dashboard </NavLink>
-    <NavLink to='/myhours'> My Hours </NavLink>
-    <NavLink to='/myhours'> My wall </NavLink>
-    <NavLink to='/myhours'> Settings </NavLink>
+    <NavLink onClick={()=>setonMenu(!onMenu)}to='/dashboard'> Dashboard </NavLink>
+    <NavLink onClick={()=>setonMenu(!onMenu)}to='/myhours'> My Hours </NavLink>
+    <NavLink onClick={()=>setonMenu(!onMenu)}to='/wall'> My wall </NavLink>
+    <NavLink onClick={()=>setonMenu(!onMenu)}to='/settings'> Settings </NavLink>
 
   </nav>
 
@@ -43,7 +47,15 @@ const toggleonMenu=()=>{
        <Route path="/myhours"> 
        {!isAuthenticated && !idAdm? <Redirect to="/"/>: <MyHours/>}
        </Route>
-      
+       <Route path="/insert"> 
+       {!isAuthenticated && !idAdm? <Redirect to="/"/>: <Insert/>}
+       </Route>
+       <Route path="/wall"> 
+       {!isAuthenticated && !idAdm? <Redirect to="/"/>: <Wall/>}
+       </Route>
+       <Route path="/settings"> 
+       {!isAuthenticated && !idAdm? <Redirect to="/"/>: <Settings/>}
+       </Route>
       </Switch> 
     
     

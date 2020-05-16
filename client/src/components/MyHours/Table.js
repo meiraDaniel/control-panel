@@ -4,13 +4,15 @@ import deleteDataFromHours from '../../services/API/deleteDataFromHours'
 import { connect } from "react-redux";
 
 
-function Table({ data,token,account_id}) {
+function Table({ data,token,account_id,handlemountFlag}) {
 const[popUpEdit,setPopUpEdit]=useState(false)
 const[popUpDelete,setPopUpDelete]=useState(false)
 const[rowId, setRowid]=useState()
-
+const[message,setMessage]=useState('')
 const tooglePopUp=()=>{
   setPopUpEdit(!popUpEdit)
+  handlemountFlag()
+
 }
   const toggleIdEdit=(rowId)=>{
     setRowid(rowId)
@@ -18,15 +20,12 @@ const tooglePopUp=()=>{
 
   }
   const toggleIdDelete=(rowId)=>{
-    deleteDataFromHours(parseInt(rowId),token).then(res=>console.log(res)).catch(err=>console.log(err))
-
+    if(data.aproved) return setMessage('You cannot delete aproved hour');
+   else{ deleteDataFromHours(parseInt(rowId),token).then(res=>console.log(res)).catch(err=>console.log(err))
+    handlemountFlag()}
    }
 
-   const handleAproved=(isAproved)=>{
-     if(isAproved) return "Yes"
-     return "No"
-
-   }
+   
 
   
   return (
@@ -52,7 +51,7 @@ const tooglePopUp=()=>{
               <td>{row.day}</td>
               <td>{row.hour}</td>
               <td>{row.project}</td>
-              <td>{handleAproved(row.aproved)}</td>
+              <td>{row.approved? 'Yes': 'No'}</td>
               <td><button onClick={()=>toggleIdEdit(row.id)}>Edit</button></td>
               <td><button onClick={()=>toggleIdDelete(row.id)}>Delete</button></td>
 

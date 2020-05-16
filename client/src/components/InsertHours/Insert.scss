@@ -1,0 +1,41 @@
+@import "../../style/global.scss";
+
+.Insert-main{
+    height:100vh;
+    width:100%;
+    background:$navy;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.Insert--center-form{
+    width:50%;
+    height:80%;
+    background:$green;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.Insert-center-formInput{
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    height:80%;
+    align-items:center;
+    justify-content: center;
+}
+
+.Insert--top-circle{
+    width:30%;
+    height:15%;
+    border-radius:100%;
+    background:$darkBlue;
+}
+.Insert--top-circle{
+width:60%;
+height:50%;
+}
