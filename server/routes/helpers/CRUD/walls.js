@@ -15,9 +15,9 @@ module.exports = {
   createPost: (req, res) => {
   
     const userInput = {
-     account_id: req.body.account_id,
-     title:req.body.title,
-      message:req.body.message
+     account_id: req.body.data.account_id,
+     title:req.body.data.title,
+      message:req.body.data.message
     };
     let errors = {};
 
@@ -41,9 +41,10 @@ module.exports = {
                 .send({ message: "Your post was created" });
             })
             .catch((err) =>
+            {console.log(err)
               res
                 .status(500)
-                .send({ message: "something went wrong try again later" })
+                .send({ message: "something went wrong try again later" })}
             );
        
       },
@@ -61,6 +62,17 @@ module.exports = {
 res.status(200).json(data.sort((a,b)=> b.postId - a.postId))} 
       }).catch(err => {console.error(err); res.status(500).send({message:"Our wall is broke at the moment, try again latter"})});
   },
+
+displayMyPosts:(req,res)=>{
+const account_id=req.body.data.account_id
+walls.findAll({where:{account_id:account_id}}).then(response => 
+{  let data = [];
+  if (response.length === 0)
+    res.status(404).send({ message: "There is no information avaible" });
+  else {
+ response.map((e) => data.push({ postId:e.dataValues.id, title:e.dataValues.title, message:e.dataValues.message,likes:e.dataValues.likes}));
+ res.status(200).json(data.sort((a,b)=> b.postId - a.postId))  }} ).catch(err => {console.error(err); res.status(500).send({message:"Our wall is broke at the moment, try again latter"})});
+},
 
   likePost: (req, res) => {
     
