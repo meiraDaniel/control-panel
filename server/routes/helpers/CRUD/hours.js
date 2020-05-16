@@ -19,19 +19,18 @@ module.exports = {
     const month = date.getMonth();
 
     const userInput = {
-      day: req.body.day,
+      day: req.body.data.day,
       month: month,
       year: year,
-      account_id: req.body.account_id,
-      project: req.body.project,
-      hour: req.body.hour,
+      account_id: req.body.data.account_id,
+      project: req.body.data.project,
+      hour: req.body.data.hour,
       approved: false,
     };
     let errors = {};
-
     if (isObjectEmpty(userInput)) errors.message = `${allMandatory}`;
     if (isStringEmpty(userInput.day))  errors.message = `The field day ${thisMandatory}`;
-    if (isObjectEmpty(userInput.hour))   errors.message = `The field hour ${thisMandatory}`;
+     if (!userInput.hour)   errors.message = `The field hour ${thisMandatory}`;
     if (Object.keys(errors).length > 0) return res.status(400).json({ errors });
 
     hours
@@ -57,18 +56,16 @@ module.exports = {
               res
                 .status(200)
                 .send({ message: "You added your hours to the system" });
-            })
-            .catch((err) =>
+            }).catch((err) =>
               res
                 .status(500)
-                .send({ message: "something went wrong try again later" })
+                .send({ errors:{message: "something went wrong try again later" }})
             );
         } else{
           res
             .status(409)
-            .send({
-              message:
-                "You already insert your hours for this date. In case you want to update your information, please go to edit hours.",
+            .send({errors:{ message:
+              "You already insert your hours for this date. In case you want to update your information, please go to edit hours."}
             });}
       }); 
   },
