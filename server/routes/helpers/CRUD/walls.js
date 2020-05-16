@@ -76,7 +76,7 @@ walls.findAll({where:{account_id:account_id}}).then(response =>
 
   likePost: (req, res) => {
     
-    const postId = req.body.postId;
+    const postId = req.body.data.postId;
     
 
     walls.update({likes:Sequelize.literal('likes + 1')}, {where:{ id: postId }})
@@ -87,4 +87,17 @@ walls.findAll({where:{account_id:account_id}}).then(response =>
        res.status(200).send(response) }
      } ).catch(err => {console.error(err); res.status(500).send({message:"Our wall is broke at the moment, try again latter"})});
  },
+ dislikePost: (req, res) => {
+    
+  const postId = req.body.data.postId;
+  
+
+  walls.update({likes:Sequelize.literal('likes - 1')}, {where:{ id: postId }})
+  .then((response) => { 
+      if (response.length === 0)
+       res.status(404).send({ message: "Our wall is broke at the moment, try again latter" });
+     else {
+     res.status(200).send(response) }
+   } ).catch(err => {console.error(err); res.status(500).send({message:"Our wall is broke at the moment, try again latter"})});
+},
 };
