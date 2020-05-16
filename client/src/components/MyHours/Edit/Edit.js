@@ -9,34 +9,33 @@ function Edit({ token, rowId, tooglePopUp }) {
 
   const onSubmit = (value, e) => {
     e.preventDefault();
-    editHoursHelper(rowId, value.newProject, value.newHour, token)
+  editHoursHelper(rowId, value.newProject, value.newHour, token)
       .then((res) => setMessage(res.data.message))
-      .catch((err) => setMessage(err.response.data.message));
+      .catch((err) => setMessage(err.response.data.message)); 
   };
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className="login--top-circle">
-            <h1>Edit Hours</h1>
+  {message?<h1>{message}</h1>:<h1>Edit Hours</h1>}
           </div>
-          <h4>{message}</h4>
+          
           <label htmlFor="newProject">Project Name</label>
           <input
             type="text"
             name="newProject"
-            ref={register({ required: true })}
+            ref={register({ required: false })}
           />
 
-          {errors.newProject && "This field is required"}
 
           <label htmlFor="newHour">Hours</label>
           <input
             type="number"
             name="newHour"
-            ref={register({ required: true })}
+            ref={register({ min: 0, max: 24})}
           />
-          {errors.newHour && "This field is required"}
+          {errors.newHour && "Add a number between 0 and 24"}
 
           <input type="submit" value="send" />
         </div>

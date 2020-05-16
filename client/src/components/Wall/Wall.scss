@@ -1,0 +1,50 @@
+@import '../../style/global.scss';
+
+.wall--main{
+width:100%;
+height:100vh;
+display:flex;
+}
+
+.wall--left-posts{
+    background:$navy;
+    width:50%;
+    height:100%;
+}
+.wall--rigth-insertPosts{
+    background:$darkBlue;
+    width:50%;
+    height:100%;
+}
+
+
+.wall--center-form{
+    width:50%;
+    height:80%;
+    background:$green;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.wall-center-formInput{
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    height:80%;
+    align-items:center;
+    justify-content: center;
+}
+
+.wall--top-circle{
+    width:30%;
+    height:15%;
+    border-radius:100%;
+    background:$darkBlue;
+}
+.wall--top-circle{
+width:60%;
+height:50%;
+}

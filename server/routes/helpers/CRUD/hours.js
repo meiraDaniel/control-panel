@@ -51,6 +51,8 @@ module.exports = {
               approved: userInput.approved,
               month: userInput.month,
               hour: userInput.hour,
+              project: userInput.project,
+
             })
             .then((response) => {
               res

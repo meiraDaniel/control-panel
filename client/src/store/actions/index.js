@@ -4,13 +4,16 @@ export const actionTypes =  {
 
 }
 
-export const createSession = (id,token,firstname,lastname,adm) => ({
+export const createSession = (id,token,firstname,lastname,adm,role,avatar,email) => ({
     type : actionTypes.CREATE_SESSION,
     id:id,
     token : token,
     firstname:firstname,
     lastname:lastname,
-    adm:adm
+    adm:adm,
+    role:role,
+    avatar:avatar,
+    email:email
 });
 
 export const logout = () => ({
@@ -18,5 +21,9 @@ export const logout = () => ({
     id:'',
     token : '',
     firstname:'',
-    lastname:''
+    lastname:'',
+    adm:'',
+    role:'',
+    avatar:'',
+    email:''
 });

@@ -1,19 +1,27 @@
 @import "../../../style/global.scss";
 
-.dashboard--center-post{
+.dashboard--center-postDash{
     width:80%;
     height:30%;
     display:flex;
-    margin:3% 0 5% 0 ;
+    margin:3% 0 8% 0 ;
+
 }
-.post--left{
+.postDash--left{
     width:30%;
     height: 100%;
-    flex-wrap:wrap;
 }
-.post--right{
+.postDash--right{
     width:70%;
     height:100%;
-    flex-wrap:wrap;
     font-size:2vh;
+}
+.postDash--dashboard-likes{
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(200%);
+    cursor:pointer;
+}
+.postDash--dashbord-notLike{
+    filter:none;
+    cursor:pointer;
+
 }

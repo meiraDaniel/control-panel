@@ -28,7 +28,10 @@ function Login() {
             res.data.token,
             res.data.firstname,
             res.data.lastname,
-            res.data.adm
+            res.data.adm,
+            res.data.role,
+            res.data.avatar,
+            res.data.email
           ) 
         )).catch((err) => setMessage(err.response.data.message));
       

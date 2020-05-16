@@ -22,8 +22,9 @@ module.exports = {
           firstname: user.firstname,
           lastname: user.lastname,
           adm:user.adm,
+          role:user.role,
+          avatart:user.avatar,
            token: "Bearer " + token,
-          message: "you were authenticated",
         });
       })(req, res, next);
 },
