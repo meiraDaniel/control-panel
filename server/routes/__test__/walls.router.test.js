@@ -20,7 +20,7 @@ const {
         })
         test('should  the display router',()=>{
           validadeTruthiness(routerArr[1].route.methods.get);
-          validateMatchingStringValues(routerArr[1].route.path, "/wall?:account_id");
+          validateMatchingStringValues(routerArr[1].route.path, "/wall");
       })
      
    

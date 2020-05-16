@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 84" fill="black">
+  <g id="logo--modified">
+    <g id="left" fill="#d4b47c">
+<!--Padding tussen de brackets is 2, dus 1 aan elke kant-->
+<!--De brackets zijn, schuine doorsnede, 8 breed-->
+<!--Binnen "diameter" is 52 ("radius" 26)-->
+      <path id="bracket" d="M63 8 L63 16 L37 42 L63 68 L63 76 L29 42 L63 8 Z"/>
+<!--De armen zijn 6 breed-->
+<!--Het midden van de arm is gepositioneerd op de helft van de schuine arm, (x = 46)-->
+<!--Lengte van de bovenkant van de arm is 60-->
+      <path id="arm" d="M3 8 L49 8 L49 25 L43 32 L43 14 L9 14 Z"/>
+    </g>
+    <g id="right" fill="#85704d">
+      <path id="bracket" d="M65 8 L65 16 L91 42 L65 68 L65 76 L99 42 L65 8 Z"/>
+      <path id="arm" d="M125 8 L79 8 L79 25 L85 32 L85 14 L119 14 Z"/>
+    </g>
+  </g>
+</svg>

@@ -7,7 +7,9 @@ if (process.env.NODE_ENV !== "production") {
 module.exports = {
   loginAuth:  (req, res,next) => {
     passport.authenticate("local", (err, user, info) => {
-        if (err)  {res.status(500).send("Something went wrong"); console.error(err)}
+
+      
+       if (err)  {res.status(500).send("Something went wrong"); console.error(err)}
         if (!user) return res.status(400).send(info);
     
         const token = jwt.sign(
@@ -19,7 +21,8 @@ module.exports = {
           id: user.id,
           firstname: user.firstname,
           lastname: user.lastname,
-          token: "Bearer " + token,
+          adm:user.adm,
+           token: "Bearer " + token,
           message: "you were authenticated",
         });
       })(req, res, next);

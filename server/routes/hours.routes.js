@@ -9,6 +9,6 @@ router.post("/myhours/insert",authentication, insertHours)
 router.put("/myhours/edit",authentication, editHours)
 router.get("/myhours?",authentication, displayhours)
 router.delete("/myhours/delete",authentication, deleteHours)
-/* router.get("/myhours/total?:account_id",authentication, displayMonthTotal)
- */
+router.get("/myhours/total?",authentication, displayMonthTotal)
+ 
 module.exports = router;

@@ -7,11 +7,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require ('passport');
+const cors = require("cors");
+
+
 const accountRoutes = require('./routes/account.routes');
 const hoursRoutes = require('./routes/hours.routes');
 const wallsRoutes = require('./routes/walls.routes');
-const todoRoutes = require('./routes/todos.routes');
-
+const todoRoutes = require('./routes/todos.routes')
 
 //configurations
 require('./configurations/passportConfigurations')(passport)
@@ -34,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', accountRoutes);
 app.use('/', hoursRoutes);
@@ -52,6 +55,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
+  console.log(err)
   res.status(err.status || 500);
   res.render('error');
 });
