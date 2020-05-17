@@ -9,6 +9,7 @@ const logger = require('morgan');
 const passport = require ('passport');
 const cors = require("cors");
 
+const admRoutes = require('./routes/adm.routes');
 
 const accountRoutes = require('./routes/account.routes');
 const hoursRoutes = require('./routes/hours.routes');
@@ -42,6 +43,7 @@ app.use('/', accountRoutes);
 app.use('/', hoursRoutes);
 app.use('/', wallsRoutes);
 app.use('/', todoRoutes);
+app.use('/', admRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

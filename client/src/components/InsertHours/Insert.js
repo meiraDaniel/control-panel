@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import insertHelper from "../../services/API/insertHelper";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -10,7 +9,6 @@ import "./Insert.scss";
 function Insert({ token, account_id }) {
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit } = useForm();
-  const dispatch = useDispatch();
   const history = useHistory();
 
   /**

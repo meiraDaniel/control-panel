@@ -1,0 +1,39 @@
+@import "../../style/global.scss";
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+.AdmDashboard-main{
+    height:100vh;
+    width:100%;
+    margin:0%;
+    background:$darkBlue;
+    display:flex;
+    flex-direction:column;
+}
+
+.AdmDashboard--top-nav{
+    height:10%;
+    width:90%;
+    display:flex;
+    justify-content: space-between;
+}
+.AdmDashboard--top-nav img{
+    margin:auto 0 auto 0 ;
+height:60%;
+width:20%;
+}
+
+.AdmDashboard--display-main{
+
+max-width:100%;
+max-height:90%;
+display:flex;
+flex-wrap:wrap;
+
+
+}

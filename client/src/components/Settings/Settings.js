@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React from 'react'
 import  './Settings.scss'
 import { connect } from "react-redux";
 import DisplayProfile from './DisplayProfile'

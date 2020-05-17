@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from 'react'
+import React,{useState,useEffect} from 'react'
 import { connect } from "react-redux";
 import  getAllDataFromHours from '../../services/API/getAllDataFromHours'
 import { getMonthName } from "../../services/services";
@@ -11,12 +11,11 @@ const MyHours = ({account_id,token}) => {
 const [data,setData] =useState([])
 const [message,setMessage] =useState('')
 const history =useHistory()
-const{current:hdrs} =useRef(data)
 const[mountFlag,setmountFlag] =useState(true)
 
 useEffect(() => {
   fechData(); 
-  console.log(data.length)
+  
  },[mountFlag]);
 
 const fechData = ()=>{
@@ -37,6 +36,7 @@ const handlemountFlag =()=>{
     <main className='myHours--center-table'> 
       <Table data={data} handlemountFlag={handlemountFlag}/>
     </main>
+  {message?<p>{message}</p>:null}
     </div>
   )
 }
