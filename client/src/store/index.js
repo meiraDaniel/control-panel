@@ -1,6 +1,8 @@
 import { combineReducers} from 'redux'
-import {createSession} from './reducers/index'
+import {createSession,getId} from './reducers/index'
+
 const allReducers = combineReducers({
-    createSession:createSession
+    createSession:createSession,
+    getId:getId
 })
 export default allReducers

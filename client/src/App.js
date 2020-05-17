@@ -1,6 +1,6 @@
 import React,{useState}from 'react';
 import Login from "./components/login/Login"
-import {Route, Switch,Redirect,NavLink} from 'react-router-dom'
+import {Route, Switch,Redirect} from 'react-router-dom'
 import { connect } from "react-redux";
 import Dashboard from './components/Dashboard/Dashboard'
 import './App.scss'
@@ -10,6 +10,8 @@ import Wall from './components/Wall/Wall'
 import Settings from './components/Settings/Settings'
 import AdmDashboard from './components/adm/AdmDashboard'
 import Menu from './components/Menu/Menu'
+import EmployeeInfo from './components/adm/employeeInfo/EmployeeInfo'
+
 function mapToProps(state){
   return(
     {isAuthenticated: state.createSession.token,
@@ -55,6 +57,9 @@ const toggleonMenu=()=>{
      
        <Route path="/adm/dashboard"> 
        {!isAuthenticated? <Redirect to="/"/>: <AdmDashboard/>}
+       </Route>
+       <Route path="/adm/employee"> 
+       {!isAuthenticated? <Redirect to="/"/>: <EmployeeInfo/>}
        </Route>
       </Switch> 
     

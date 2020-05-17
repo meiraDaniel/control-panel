@@ -7,12 +7,15 @@ import { useForm } from "react-hook-form";
 import postOnWAllHelper from '../../services/API/postOnWallHelper'
 
 function Wall ({account_id,token,firstname}) {
+  
 const[data,setData]=useState([])
 const { register, errors, handleSubmit } = useForm();
 const [message,setMessage] = useState('')
 const [flag,setFlag]= useState(false)
+
+
 useEffect(() => {
-    getDataFromWall(flag);
+    getDataFromWall()
    },[flag]);
 
 const getDataFromWall=()=>{
@@ -26,7 +29,7 @@ const onSubmit = (value, e) => {
   const toggleFlag=()=>{
     setFlag(!flag)
   }
-
+ 
     return (
         <div className='wall--main'>
             <div className='wall--left-posts'>

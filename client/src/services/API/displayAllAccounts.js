@@ -2,11 +2,10 @@ import axios from 'axios'
 
 
 
-export default  async function deleteDataFromHours (id,token){
-    const response = await axios.delete("/myhours/delete", { 
+export default  async function displayAllAccounts (id,token){
+    const response = await axios.get("/employees", { 
         headers: { 'Authorization': token },
-       data:{id}
-        
+             
     })
 
     return  response

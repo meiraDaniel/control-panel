@@ -1,0 +1,36 @@
+@import "../../../style/global.scss";
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+.employeeInfo--main{
+    height:100vh;
+    width:100%;
+    margin:0%;
+    background:$darkBlue;
+    display:flex;
+   flex-direction:column;
+}
+.employeeInfo--top{
+    height:10%;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    background: $green;
+    border:1px $gray solid;
+}
+.employeeInto--center-main{
+    width:100%;
+    height:100%;
+    display:flex;
+}
+.employeeInfo--left-selectYear{
+    width:20%;
+    height:100%;
+    background:$green;
+    border:1px $gray solid;
+}

@@ -1,7 +1,7 @@
 export const actionTypes =  {
     CREATE_SESSION:"CREATE_SESSION",
     FINISH_SESSION:" FINISH_SESSION",
-
+    GET_ID:"GET_ID"
 }
 
 export const createSession = (id,token,firstname,lastname,adm,role,avatar,email) => ({
@@ -27,3 +27,8 @@ export const logout = () => ({
     avatar:'',
     email:''
 });
+
+export const getId =(account_id)=>({
+    type : actionTypes.GET_ID,
+    account_id:account_id,
+})

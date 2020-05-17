@@ -2,9 +2,9 @@ import getAllDataFromHours from '../../services/API/getAllDataFromHours'
 import React,{useState,useEffect} from 'react'
 import ProgressBar from './ProgressBar'
 import "./Percentage.scss"
+
 function Percentage({token,account_id}){
-    const [totalInputs,setTotalInputs] =useState(0)
-    const [approved,setApproved] =useState(0)
+   
     const [percentage,setPercentage] =useState(0)
 
     useEffect(() => {

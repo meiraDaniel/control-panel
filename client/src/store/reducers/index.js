@@ -6,3 +6,12 @@ export  function createSession(state={}, action){
         default: 
         return state;
     }} 
+
+    export  function getId(state={}, action){
+        switch(action.type){
+            case "GET_ID":
+            return {...state, account_id:action.account_id};
+        
+            default: 
+            return state;
+        }} 
