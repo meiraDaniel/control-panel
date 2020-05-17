@@ -20,7 +20,7 @@ function Percentage({token,account_id}){
             }).catch(err=>console.log(err))}
       
     const findPercentage=(num,per)=>{
-       setPercentage(Math.round((num/100)*per*100)) 
+       setPercentage(Math.round((num*100)/per)) 
     }
     return(
         <main className="percentage--center-main">
