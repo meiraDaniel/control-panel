@@ -2,23 +2,53 @@
 
 .dashboard--center-postDash{
     width:80%;
-    height:30%;
+    height:45%;
     display:flex;
     margin:3% 0 8% 0 ;
+    flex-wrap:wrap;
+
 
 }
 .postDash--left{
-    width:30%;
+    width:20%;
     height: 100%;
+
 }
 .postDash--right{
     width:70%;
     height:100%;
-    font-size:2vh;
+    font-size:2.5vh;
+    margin-left:auto;
+    background:$highlightBlue;
+    border-radius:30px;
+    border: 1px solid $black;
+    display:flex;
+    flex-direction:column;
+    padding-left: 5%;
+ box-shadow: -6px 6px 10px rgba(142, 139, 139, 0.452);
+
+    color:$black;
+
+    
 }
+
+
+
+.postDashPImage{
+    font-family:$fontBody;
+    height:70%;
+    width:100%;
+    font-size:3vh;
+    display:flex;
+    justify-content: space-evenly;
+    position:relative;
+    bottom:20%;
+    }
+ 
 .postDash--dashboard-likes{
     filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(200%);
     cursor:pointer;
+    
 }
 .postDash--dashbord-notLike{
     filter:none;

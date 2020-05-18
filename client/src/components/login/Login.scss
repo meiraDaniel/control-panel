@@ -1,41 +1,178 @@
 @import "../../style/global.scss";
 
-.login-main{
-    height:100vh;
-    width:100%;
-    background:$navy;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
+.login-main {
+  height: 100vh;
+  width: 100%;
+  background: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.login--center-form{
-    width:50%;
-    height:80%;
-    background:$green;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-
-}
-
-.login-center-formInput{
-    display:flex;
-    flex-direction: column;
-    width:60%;
-    height:80%;
-    align-items:center;
-    justify-content: center;
+.login--center-form {
+  width: 50%;
+  height: 80%;
+  background: $darkGreen;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:10px;
+  box-shadow:  -8px 6px 20px rgba(0, 0, 0, 0.726);
 }
 
-.login--top-circle{
-    width:30%;
-    height:15%;
-    border-radius:100%;
-    background:$darkBlue;
+.login-center-formInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  
+
 }
-.login--top-circle{
-width:60%;
-height:50%;
+
+.login--input {
+  background: $black;
+  border: none;
+  border-radius: 5%;
+  height: 10%;
+  width: 70%;
+  font-size: 3vh;
+  margin-top: 4%;
+  padding-left: 5%;
+  color: $gray;
+  
 }
+.login--input:focus {
+  border: 1px solid $gray;
+  box-shadow: inset 5px -5px 50px rgba(169, 163, 163, 0.253);
+  transition: 0.5s ease;
+}
+
+.login--top-circle {
+  width: 75%;
+  height: 45%;
+  border-radius: 100%;
+  background: $black;
+
+}
+.login-center-formInput img {
+  height: 100%;
+  width: 100%;
+  animation: balance;
+ 
+  animation-duration: 3s;
+  transform: rotate(0deg);
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+}
+#login{
+    margin-top:10%;
+}
+
+
+@keyframes balance {
+  0% {
+    transform: rotate(-30deg);
+  }
+  
+ 
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+@media only screen and (min-width:770px){
+
+
+.login--center-form {
+  width: 30%;
+  height: 80%;
+  
+}
+
+
+.login--input {
+  
+  border-radius: 15px;
+  height: 20%;
+ 
+}
+
+.login--top-circle {
+  width: 55%;
+  height: 45%;
+  border-radius: 100%;
+  background: $black;
+
+}
+.login-center-formInput img {
+  height: 100%;
+  width: 100%;
+  animation: balance;
+    animation-duration: 3s;
+  transform: rotate(0deg);
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+}
+#login{
+    margin-top:10%;
+}
+.logo{
+    width:5%;
+    height:5%;
+    position:absolute;
+    right: 92%;
+    top:5%;
+}
+}
+
+@media only screen and (orientation:landscape){
+    
+.login--center-form {
+    width: 30%;
+    height: 80%;
+    
+  }
+  
+  
+  .login--input {
+    
+    border-radius: 15px;
+    height: 20%;
+   
+  }
+  
+  .login--top-circle {
+    width: 55%;
+    height: 45%;
+    border-radius: 100%;
+    background: $black;
+  
+  }
+  .login-center-formInput img {
+    height: 100%;
+    width: 100%;
+    animation: balance;
+      animation-duration: 3s;
+    transform: rotate(0deg);
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  
+  }
+  #login{
+      margin-top:10%;
+  }
+  .logo{
+      width:5%;
+      height:5%;
+      position:absolute;
+      right: 92%;
+      top:5%;
+  }
+  }

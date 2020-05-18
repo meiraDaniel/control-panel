@@ -32,6 +32,7 @@ const onSubmit = (value, e) => {
  
     return (
         <div className='wall--main'>
+          
             <div className='wall--left-posts'>
                 {data.length>0?data.map((post,i)=>
                 <Posts firstname={firstname} post={post}  i={i}/>

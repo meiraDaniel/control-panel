@@ -17,7 +17,7 @@ function Edit({ token, rowId, tooglePopUp }) {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div className="login--top-circle">
+          <div className="edit--top-circle">
   {message?<h1>{message}</h1>:<h1>Edit Hours</h1>}
           </div>
           

@@ -12,7 +12,7 @@ $green:#05332F;
 $white:#A9A3A3;
 $gray:#888787;
 $darkGray:#535252;
-$reallyDarkGray:#393737;
+$reallyDarkGray:#161515;
 
 
 //highlights
@@ -23,3 +23,61 @@ $highlightLightGreen:#01D3BA;
 
 $fontBody:Titillium Web;
 $fontHeadLine:Amaranth;
+
+.button{
+    margin-top:5%;
+    background:$highlightLightBlue;
+    height:6%;
+    width:60%;
+    color:$black;
+    font-size:70%;
+    font-weight: 700;
+    border:none;
+    box-shadow: 0 8px 6px -6px black;
+cursor:pointer;
+}
+.snackbar {
+    position:absolute;
+    bottom:77%;
+    justify-self: center;
+    display:block;
+    background:$reallyDarkGray;
+    border:#f2f2f2;
+    padding:10px 40px 10px 20px;
+    color:#fff;
+    font-family:$fontHeadLine;
+    font-size:3.5vh;
+    transition: top 1s ease-in-out;
+    z-index:9;
+    cursor:pointer;
+  } 
+ .snackclose {
+    display:none;
+    z-index:10;
+  }
+  .logo{
+    width:10%;
+    height:10%;
+    align-self: flex-start;
+    justify-self: flex-start;
+    position:absolute;
+    right: 85%;
+}
+.page-name{
+    color:$highlightLightGreen;
+}
+.lighblue{
+    color:$highlightBlue;
+}
+.lighGreen{
+    color:$highlightLightGreen; 
+}
+@media only screen and (min-width:1000px){
+    .button{
+       
+        height:20%;
+        width:60%;
+        font-size:100%;
+
+    } 
+}

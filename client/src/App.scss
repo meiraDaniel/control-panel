@@ -1,34 +1,12 @@
 @import './style/global.scss';
 body{
     color:$white;
+    font-family:$fontBody
 }
 .app--main{
-height:100vh;
+max-height:100vh;
 width:100%;
 margin:0%;
+overflow-y:auto;
 }
 
-.app-show-menu{
-    display:flex;
-    flex-direction:column;
-    background:$navy;
-    height:100%;
-    width: 30%;
-    position: absolute;
-    opacity:1;
-    transition: 0.5s ease;
-}
-.app-hidden-menu{
-    display:flex;
-    flex-direction:column;
-    background:$navy;
-    height:100%;
-    width: 0%;
-    position: absolute;
-opacity:0;
-transition: 0.5s ease;
-}
-
-.app--top-menuButton{
-    position: absolute;
-}

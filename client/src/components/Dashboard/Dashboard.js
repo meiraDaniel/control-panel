@@ -36,18 +36,21 @@ function Dashboard({ firstname, token, account_id }) {
 
   return (
     <div className="dashboard-main">
-      <div className="dashboard--top-nav">
-          <img src={logo} alt="logo"/>
-        <h2>My Dashboard</h2>
-      </div>
+       <div className="dashboard--top-nav">
+       <h2 className='page-name'>My Dashboard</h2>
+
+          <img src={logo} alt="logo" />
+      </div> 
       <main className="dashboard--display-main">
         <div className="dashboard--top">
+       
           <div className="dashboard--left-top">
-            <h1>Welcolme,{firstname}</h1>
+            <h1>Welcolme, <span className='lighGreen'>{firstname}</span></h1>
           </div>
 
+       
           <div className="dashboard--center-top">
-            <h1> You worked {totalHours} hours this month </h1>
+            <h1> You worked <span className='lighblue'>{totalHours}</span> hours this month </h1>
           </div>
         </div>
         <div className="dashboard--bottom">

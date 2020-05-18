@@ -10,7 +10,7 @@ function Insert({ token, account_id }) {
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit } = useForm();
   const history = useHistory();
-
+const [flagSnack,setflagSnack]=useState(false)
   /**
    * @function onSubmit -
    *  target the values inserted by the user and send it to the server
@@ -22,8 +22,8 @@ function Insert({ token, account_id }) {
   const onSubmit = (value, e) => {
     e.preventDefault();
     insertHelper(account_id, value.day, value.hour, value.project, token)
-      .then((res) => setMessage(res.data.message))
-      .catch((err) => setMessage(err.response.data.errors.message));
+      .then((res) => {setMessage(res.data.message);setflagSnack(!flagSnack)})
+      .catch((err) => {setMessage(err.response.data.errors.message);setflagSnack(!flagSnack)});
   };
   const toggleBackMyHours = () => {
     history.push("/myhours");
@@ -31,28 +31,32 @@ function Insert({ token, account_id }) {
 
   return (
     <main className="Insert-main">
+     <p onClick={()=>setflagSnack(!flagSnack)} className={flagSnack?'snackbar':'snackclose'}>{message}</p>
       <form className="Insert--center-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="Insert-center-formInput">
           <div className="Insert--top-circle">
-            {message ? <h1>{message}</h1> : <h1>Insert Hours</h1>}
+         <h1>Insert Hours</h1>
           </div>
           <label htmlFor="day">Day of the month</label>
-          <input type="number" name="day" ref={register({ min: 1, max: 31 })} />
+          <input className='Insert--input' type="number" name="day" ref={register({ min: 1, max: 31 })} />
           {errors.day && "Day number cannot be greater than 31"}
 
           <label htmlFor="hour">Hours that you worked</label>
           <input
+          className='Insert--input'
             type="number"
             name="hour"
             ref={register({ min: 0, max: 24 })}
           />
           {errors.hour && "Hours number cannot be greater than 24"}
           <label htmlFor="project">Project that you worked</label>
-          <input type="text" name="project"  ref={register({ required: false })}/>
-          <input type="submit" value="Send" />
+          <input className='Insert--input' type="text" name="project"  ref={register({ required: false })}/>
+          <input className='button' type="submit" value="Send" />
+          <button  className='button' onClick={toggleBackMyHours}>Back</button>
+
         </div>
+
       </form>
-      <button onClick={toggleBackMyHours}>Back</button>
     </main>
   );
 }

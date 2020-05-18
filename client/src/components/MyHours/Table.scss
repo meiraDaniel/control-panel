@@ -1,0 +1,32 @@
+@import "../../style/global.scss";
+
+.icons{
+    width:65%;
+    height:65%;
+    margin-left:20%;
+    cursor:pointer;
+}
+.Table--main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+ 
+
+}
+.Table--center-table{
+    width:90%;
+    max-height:70%;
+    margin-top:10%;
+overflow-y:auto;
+
+}
+.Table--center-table td{
+border-bottom:0.5px solid $gray;
+width:20%;
+height:60%;
+}
+.table--top-headlines{
+    color:$highlightLightGreen;
+    font-size:4vh;
+}

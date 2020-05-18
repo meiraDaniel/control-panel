@@ -32,9 +32,11 @@ else{
        <img src={placeHolder} alt={post.firstname} />
      </div>
       <div className='postDash--right'>
-        <h2>{post.firstname}</h2>
-        <p>{post.message}</p>{" "}
+        <h2 id='post--h2'>{post.firstname}</h2>
+       <div className="postDashPImage">
+        <p>{post.message}</p>
         <img className={flag?'postDash--dashboard-likes':'postDash--dashbord-notLike'} onClick={handleLike} src={likes} alt="heart"/>
+        </div>
       </div>
     </div>
   );

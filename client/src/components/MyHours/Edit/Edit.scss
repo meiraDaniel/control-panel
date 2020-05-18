@@ -1,6 +1,6 @@
 @import "../../style/global.scss";
 
-.Insert-main {
+.edit-main {
   height: 100vh;
   width: 100%;
   background: $black;
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
 }
-.Insert--center-form {
+.edit--center-form {
   width: 50%;
   height: 80%;
   background: $darkGreen;
@@ -20,7 +20,7 @@
   box-shadow:  -8px 6px 20px rgba(0, 0, 0, 0.726);
 }
 
-.Insert-center-formInput {
+.edit-center-formInput {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -31,7 +31,7 @@
 
 }
 
-.Insert--input {
+.edit--input {
   background: $black;
   border: none;
   border-radius: 5%;
@@ -43,13 +43,13 @@
   color: $gray;
   
 }
-.Insert--input:focus {
+.edit--input:focus {
   border: 1px solid $gray;
   box-shadow: inset 5px -5px 50px rgba(169, 163, 163, 0.253);
   transition: 0.5s ease;
 }
 
-.Insert--top-circle {
+.edit--top-circle {
   width: 75%;
   height: 45%;
   border-radius: 100%;
@@ -62,7 +62,7 @@
   font-family:$fontHeadLine
 
 }
-.Insert-center-formInput img {
+.edit-center-formInput img {
   height: 100%;
   width: 100%;
   animation: balance;
@@ -74,35 +74,35 @@
   animation-direction: alternate;
 
 }
-#Insert{
+#edit{
     margin-top:10%;
 }
 
 @media only screen and (min-width:770px){
 
 
-    .Insert--center-form {
+    .edit--center-form {
       width: 30%;
       height: 80%;
       
     }
     
     
-    .Insert--input {
+    .edit--input {
       
       border-radius: 15px;
       height: 20%;
      
     }
     
-    .Insert--top-circle {
+    .edit--top-circle {
       width: 55%;
       height: 45%;
       border-radius: 100%;
       background: $black;
     
     }
-    .Insert-center-formInput img {
+    .edit-center-formInput img {
       height: 100%;
       width: 100%;
       animation: balance;
@@ -113,7 +113,7 @@
       animation-direction: alternate;
     
     }
-    #Insert{
+    #edit{
         margin-top:10%;
     }
     .logo{
@@ -127,28 +127,28 @@
     
     @media only screen and (orientation:landscape){
         
-    .Insert--center-form {
+    .edit--center-form {
         width: 30%;
         height: 80%;
         
       }
       
       
-      .Insert--input {
+      .edit--input {
         
         border-radius: 15px;
         height: 20%;
        
       }
       
-      .Insert--top-circle {
+      .edit--top-circle {
         width: 43%;
         height: 95%;
         border-radius: 100%;
         background: $black;
       
       }
-      .Insert-center-formInput img {
+      .edit-center-formInput img {
         height: 100%;
         width: 100%;
         animation: balance;
@@ -159,7 +159,7 @@
         animation-direction: alternate;
       
       }
-      #Insert{
+      #edit{
           margin-top:10%;
       }
       .logo{

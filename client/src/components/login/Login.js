@@ -5,12 +5,12 @@ import loginHelper from '../../services/API/loginHelper'
 import {createSession} from '../../store/actions'
 import gloves from '../../images/Gloves.svg'
 import './Login.scss'
-
+import logo from '../../images/logo.svg'
 function Login() {
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit } = useForm();
   const dispatch = useDispatch();
-
+const[snackBarFlag,setSnackBarFlag]=useState(false)
   /**
    * @function onSubmit -
    *  target the values inserted by the user and send it to the server
@@ -33,12 +33,15 @@ function Login() {
             res.data.avatar,
             res.data.email
           ) 
-        )).catch((err) => setMessage(err.response.data.message));
+        )).catch((err) =>{ setMessage(err.response.data.message); setSnackBarFlag(!snackBarFlag)});
       
   };
 
   return (
     <main className='login-main'>
+        <h1 onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
+
+      <img src={logo} alt="logo" className='logo'/>
       
       <form
         className='login--center-form'
@@ -48,31 +51,29 @@ function Login() {
         <div className='login--top-circle'>
           <img src={gloves} alt="gloves"/>
         </div>
-  <h1>{message}</h1>
-        <label htmlFor="email">
-          E-mail
-        </label>
-        <input
        
+        <input
+         className='login--input'
           type="text"
           name="email"
           ref={register({ required: true })}
+          placeholder="E-mail"
         />
         {errors.email && "This field is required"}
         
 
-        <label  htmlFor="password">
-          Password
-        </label>
+      
         <input
-          
+                   className='login--input'
+
           type="password"
           name="password"
           ref={register({ required: true })}
+          placeholder="password"
         />
         {errors.password && "This field is required"}
         
-          <input type='submit' value="login"/>
+          <input id='login' className='button' type='submit' value="LOGIN"/>
           </div>
       </form>
     

@@ -2,6 +2,9 @@ import React,{useState} from "react";
 import Edit from'./Edit/Edit'
 import deleteDataFromHours from '../../services/API/deleteDataFromHours'
 import { connect } from "react-redux";
+import edit from '../../images/edit.svg'
+import del from '../../images/delete.svg'
+import './Table.scss'
 
 
 function Table({ data,token,account_id,handlemountFlag}) {
@@ -29,18 +32,19 @@ const tooglePopUp=()=>{
 
   
   return (
-    <div>
+    <div className='Table--main'>
 
     {popUpEdit||popUpDelete?
     popUpEdit?<Edit rowId={rowId} tooglePopUp={tooglePopUp}/>:<h1>Delete</h1>:
-<table>
+<table className='Table--center-table'>
         <thead>
           <tr>
-            <td>Day</td>
-            <td>Hour</td>
-            <td>Project</td>
-            <td>Aproved</td>
-            <td></td>
+            <td className='table--top-headlines'>Day</td>
+            <td className='table--top-headlines'>Hour</td>
+            <td className='table--top-headlines'>Project</td>
+            <td className='table--top-headlines'>Aproved</td>
+            <td className='table--top-headlines'>Edit</td>
+            <td className='table--top-headlines'>Delete</td>
 
 
           </tr>
@@ -52,8 +56,8 @@ const tooglePopUp=()=>{
               <td>{row.hour}</td>
               <td>{row.project}</td>
               <td>{row.approved? 'Yes': 'No'}</td>
-              <td><button onClick={()=>toggleIdEdit(row.id)}>Edit</button></td>
-              <td><button onClick={()=>toggleIdDelete(row.id)}>Delete</button></td>
+              <td>< img className='icons' src={edit} alt='delete' onClick={()=>toggleIdEdit(row.id)}/></td>
+              <td><img  className='icons' src={del} ald='edit' onClick={()=>toggleIdDelete(row.id)}/></td>
 
             </tr>
           </tbody>
