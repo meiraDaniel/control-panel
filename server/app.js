@@ -9,6 +9,7 @@ const logger = require('morgan');
 const passport = require ('passport');
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
+const nodemailer = require('nodemailer');
 
 const admRoutes = require('./routes/adm.routes');
 

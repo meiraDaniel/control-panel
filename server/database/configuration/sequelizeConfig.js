@@ -44,6 +44,7 @@ db.accounts.hasMany(db.uploads, { foreignKey: "account_id", sourceKey: "id" });
 
 
 db.walls.belongsTo(db.accounts, { foreignKey: "account_id"});
+db.hours.belongsTo(db.accounts, { foreignKey: "account_id"});
 db.uploads.belongsTo(db.accounts, { foreignKey: "account_id"});
 
 

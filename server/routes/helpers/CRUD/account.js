@@ -35,6 +35,7 @@ module.exports = {
         avatar_name:file.name,
         avatar:`/uploads/${file.name}`,
         password: hash,
+        notification:false
       }).then(response =>  res.status(201).send(`the user ${lastname} was created`) ).catch(err=>
      console.log(err));
     
@@ -45,8 +46,9 @@ module.exports = {
 const account_id =req.body.data.account_id
 const newRole =  req.body.data.role
 const newEmail =  req.body.data.email
+const newValue =  req.body.data.notification
 
-  accounts.update({role:newRole,email:newEmail},{ where:{id:account_id}}).then((newUserInfo)=>{
+  accounts.update({role:newRole,email:newEmail,notification:newValue},{ where:{id:account_id}}).then((newUserInfo)=>{
    if(newUserInfo[0] > 0) return res.status(200).send({message:"Your information was updated"});
    if(newUserInfo[0] === 0) return res.status(409).send({message:"You need to add new information in the fields"});
    
