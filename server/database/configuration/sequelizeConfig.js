@@ -33,15 +33,18 @@ db.accounts = require("../models/accounts.model")(Sequelize, connector);
 db.hours = require("../models/hours.model")(Sequelize, connector);
 db.todos = require("../models/todos.model")(Sequelize, connector);
 db.walls = require("../models/walls.model")(Sequelize, connector);
+db.uploads = require("../models/uploads.model")(Sequelize, connector);
 
 
 //account conection
 db.accounts.hasMany(db.hours, { foreignKey: "account_id", sourceKey: "id" });
 db.accounts.hasMany(db.todos, { foreignKey: "account_id", sourceKey: "id" });
 db.accounts.hasMany(db.walls, { foreignKey: "account_id", sourceKey: "id" });
+db.accounts.hasMany(db.uploads, { foreignKey: "account_id", sourceKey: "id" });
 
 
 db.walls.belongsTo(db.accounts, { foreignKey: "account_id"});
+db.uploads.belongsTo(db.accounts, { foreignKey: "account_id"});
 
 
 module.exports = db;
