@@ -1,52 +1,54 @@
 @import "../../../style/global.scss";
 
 .dashboard--center-postDash{
-    width:80%;
-    height:45%;
-    display:flex;
-    margin:3% 0 8% 0 ;
-    flex-wrap:wrap;
-
+ width:80%;
+ height:30%;
+margin:0 0 2% 6%;
+padding:1% 2% 1% 1%;
+display:flex;
+border-radius:30px;
+background:$highlightLightBlue;
+box-shadow:-6px 6px 10px rgba(87, 87, 87, 0.383);
 
 }
 .postDash--left{
-    width:20%;
-    height: 100%;
+    width:30%;
+   height:100%;
 
 }
 .postDash--right{
-    width:70%;
-    height:100%;
-    font-size:2.5vh;
-    margin-left:auto;
-    background:$highlightBlue;
-    border-radius:30px;
-    border: 1px solid $black;
-    display:flex;
-    flex-direction:column;
-    padding-left: 5%;
- box-shadow: -6px 6px 10px rgba(142, 139, 139, 0.452);
-
-    color:$black;
-
+    width:80%;
+    height:99%;
+flex-wrap:wrap;
+color:$reallyDarkGray;
     
 }
+#post--h2{
+    width:98%;
+    height:10%;
+    margin:0% 0 0 0.5%;
+font-size:2.5vh;
+}
+
 
 
 
 .postDashPImage{
-    font-family:$fontBody;
-    height:70%;
-    width:100%;
-    font-size:3vh;
+    width:98%;
+   height:70%;
+    margin:0% 0 0 2%;
     display:flex;
-    justify-content: space-evenly;
-    position:relative;
-    bottom:20%;
+
     }
- 
+ #post--rigth-p-message{
+margin-right: 3%;
+     font-size:2vh;
+     width:80%;
+     height:90%;
+     flex-wrap:wrap;
+ }
 .postDash--dashboard-likes{
-    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(200%);
+    filter: invert(100%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(200%);
     cursor:pointer;
     
 }

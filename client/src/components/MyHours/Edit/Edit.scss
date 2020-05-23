@@ -1,38 +1,30 @@
-@import "../../style/global.scss";
+@import "../../../style/global.scss";
 
 .edit-main {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  background: $black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: $darkBlue;
+
 }
 .edit--center-form {
-  width: 50%;
-  height: 80%;
-  background: $darkGreen;
+  width: 100%;
+  height: 100%;
   margin: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius:10px;
-  box-shadow:  -8px 6px 20px rgba(0, 0, 0, 0.726);
+  border-radius: 10px;
 }
 
 .edit-center-formInput {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  height: 80%;
-  align-items: center;
-  justify-content: center;
-  
-
+  height: 85%;
+display:flex;
+flex-direction: column;
+align-items: center;
+margin-top:5%;
 }
 
 .edit--input {
-  background: $black;
+  background: $darkGreen;
   border: none;
   border-radius: 5%;
   height: 10%;
@@ -41,7 +33,6 @@
   margin-top: 4%;
   padding-left: 5%;
   color: $gray;
-  
 }
 .edit--input:focus {
   border: 1px solid $gray;
@@ -50,123 +41,25 @@
 }
 
 .edit--top-circle {
-  width: 75%;
-  height: 45%;
+  width: 45%;
+  height: 25%;
   border-radius: 100%;
-  background: $black;
-  display:flex;
+  background: $darkGreen;
+  margin:auto;
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap:wrap;
-  font-size:2.5vh;
-  font-family:$fontHeadLine
-
+  font-size:2vh;
 }
-.edit-center-formInput img {
-  height: 100%;
-  width: 100%;
-  animation: balance;
- 
-  animation-duration: 3s;
-  transform: rotate(0deg);
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-
-}
-#edit{
-    margin-top:10%;
+.edit--top-circle h1{
+  margin-left:15%;
 }
 
-@media only screen and (min-width:770px){
-
-
-    .edit--center-form {
-      width: 30%;
-      height: 80%;
-      
-    }
-    
-    
-    .edit--input {
-      
-      border-radius: 15px;
-      height: 20%;
-     
-    }
-    
-    .edit--top-circle {
-      width: 55%;
-      height: 45%;
-      border-radius: 100%;
-      background: $black;
-    
-    }
-    .edit-center-formInput img {
-      height: 100%;
-      width: 100%;
-      animation: balance;
-        animation-duration: 3s;
-      transform: rotate(0deg);
-      animation-delay: 2s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-    
-    }
-    #edit{
-        margin-top:10%;
-    }
-    .logo{
-        width:5%;
-        height:5%;
-        position:absolute;
-        right: 92%;
-        top:5%;
-    }
-    }
-    
-    @media only screen and (orientation:landscape){
-        
-    .edit--center-form {
-        width: 30%;
-        height: 80%;
-        
-      }
-      
-      
-      .edit--input {
-        
-        border-radius: 15px;
-        height: 20%;
-       
-      }
-      
-      .edit--top-circle {
-        width: 43%;
-        height: 95%;
-        border-radius: 100%;
-        background: $black;
-      
-      }
-      .edit-center-formInput img {
-        height: 100%;
-        width: 100%;
-        animation: balance;
-          animation-duration: 3s;
-        transform: rotate(0deg);
-        animation-delay: 2s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      
-      }
-      #edit{
-          margin-top:10%;
-      }
-      .logo{
-          width:5%;
-          height:5%;
-          position:absolute;
-          right: 92%;
-          top:5%;
-      }
-      }
+@media only screen and (min-width:700px){
+#edit---buton-back{
+  height:5%;
+}
+#edit---buton{
+  height:5%;
+}
+}

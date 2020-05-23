@@ -9,7 +9,7 @@ $green:#05332F;
 
 //gray scale
 
-$white:#A9A3A3;
+$white:white;
 $gray:#888787;
 $darkGray:#535252;
 $reallyDarkGray:#161515;
@@ -55,14 +55,7 @@ cursor:pointer;
     display:none;
     z-index:10;
   }
-  .logo{
-    width:10%;
-    height:10%;
-    align-self: flex-start;
-    justify-self: flex-start;
-    position:absolute;
-    right: 85%;
-}
+
 .page-name{
     color:$highlightLightGreen;
 }
@@ -72,6 +65,16 @@ cursor:pointer;
 .lighGreen{
     color:$highlightLightGreen; 
 }
+
+.red{
+    color:rgb(158, 7, 7);
+}
+.logo{
+    width:5%;
+    height:5%;
+    align-self:center;
+    
+  }
 @media only screen and (min-width:1000px){
     .button{
        

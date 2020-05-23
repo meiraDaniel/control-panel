@@ -34,9 +34,9 @@ const [flagSnack,setflagSnack]=useState(false)
      <p onClick={()=>setflagSnack(!flagSnack)} className={flagSnack?'snackbar':'snackclose'}>{message}</p>
       <form className="Insert--center-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="Insert-center-formInput">
-          <div className="Insert--top-circle">
-         <h1>Insert Hours</h1>
-          </div>
+          
+         <h1 className="Insert--top-circle">Insert Hours</h1>
+          
           <label htmlFor="day">Day of the month</label>
           <input className='Insert--input' type="number" name="day" ref={register({ min: 1, max: 31 })} />
           {errors.day && "Day number cannot be greater than 31"}

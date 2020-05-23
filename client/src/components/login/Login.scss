@@ -71,6 +71,14 @@
 #login{
     margin-top:10%;
 }
+.login--logo{
+  width:10%;
+  height:10%;
+  align-self: flex-start;
+  justify-self: flex-start;
+  position:absolute;
+  right: 85%;
+}
 
 
 @keyframes balance {

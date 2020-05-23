@@ -4,6 +4,7 @@ import editProfile from '../../services/API/editProfile'
 import {createSession} from '../../store/actions'
 import { useDispatch } from "react-redux";
 import formSettigHelper from '../../services/API/formSettigHelper'
+import './FormProfile.scss'
 
 function FormProfile({ data}) {
   const { register, errors, handleSubmit } = useForm();
@@ -39,15 +40,16 @@ const handleDispach=()=>{
 }).catch(err=>console.log(err))}
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className='formProfile--main'>
+      <form className='formProfile--center-form' onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <div >
-  {message?<h1>{message}</h1>:<h1>Settings</h1>}
-          </div>
+          
+  <h1>Settings</h1>
+          <div className="formprofile--center-inputs">
           
           <label htmlFor="role">Role</label>
           <input
+          className='formProfile--input'
             type="text"
             name="role"
             ref={register({ required: false })}
@@ -55,13 +57,15 @@ const handleDispach=()=>{
 
           <label htmlFor="role">email</label>
           <input
+                    className='formProfile--input'
+
             type="email"
             name="email"
             ref={register({ required: false })}
           />
+</div>
 
-
-          <input type="submit" value="send" />
+          <input id="formProfile--buton" className='button' type="submit" value="send" />
         </div>
       </form>
     </div>

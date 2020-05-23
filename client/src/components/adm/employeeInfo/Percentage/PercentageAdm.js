@@ -34,20 +34,25 @@ setPercentageMonths(Math.round((num*100)/12))
 
     return(
         <main className="percentageAdm--center-main">
+          <div className="percentage--daysWorked">
       <h2>Days worked </h2>
       <ProgressBar    
-    size={80}
-    strokeWidth={9}
+    size={60}
+    strokeWidth={6}
     circleOneStroke='#888787'
     circleTwoStroke='#01D3BA' 
     percentage={percentageDays}/>
+    </div>
+    <div className="percentage--daysWorked">
+
     <h2>Months worked </h2>
       <ProgressBar    
-    size={80}
-    strokeWidth={9}
+    size={60}
+    strokeWidth={6}
     circleOneStroke='#888787'
     circleTwoStroke='#01D3BA' 
     percentage={percentageMonths}/>
+    </div>
         </main>
     )
 }

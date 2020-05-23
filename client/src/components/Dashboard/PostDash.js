@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import placeHolder from "../../images/Butterfly.svg";
 import "./style/post.scss";
 import likes from '../../images/like.svg'
 import likePost from '../../services/API/likePost'
@@ -29,13 +28,15 @@ else{
   return (
     <div key={i} className="dashboard--center-postDash">
       <div className="postDash--left">
-       <img src={placeHolder} alt={post.firstname} />
+       <img src={post.avatar_name} alt={post.firstname} />
+ 
      </div>
       <div className='postDash--right'>
-        <h2 id='post--h2'>{post.firstname}</h2>
-       <div className="postDashPImage">
-        <p>{post.message}</p>
-        <img className={flag?'postDash--dashboard-likes':'postDash--dashbord-notLike'} onClick={handleLike} src={likes} alt="heart"/>
+      <h2 id='post--h2'>{post.firstname}</h2>
+
+     <div className="postDashPImage">
+        <p id='post--rigth-p-message'>{post.message}</p>
+        <img className={flag?'postDash--dashboard-likes':'postDash--dashbord-notLike'} onClick={handleLike} src={likes} alt="heart"/> 
         </div>
       </div>
     </div>

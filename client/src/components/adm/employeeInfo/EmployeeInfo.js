@@ -10,7 +10,7 @@ import { getMonthName } from "../../../services/services";
 import TableAdm from "./TableAdm";
 
 
-function EmployeeInfo({ account_id, token }) {
+function EmployeeInfo({ account_id, token,avatar }) {
   const [years, setYears] = useState([]);
   const [months, setMonths] = useState([]);
 
@@ -55,21 +55,19 @@ function EmployeeInfo({ account_id, token }) {
   return (
     <div className="employeeInfo--main">
       <div className="employeeInfo--top">
-        <img src={logo} alt="logo" />
         <h2>Employees</h2>
       </div>
       <div className="employeeInto--center-main">
         <div className="employeeInfo--left-selectYear">
           <div className="employeeInfo-left-top-avatar">
-            <img src={placeHolder} alt="placeholder" />
-            <button onClick={() => history.push("/adm/dashboard")}>BACK</button>
+            <img src={avatar} alt="placeholder" />
           </div>
           <div className="employeeIndo--left-bottom-yearlist">
             {years ? (
               years
                 .filter((v, i) => years.indexOf(v) === i)
                 .map((year, i) => (
-                  <button onClick={() => handleYears(year)} key={i}>
+                  <button className='button' onClick={() => handleYears(year)} key={i}>
                     {year}
                   </button>
                 ))
@@ -77,11 +75,13 @@ function EmployeeInfo({ account_id, token }) {
               <p>No data Avaible</p>
             )}
           </div>
+          <button id='employeeInfo--button-back'className='button' onClick={() => history.push("/adm/dashboard")}>BACK</button>
+
         </div>
         <div className="employeeInfo--rigth-information">
           <div className="employeeInfo--right-top-select">
             {flag ? (
-              <select onChange={showTable} name="months" id="months">
+              <select  className="employeeInfo--select" onChange={showTable} name="months" id="months">
                 <option value="none">Select a Month</option>
                 {months
                   .filter((v, i) => months.indexOf(v) === i)
@@ -108,6 +108,8 @@ function EmployeeInfo({ account_id, token }) {
 function mapToProps(state) {
   return {
     account_id: state.getId.account_id,
+    avatar: state.getId.avatar,
+
     token: state.createSession.token,
   };
 }

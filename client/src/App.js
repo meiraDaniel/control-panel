@@ -11,6 +11,7 @@ import Settings from "./components/Settings/Settings";
 import AdmDashboard from "./components/adm/AdmDashboard";
 import Menu from "./components/Menu/Menu";
 import EmployeeInfo from "./components/adm/employeeInfo/EmployeeInfo";
+import RegisterEmployee from "./components/adm/registerEmployee/RegisterEmployee"
 
 function mapToProps(state) {
   return {
@@ -34,8 +35,8 @@ function App({ isAuthenticated, isAdm }) {
           )
         ) : null}
       </div>
-
-      <Switch>
+      
+  <Switch>
         <Route exact path="/">
           {isAuthenticated ? isAdm ?  <Redirect to="/adm/dashboard" />:<Redirect to="/dashboard" /> 
           : (
@@ -65,7 +66,10 @@ function App({ isAuthenticated, isAdm }) {
         <Route path="/adm/employee">
           {!isAuthenticated ? <Redirect to="/" /> : <EmployeeInfo />}
         </Route>
-      </Switch>
+        <Route path="/adm/employee-add">
+          {!isAuthenticated ? <Redirect to="/" /> : <RegisterEmployee />}
+        </Route>
+      </Switch> 
     </div>
   );
 }

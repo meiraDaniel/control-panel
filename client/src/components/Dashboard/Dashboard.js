@@ -36,25 +36,25 @@ function Dashboard({ firstname, token, account_id }) {
 
   return (
     <div className="dashboard-main">
-       <div className="dashboard--top-nav">
-       <h2 className='page-name'>My Dashboard</h2>
+        <div className="dashboard--top-nav">
+       <h2 className='page-name'>Dashboard</h2>
 
           <img src={logo} alt="logo" />
-      </div> 
+      </div>
       <main className="dashboard--display-main">
         <div className="dashboard--top">
        
-          <div className="dashboard--left-top">
-            <h1>Welcolme, <span className='lighGreen'>{firstname}</span></h1>
+          <div className="dashboard--left-top-welcome">
+            <h1>Welcome, <span >{firstname}</span></h1>
           </div>
 
        
-          <div className="dashboard--center-top">
+          <div className="dashboard--center-top-totalHours">
             <h1> You worked <span className='lighblue'>{totalHours}</span> hours this month </h1>
           </div>
         </div>
         <div className="dashboard--bottom">
-          <div className="dashboard--left-bottom">
+          <div className="dashboard--left-bottom-myWall">
           <h1>My Wall</h1>
            {post.map((e,i)=>(
                
@@ -64,10 +64,10 @@ function Dashboard({ firstname, token, account_id }) {
           <div className="dashboard--center-bottom">
             <Percentage token={token} account_id={account_id}/>
           </div>
-          <div className="dashboard--rigth-bottom">
-              <button onClick={toggleLogout}>
-              <img src={logoutImage} alt="logout" />
-              </button>
+          <div className="dashboard--rigth-bottom-logout">
+              
+              <img  onClick={toggleLogout} src={logoutImage} alt="logout" />
+              
               
           </div>
         </div>

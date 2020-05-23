@@ -7,6 +7,18 @@
     display: none;
   }
   
+  .dashboard--top-nav{
+    width:100%;
+    display:flex;
+    justify-content: flex-end;
+    border-bottom:1px solid $gray;
+background:$darkBlue;
+
+}
+.dashboard--top-nav img{
+    width:10%;
+    height:40%;
+}
 .dashboard-main{
     max-height:100vh;
     width:100%;
@@ -17,143 +29,127 @@
     overflow-y: scroll;
 }
 .dashboard--display-main{
-    height:90%;
+    height:100vh;
     width:100%;
     display:flex;
     flex-direction:column;
     
+
 }
-
-
 
 .dashboard--top{
-    height:50vh;
+    height:100%;
     width:100%;
     display:flex;
-    flex-direction:column;
-    
+
 }
-.dashboard--left-top{
+.dashboard--left-top-welcome{
   
-    height:50vh;
-    width:100%;
-
- 
-
+    height:100%;
+    width:45%;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:3%;
 }
-.dashboard--center-top{
-    width:100%;
-    height:50vh;
-    background-color:$darkGreen;
-    border:0.3px solid $gray;
-    font-size:2vh;
+
+.dashboard--center-top-totalHours{
+    height:100%;
+    width:45%;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:3%;
    
+    background:$darkGreen;
+    border:1px solid $gray;
     
 
 }
-.dashboard--center-top h1{
+.dashboard--center-top-totalHours h1{
     width:80%;
     margin:10% auto auto auto;
+    color:$white;
+    font-size:4.6vh;
 
 }
 
 .dashboard--bottom{
     width:100%;
-    height:50%;
+    height:100%;
     display:flex;
     flex-direction:column;
-   
-
   
 }
-.dashboard--left-bottom{
+.dashboard--left-bottom-myWall{
     width:100%;
-    max-height:50vh;
+    max-height:50%;
     background-color:$darkBlue;
     border:0.3px solid $gray;
     overflow-y:auto;
-  display:flex;
-  flex-direction:column;
+    display:flex;
+    flex-direction:column;
   
-   
+
 
 }
-.dashboard--left-bottom h1{
-    align-self:center;
+.dashboard--left-bottom-myWall h1,.dashboard--center-bottom h1{
     border-bottom:1px solid $gray;
+    font-size:4vh;
+    font-family:$fontHeadLine;
+
 }
 .dashboard--center-bottom{
     width:100%;
-    max-height:50vh;
+    max-height:50%;
     background-color:$darkGreen;
     border:0.3px solid $gray;
-    overflow-y:auto;
-   
-    display:flex;
-    flex-direction: column;
+
 
 }
-.dashboard--center-bottom h1{
-margin-left:23%;
-    border-bottom:1px solid $gray;
-    width:60%;
-}
-.dashboard--rigth-bottom{
+
+.dashboard--rigth-bottom-logout{
     width:100%;
-    max-height:50vh;
-    background-color:$darkGreen;
+    max-height:50%;
+    background-color:$darkBlue;
     border:0.3px solid $gray;
     overflow-y:auto;
     display:flex;
-    justify-content:center;
-    align-items:center;
-   
-  
+    flex-direction:column;
 
 
 }
-.dashboard--rigth-bottom button {
+.dashboard--rigth-bottom-logout img {
     width:30%;
     height:30%;
     margin:auto;
     background-color:transparent;
     cursor:pointer;
     border:none;
-   
+
 
 }
-.dashboard--rigth-bottom img{
 
-    width:100%;
-    height:50vh;
 
-}
-.dashboard--top-nav{
-    width:100%;
-    display:flex;
-    justify-content: flex-end;
-      
-}
-.dashboard--top-nav img{
-    width:10%;
-    height:70%;
-}
-@media only screen and (min-width:600px){
-   
-
-    
-    .dashboard-main{
-        height:100vh;
+@media only screen and (min-width:650px){
+    .dashboard--top-nav{
         width:100%;
-        margin:0%;
-        background:$darkBlue;
-        display:flex;
-        flex-direction:column;
+        
+    
+    
     }
+
+    .dashboard--top{
+        height:50%;
+        width:100%;
+        display:flex;
+        flex-direction:row;
+    }
+
+
     .dashboard--center-bottom h1{
-        margin-left:30%;
             border-bottom:1px solid $gray;
-            width:40%;
+
         }
   
    
@@ -165,83 +161,89 @@ margin-left:23%;
         display:flex;
         flex-direction:row;
         
+
+        
     }
-    .dashboard--left-top{
-        background-image: url('../../../images//dashbordImage.jpg') ;
+    .dashboard--left-top-welcome{
+        background-image: url('../../../images//dashbordImage.jpg');
+        
         background-position:50% 20%;
         background-size: cover;
     
         height:100%;
-        width:66.6%;
+        width:73.3%;
         border:0.3px solid $gray;
-        
         color:$white;
     
+       
+    
     }
-    .dashboard--left-top h1{
+    .dashboard--left-top-welcome h1{
+        flex-wrap:wrap;
+        background:rgba(4, 4, 93, 0.493);
         width:100%;
-        height:100%;
-        position:relative;
-        top:-23%;
-        font-size:15vh ;
-        background:rgba(1, 1, 75, 0.623);
+        font-size:10vh;
     }
-
- 
-    .dashboard--center-top{
-        width:33.3%;
+    .dashboard--left-top-welcome h1 span{
+        color:$highlightBlue;
+    }
+    .dashboard--center-top-totalHours{
+       width:30%;
         height:100%;
         background-color:$darkGreen;
-        border:0.3px solid $gray
+        border:0.3px solid $gray;
+
     }
     
-    .dashboard--center-top h1{
-font-size:6vh;
+    .dashboard--center-top-totalHours h1{
+font-size:6.5vh;
 }    
 .dashboard--bottom{
         width:100%;
         height:50%;
         display:flex;
         flex-direction:row;
+
       
     }
-    .dashboard--left-bottom{
-        width:33.3%;
+    .dashboard--left-bottom-myWall{
+        width:30%;
         max-height:100%;
         background-color:$darkBlue;
         border:0.3px solid $gray;
         overflow-y:auto;
+        padding:0 3%  0 3%;
+
     }
+ 
     .dashboard--center-bottom{
-        width:33.3%;
+        width:30%;
         max-height:100%;
         background-color:$darkGreen;
         border:0.3px solid $gray;
-        overflow-y:auto;
+    
+        padding:0 3%  0 3%;
+
     }
-    .dashboard--rigth-bottom{
+    .dashboard--rigth-bottom-logout{
         width:33.3%;
         max-height:100%;
-        background-color:$darkGreen;
+        background-color:$darkBlue;
         border:0.3px solid $gray;
-        overflow-y:auto;
         display:flex;
         justify-content:center;
         align-items:center;
+
     }
-    .dashboard--rigth-bottom button {
-        width:50%;
-        height:50%;
+    .dashboard--rigth-bottom-logout img {
+        width:30%;
+        height:30%;
         margin:auto;
         background-color:transparent;
         cursor:pointer;
         border:none;
+
     }
-    .dashboard--rigth-bottom img{
     
-        width:100%;
-        height:100%;
-    
-    }
        
 }

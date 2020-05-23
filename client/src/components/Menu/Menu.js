@@ -10,9 +10,9 @@ export default function Menu(props) {
   return (
     <div>
       <div className="app--top-menuButton" onClick={toggleonMenu}>
-        <span className="app--hamburguerMenu"></span>
-        <span className="app--hamburguerMenu"></span>
-        <span className="app--hamburguerMenu"></span>
+        <span className="app--hamburguerMenu-span"></span>
+        <span className="app--hamburguerMenu-span"></span>
+        <span className="app--hamburguerMenu-span"></span>
       </div>
       <nav className={onMenu ? "app-show-menu" : "app-hidden-menu"}>
         <div className="menu--top-navLinks">

@@ -1,0 +1,46 @@
+@import "../../style/global.scss";
+
+.formProfile--main{
+    display:flex;
+    justify-content: center;
+        width:60%;
+    height:100%;
+    flex-direction: column;
+
+}
+.formProfile--center-form{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+
+}
+
+.formProfile--input {
+    background: $green;
+    border: none;
+    border-radius: 5%;
+    height: 10%;
+    width: 70%;
+    font-size: 3vh;
+    margin-top: 4%;
+    padding-left: 5%;
+    color: $gray;
+    
+  }
+
+  @media only screen and (min-width:800px){
+     
+.formprofile--center-inputs{
+    display:flex;
+    flex-direction:column;
+
+}
+
+.formProfile--input {
+   height:6vh;
+  } 
+  #formProfile--buton{
+      height:5vh;
+  }
+  }

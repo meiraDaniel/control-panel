@@ -36,7 +36,7 @@ const handlemountFlag =()=>{
           <img src={logo} alt="logo" />
       </div> 
       <div className='myHours--top'>
-      {data.length>0? <h2>{getMonthName(data[0].month +1)}</h2>:null}
+      {data.length>0? <h2>{getMonthName(data[0].month +1)}</h2>:<h2>Month</h2>}
         <button id='myHours--top-button' className='button' onClick={toggleInsert}>Add Hours</button>
       </div>
     <main className='myHours--center-table'> 

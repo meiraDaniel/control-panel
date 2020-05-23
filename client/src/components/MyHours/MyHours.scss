@@ -24,7 +24,7 @@ background-color: $darkBlue;
     align-self:center;
 }
 #myHours--top-button{
-    height:30%;
+    height:35%;
     width:20%;
     margin-top:0;
     
@@ -33,6 +33,11 @@ background-color: $darkBlue;
 background-color: $darkBlue;
 width:80%;
 height:80%;
+
 overflow-y: auto;
 overflow-x: auto;
+flex-wrap:wrap;
+display:flex;
+justify-content: center;
+
 }

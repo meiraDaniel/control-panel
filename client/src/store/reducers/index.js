@@ -10,7 +10,7 @@ export  function createSession(state={}, action){
     export  function getId(state={}, action){
         switch(action.type){
             case "GET_ID":
-            return {...state, account_id:action.account_id};
+            return {...state, account_id:action.account_id,avatar:action.avatar};
         
             default: 
             return state;

@@ -1,52 +1,63 @@
 import React, { useEffect, useState } from "react";
 import "./AdmDashboard.scss";
 import { connect } from "react-redux";
-import logo from '../../images/logo.svg'
 import { useDispatch } from "react-redux";
-import {logout,getId} from '../../store/actions'
-import displayAllAccounts from '../../services/API/displayAllAccounts'
-import placeHolder from '../../images/Butterfly.svg'
-import {useHistory} from 'react-router-dom'
+import { getId } from "../../store/actions";
+import displayAllAccounts from "../../services/API/displayAllAccounts";
+import placeHolder from "../../images/Butterfly.svg";
+import { useHistory } from "react-router-dom";
+import MenuAdm from "./menuADM/MenuAdm";
 
-function AdmDashboard({ firstname, token, account_id }) {
-
+function AdmDashboard() {
   const dispatch = useDispatch();
-const [data,setData]=useState([])
-const history= useHistory()
+  const [data, setData] = useState([]);
+  const history = useHistory();
 
+  useEffect(() => {
+    getEmployees();
+  }, []);
 
-  useEffect(()=>{
-    getEmployees()
-  },[])
+  const getEmployees = () => {
+    displayAllAccounts()
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  };
 
-const getEmployees= () =>{
-  displayAllAccounts().then(res=> setData(res.data)).catch(err=> console.log(err))
-}
-
-  const  toggleLogout =() =>{
-    dispatch(logout())
-    }
-
-  const goEmployeeInformation = (account_id)=>{
-      dispatch(getId(account_id))
-      history.push('/adm/employee')
-  }
+  const goEmployeeInformation = (account_id, avatar) => {
+    dispatch(getId(account_id, avatar));
+    history.push("/adm/employee");
+  };
   return (
     <div className="AdmDashboard-main">
       <div className="AdmDashboard--top-nav">
-          <img src={logo} alt="logo"/>
-        <h2>Employees</h2>
+        <MenuAdm />
       </div>
       <main className="AdmDashboard--display-main">
-{data.length>0? data.map(( employee, i )=>
- <div key={i}>
-   <img  onClick={()=>goEmployeeInformation(employee.account_id)} src={placeHolder} alt="placeholder"/>
-   <h1>{employee.firstname} {employee.lastname}</h1>
- </div>
-):<h1>Loading</h1>}
+        <div className="AdmDashboard--top-rows">
+          {data.length > 0 ? (
+            data.map((employee, i) => (
+              <div className="AdmDashboard--eachEmployee-row" key={i}>
+                <img
+                  className="Adm--avatar"
+                  onClick={() =>
+                    goEmployeeInformation(
+                      employee.account_id,
+                      employee.avatar_name
+                    )
+                  }
+                  src={employee.avatar_name}
+                  alt="placeholder"
+                />
+                <h1>
+                  {employee.firstname} {employee.lastname}
+                </h1>
+              </div>
+            ))
+          ) : (
+            <h1>Loading</h1>
+          )}
+        </div>
       </main>
-      <button onClick={toggleLogout}>log out</button>
-
     </div>
   );
 }

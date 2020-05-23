@@ -41,7 +41,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
     <main className='login-main'>
         <h1 onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
 
-      <img src={logo} alt="logo" className='logo'/>
+      <img src={logo} alt="logo" className='login--logo'/>
       
       <form
         className='login--center-form'
