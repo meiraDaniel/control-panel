@@ -19,7 +19,7 @@ module.exports = {
             employees.forEach(employee=> data.push({
                 account_id:employee.dataValues.id,
                 firstname:employee.dataValues.firstname,
-
+                avatar_name:`/uploads/${employee.dataValues.avatar_name}`,
                 lastname:employee.dataValues.lastname,
                 avatar:employee.dataValues.avatar,
                 role:employee.dataValues.role,
@@ -27,7 +27,7 @@ module.exports = {
             }))
             res.status(200).send(data) 
 
-        }).catch(err => res.status(500).send({message:"Something went wrong, try again later"}))
+        }).catch(err =>  res.status(500).send({message:"Something went wrong, try again later"}))
     },
     displayHoursFromEmployees: (req,res)=>{
         const account_id =req.query.account_id

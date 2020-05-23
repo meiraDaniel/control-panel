@@ -1,26 +1,43 @@
 const db = require("../../../database/configuration/sequelizeConfig");
 const { accounts } = db;
 const bcrypt = require("bcrypt");
+const path = require("path");
 
-module.exports = {
-  registerAccount: async (req, res) => {
-    try {
-      const hash = await bcrypt.hash(req.body.password, 10);
+module.exports = { 
+  
+  registerAccount: async(req, res) => {
+
+    const file = req.files.file;
+    const firstname = req.body.file[0];
+    const lastname = req.body.file[1]; 
+    const email = req.body.file[2]; 
+    const role = req.body.file[3]; 
+    const password = req.body.file[4]; 
+
+
+
+      await file.mv(
+        path.join(__dirname, "../../../../client/public/uploads", file.name),
+        (err) => {
+          if (err) {
+            return console.log(err);
+          }})
+
+
+      const hash = await bcrypt.hash(password, 10);
 
       accounts.create({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        role: req.body.role,
-        adm: req.body.adm,
-        avatar: req.body.avatar,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        role: role,
+        adm: false,
+        avatar_name:file.name,
+        avatar:`/uploads/${file.name}`,
         password: hash,
-      });
-
-      res.status(201).send(`the user ${req.body.lastname} was created`);
-    } catch {
-      (err) => res.send(err);
-    }
+      }).then(response =>  res.status(201).send(`the user ${lastname} was created`) ).catch(err=>
+     console.log(err));
+    
   },
 
   editProfile: (req, res) => {
@@ -35,7 +52,7 @@ const newEmail =  req.body.data.email
    
   }).catch(err=> res.status(500).send({message:"Something is wrong with our server. Please try again later"}))
 
- 
+   
 },
 displayInformation:(req,res)=>{
   const account_id=req.query.account_id
@@ -46,7 +63,7 @@ displayInformation:(req,res)=>{
           email:user.dataValues.email,
           adm:user.dataValues.adm,
           role:user.dataValues.role,
-          avatart:user.dataValues.avatar,
+          avatar_name:user.dataValues.avatar_name,
           token: user.dataValues.token,  }) ).catch(err => {res.status(500).send({message:"Something is wrong with our server"});console.log(err)})
 }
 

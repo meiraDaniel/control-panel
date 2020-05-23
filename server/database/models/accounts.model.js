@@ -42,6 +42,10 @@ module.exports = (Sequelize, connector) => {
         type: Sequelize.BLOB,
         allowNull: true,
       },
+      avatar_name:{
+        type: Sequelize.STRING,
+        allowNull: true,
+      }
 
     }, {timestamps: false});
   
