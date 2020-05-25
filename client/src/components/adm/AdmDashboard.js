@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getId } from "../../store/actions";
 import displayAllAccounts from "../../services/API/displayAllAccounts";
-import placeHolder from "../../images/Butterfly.svg";
 import { useHistory } from "react-router-dom";
 import MenuAdm from "./menuADM/MenuAdm";
 
@@ -12,6 +11,8 @@ function AdmDashboard() {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const history = useHistory();
+  const[flagSnack, setFlagSnack]= useState(false)
+  const[message, setMessage]= useState(false)
 
   useEffect(() => {
     getEmployees();
@@ -20,7 +21,7 @@ function AdmDashboard() {
   const getEmployees = () => {
     displayAllAccounts()
       .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {setMessage(err);setFlagSnack(!flagSnack)});
   };
 
   const goEmployeeInformation = (account_id, avatar) => {
@@ -29,6 +30,8 @@ function AdmDashboard() {
   };
   return (
     <div className="AdmDashboard-main">
+            <h1 onClick={()=>setFlagSnack(!flagSnack)} className={flagSnack?'snackbar':'snackclose'}>{message}</h1>
+
       <div className="AdmDashboard--top-nav">
         <MenuAdm />
       </div>
@@ -36,15 +39,15 @@ function AdmDashboard() {
         <div className="AdmDashboard--top-rows">
           {data.length > 0 ? (
             data.map((employee, i) => (
-              <div className="AdmDashboard--eachEmployee-row" key={i}>
+              <div   onClick={() =>
+                goEmployeeInformation(
+                  employee.account_id,
+                  employee.avatar_name
+                )
+              }className="AdmDashboard--eachEmployee-row" key={i}>
                 <img
                   className="Adm--avatar"
-                  onClick={() =>
-                    goEmployeeInformation(
-                      employee.account_id,
-                      employee.avatar_name
-                    )
-                  }
+                
                   src={employee.avatar_name}
                   alt="placeholder"
                 />

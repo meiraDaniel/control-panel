@@ -28,8 +28,9 @@ const[flagSnack,setFlagSnack] =useState(false)
           className='edit--input'
             type="text"
             name="newProject"
-            ref={register({ required: false })}
+            ref={register({ required: true })}
           />
+          {errors.newHour && "Don't forget to enter your project's name"}
 
 
           <label htmlFor="newHour">Hours</label>
@@ -38,7 +39,7 @@ const[flagSnack,setFlagSnack] =useState(false)
 
             type="number"
             name="newHour"
-            ref={register({ min: 0, max: 24})}
+            ref={register({required: true, min: 0, max: 24})}
           />
           {errors.newHour && "Add a number between 0 and 24"}
 

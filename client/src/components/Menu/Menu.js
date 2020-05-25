@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Menu.scss";
-import welding from "../../images/welding-mask.png";
-import dashboard from "../../images/dashboard.png";
+import welding from "../../images/welding-mask.svg";
+import dashboard from "../../images/dashboard.svg";
 import wrench from "../../images/wrench.png";
 
 export default function Menu(props) {

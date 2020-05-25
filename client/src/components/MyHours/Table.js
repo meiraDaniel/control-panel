@@ -9,7 +9,6 @@ import './Table.scss'
 
 function Table({ data,token,account_id,handlemountFlag}) {
 const[popUpEdit,setPopUpEdit]=useState(false)
-const[popUpDelete,setPopUpDelete]=useState(false)
 const[rowId, setRowid]=useState()
 const[message,setMessage]=useState('')
 
@@ -59,7 +58,7 @@ const tooglePopUp=()=>{
               <td>{row.project}</td>
               <td>{row.approved? 'Yes': 'No'}</td>
               <td> {row.approved? < img className='icons-disable' src={edit} alt='edit' onClick={()=>setMessage('You cannot edit approved hours')}/>: < img className='icons' src={edit} alt='delete' onClick={()=>toggleIdEdit(row.id)}/>}</td>
-              <td> {row.approved?  < img className='icons-disable' src={del} alt='delete' onClick={()=>setMessage('You cannot delete approved hours')}/>: <img  className='icons' src={del} ald='edit' onClick={()=>toggleIdDelete(row.id)}/>}</td>
+              <td> {row.approved?  < img className='icons-disable' src={del} alt='delete' onClick={()=>setMessage('You cannot delete approved hours')}/>: <img  className='icons' src={del} alt='edit' onClick={()=>toggleIdDelete(row.id)}/>}</td>
 
             </tr>
           </tbody>

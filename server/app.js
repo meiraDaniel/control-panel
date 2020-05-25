@@ -16,7 +16,7 @@ const admRoutes = require('./routes/adm.routes');
 const accountRoutes = require('./routes/account.routes');
 const hoursRoutes = require('./routes/hours.routes');
 const wallsRoutes = require('./routes/walls.routes');
-const todoRoutes = require('./routes/todos.routes')
+const uploadsRoutes = require('./routes/uploads.routes');
 
 //configurations
 require('./configurations/passportConfigurations')(passport)
@@ -45,8 +45,8 @@ app.use(cors());
 app.use('/', accountRoutes);
 app.use('/', hoursRoutes);
 app.use('/', wallsRoutes);
-app.use('/', todoRoutes);
 app.use('/', admRoutes);
+app.use('/', uploadsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

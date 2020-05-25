@@ -1,29 +1,33 @@
-import React,{useState,useEffect} from "react";
-import approveHourHelper from '../../../services/API/approveHourHelper'
-import approveAllHourHelper from  '../../../services/API/approveAllHours'
-import getEmployeeMonthHours from "../../../services/API/getEmployeeMonthHours";
-import PerdentageAdm from './Percentage/PercentageAdm'
+import React,{useState,useEffect,useCallback} from "react";
+import approveHourHelper from '../../../../services/API/approveHourHelper'
+import approveAllHourHelper from  '../../../../services/API/approveAllHours'
+import getEmployeeMonthHours from "../../../../services/API/getEmployeeMonthHours";
+import PerdentageAdm from '../Percentage/PercentageAdm'
 import './TableAms.scss'
-import check from '../../../images/check.svg'
-import del from "../../../images/delete.svg"
+import check from '../../../../images/check.svg'
+import del from "../../../../images/delete.svg"
 
 function TableAdm({tableYear,tableMonth,token,account_id}) {
 const [table,setTable] =useState([])
 const [flag,setFlag] =useState(false)
 const [message,setMessage] =useState(false)
+const[snakflag, setSnackflag]= useState(false)
+
+
+const showTable =  useCallback(() => {
+  getEmployeeMonthHours(account_id,tableYear,tableMonth,token).then(res=>{setTable(res.data)}).catch(err=>{setMessage(err.response.data.message);setSnackflag(!snakflag)})
+},[account_id,tableYear,tableMonth,token,snakflag]);
 
 useEffect(() => {
   showTable();
-}, [flag]);
+}, [flag,showTable]);
 
 
-  const showTable = () => {
-    getEmployeeMonthHours(account_id,tableYear,tableMonth,token).then(res=>{setTable(res.data)}).catch(err=>setMessage(err.response.data.message))
-  };
+
 const[status,setStatus] =useState()
 
 const handdleApproveHour = (hourId,token)=>{
-  approveHourHelper(hourId,token).then(res=>console.log(res))
+  approveHourHelper(hourId,token)
   setFlag(!flag)
 }
 const handdleAllHourApproved = (token)=>{
@@ -33,6 +37,8 @@ const handdleAllHourApproved = (token)=>{
   
   return (
     <div className='tableAdm--main'>
+            <p onClick={()=>setSnackflag(!snakflag)} className={snakflag?"snackbar":"snackclose"} >{message}</p>
+
       <div className="tableAdm-top-totalInfo">
        {table.length>0? <PerdentageAdm table={table} />:null}
       </div>

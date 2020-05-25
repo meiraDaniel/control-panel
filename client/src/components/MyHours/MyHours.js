@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import { connect } from "react-redux";
 import  getAllDataFromHours from '../../services/API/getAllDataFromHours'
 import { getMonthName } from "../../services/services";
@@ -13,17 +13,19 @@ const [message,setMessage] =useState('')
 const history =useHistory()
 const[mountFlag,setmountFlag] =useState(true)
 
+const fechData =  useCallback(()=>{
+  getAllDataFromHours(account_id,token).then(res=> setData(res.data)).catch(err=> setMessage(err.response.data.message))
+},[account_id,token])
+
 useEffect(() => {
   fechData(); 
   
- },[mountFlag]);
+ },[fechData,mountFlag]);
 
-const fechData = ()=>{
-  getAllDataFromHours(account_id,token).then(res=> setData(res.data)).catch(err=> setMessage(err.response.data.message))
-}
+
 const toggleInsert=()=>{
   history.push('/insert') 
-  console.log('here')
+  
 }
 const handlemountFlag =()=>{
   setmountFlag(!mountFlag)

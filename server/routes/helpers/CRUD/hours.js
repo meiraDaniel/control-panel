@@ -17,13 +17,15 @@ let file, file_name, account_id,day,hour,project
 
     if(req.files !== null)
     { file = req.files.file;
-     file_name = file.name;
+    file_name = file.name.replace(/\s/g, '');
       account_id = req.body.file[0];
       day = req.body.file[1];
       hour = req.body.file[2];
       project = req.body.file[3];
+
+     
      await file.mv(
-      path.join(__dirname, "../../../../client/public/documents", file.name),
+      path.join(__dirname, "../../../../client/public/documents",   file_name),
       (err) => {
         if (err) {
           return console.log(err);

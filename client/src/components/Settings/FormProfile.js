@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm,ErrorMessage } from "react-hook-form";
 import editProfile from '../../services/API/editProfile'
 import {createSession} from '../../store/actions'
 import { useDispatch } from "react-redux";
@@ -9,24 +9,30 @@ import './FormProfile.scss'
 function FormProfile({ data}) {
   const { register, errors, handleSubmit } = useForm();
   const [message, setMessage] = useState("");
+  const [notification, setNotification] = useState(false);
+  const[snackFlag,setSnackFlag]=useState(false)
+
   const dispatch = useDispatch();
 
   const onSubmit = (value, e) => {
     e.preventDefault();
-    let newEmail, newRole
+ let newEmail, newRole,newPassword
 
  if(!value.email){newEmail=data.email} 
  if(!value.role){ newRole=data.role} 
+
 if(value.email){newEmail =value.email}
 if(value.role){ newRole =value.role}
+if(value.password){ newPassword=value.password} 
 
-console.log(newRole,newEmail)
-  editProfile(data.id,newRole,newEmail,data.token)
- .then(res=> {setMessage(res.data.message);handleDispach()}).catch(err=> setMessage(err.response.data.message)) 
+  editProfile(data.id,newRole,newEmail,data.token,notification,newPassword)
+ .then(res=> {setMessage(res.data.message);handleDispach();setSnackFlag(!snackFlag)}).catch(err=> {setMessage(err.response.data.message);setSnackFlag(!snackFlag)}) 
 };
-
+const toggleNotification =() =>{
+  setNotification(!notification)
+}
 const handleDispach=()=>{
-  formSettigHelper(data.id,data.token).then((res) =>{  console.log(res);  dispatch(
+  formSettigHelper(data.id,data.token).then((res) =>{  dispatch(
         createSession(
           res.data.id,
           data.token,
@@ -37,8 +43,7 @@ const handleDispach=()=>{
           res.data.avatar,
           res.data.email
         ))  
-}).catch(err=>console.log(err))}
-
+}).catch(err=>{setMessage('Something is wrong');setSnackFlag(!snackFlag)})}
   return (
     <div className='formProfile--main'>
       <form className='formProfile--center-form' onSubmit={handleSubmit(onSubmit)}>
@@ -63,11 +68,39 @@ const handleDispach=()=>{
             name="email"
             ref={register({ required: false })}
           />
+           <label htmlFor="role">password</label>
+          <input
+                    className='formProfile--input'
+
+            type="password"
+            name="password"
+            ref={register({
+              minLength: {
+                value: 8,
+                message: 'Your password is too short'
+              },
+              pattern: {
+                value: /(?=.*[A-Z])/,
+                message: 'The string must contain at least 1 uppercase alphabetical character' 
+              }
+            })}
+          />
+             <ErrorMessage errors={errors} name="password">
+        {({ message }) => <p>{message}</p>}
+      </ErrorMessage>
+          
+          <label className="switch">
+  <input onClick={toggleNotification} type="checkbox" name="notification"/>
+  <span className="slider round"></span>
+</label>
 </div>
+
 
           <input id="formProfile--buton" className='button' type="submit" value="send" />
         </div>
       </form>
+ <p onClick={()=> setSnackFlag(!snackFlag)} className={snackFlag?'snackbar':'snackclose'}>{message}</p>
+
     </div>
   );
 }

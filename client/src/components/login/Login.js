@@ -59,7 +59,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
           ref={register({ required: true })}
           placeholder="E-mail"
         />
-        {errors.email && "This field is required"}
+        {errors.email && "Ops, don't forget to enter your email"}
         
 
       
@@ -71,7 +71,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
           ref={register({ required: true })}
           placeholder="password"
         />
-        {errors.password && "This field is required"}
+        {errors.password && "Ops, don't forget to enter your password"}
         
           <input id='login' className='button' type='submit' value="LOGIN"/>
           </div>

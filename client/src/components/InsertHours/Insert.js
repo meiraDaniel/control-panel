@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm,ErrorMessage  } from "react-hook-form";
 import insertHelper from "../../services/API/insertHelper";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -70,19 +70,36 @@ function Insert({ token, account_id }) {
             className="Insert--input"
             type="number"
             name="day"
-            ref={register({ min: 1, max: 31 })}
+            ref={register({  required: "You must enter a day",min: {
+              value: 1,
+              message: "The value cannot be less than 1"
+            }, max: {
+              value: 31,
+              message:"Day  cannot be greater than 31"
+            } })}
           />
-          {errors.day && "Day number cannot be greater than 31"}
+          <ErrorMessage errors={errors} name="day">
+        {({ message }) => <p>{message}</p>}
+      </ErrorMessage>
 
-          <label htmlFor="hour">Hours that you worked</label>
+          <label htmlFor="hour">Worked hours</label>
           <input
             className="Insert--input"
             type="number"
             name="hour"
-            ref={register({ min: 0, max: 24 })}
+            ref={register({  required: "You must enter a day",min: {
+              value: 0,
+              message: "The value cannot be less than 1"
+            }, max: {
+              value: 24,
+              message:"Day  cannot be greater than 31"
+            } })}
           />
-          {errors.hour && "Hours number cannot be greater than 24"}
-          <label htmlFor="project">Project that you worked</label>
+          <ErrorMessage errors={errors} name="hour">
+        {({ message }) => <p>{message}</p>}
+      </ErrorMessage>
+
+          <label htmlFor="project">Project </label>
           <input
             className="Insert--input"
             type="text"

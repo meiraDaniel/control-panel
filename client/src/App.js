@@ -10,8 +10,11 @@ import Wall from "./components/Wall/Wall";
 import Settings from "./components/Settings/Settings";
 import AdmDashboard from "./components/adm/AdmDashboard";
 import Menu from "./components/Menu/Menu";
-import EmployeeInfo from "./components/adm/employeeInfo/EmployeeInfo";
+import EmployeeHours from "./components/adm/employeeInfo/employeeHours/EmployeeHours";
 import RegisterEmployee from "./components/adm/registerEmployee/RegisterEmployee"
+import EmployeeInfo from './components/adm/employeeInfo/EmployeeInfo'
+import EmployeeDocuments from "./components/adm/employeeInfo/employeeDocuments/EmployeeDocuments"
+
 
 function mapToProps(state) {
   return {
@@ -63,11 +66,17 @@ function App({ isAuthenticated, isAdm }) {
           {!isAuthenticated && !isAdm ? <Redirect to="/" /> : <Settings />}
         </Route>
 
-        <Route path="/adm/employee">
-          {!isAuthenticated ? <Redirect to="/" /> : <EmployeeInfo />}
+        <Route path="/adm/employee-hours">
+          {!isAuthenticated ? <Redirect to="/" /> : <EmployeeHours />}
         </Route>
         <Route path="/adm/employee-add">
           {!isAuthenticated ? <Redirect to="/" /> : <RegisterEmployee />}
+        </Route>
+        <Route path="/adm/employee">
+          {!isAuthenticated ? <Redirect to="/" /> : <EmployeeInfo />}
+        </Route>
+        <Route path="/adm/employee-documents">
+          {!isAuthenticated ? <Redirect to="/" /> : <EmployeeDocuments />}
         </Route>
       </Switch> 
     </div>

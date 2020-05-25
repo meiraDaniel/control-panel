@@ -3,23 +3,21 @@ import "./style/post.scss";
 import likes from '../../images/like.svg'
 import likePost from '../../services/API/likePost'
 import dislikePost from '../../services/API/dislikePost'
-import { useEffect } from "react";
 
 export default function PostDash({ post, i,token }) {
 
   const [ flag,setFlag] =useState(false)
-  const [ url,setUrl] =useState('')
 
 
 
 
 const handleLike=()=>{
 if(!flag){
-  likePost(post.postId,token).then(res=> console.log(res)).catch(err=>console.log(err))
+  likePost(post.postId,token)
   setFlag(!flag)
 }
 else{
-  dislikePost(post.postId,token).then(res=> console.log(res)).catch(err=>console.log(err))
+  dislikePost(post.postId,token)
   setFlag(!flag)
 
 }

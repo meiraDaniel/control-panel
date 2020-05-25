@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import "./style/dashboard.scss";
 import { connect } from "react-redux";
 import getTotalHoursHelper from "../../services/API/getTotalHoursHelper";
@@ -11,24 +11,31 @@ import {logout} from '../../store/actions'
 import Percentage from '../AprovedHours/Percentage'
 
 function Dashboard({ firstname, token, account_id }) {
-  const [totalHours, setTotalHours] = useState(0);
+  const [totalHours, setTotalHours] = useState("0");
   const [post, setPost] = useState([]);
   const dispatch = useDispatch();
 
+  const getTotalHours = useCallback(() => {
+    getTotalHoursHelper(account_id, token)
+      .then((res) => setTotalHours(res.data.value))
+      .catch((err) => setTotalHours("Not avaible"));
+  },[account_id, token]);
+  const getWall = useCallback(() => {
+    getPostWallHelper(token).then((res) => setPost(res.data));
+  },[token]);
+
+
+  useEffect(() => {
+  
+    getWall(); 
+  },[getWall]);
 
   useEffect(() => {
    getTotalHours();
-    getWall(); 
-  },[]);
+     
+  },[getTotalHours]);
 
-  const getTotalHours = () => {
-    getTotalHoursHelper(account_id, token)
-      .then((res) => setTotalHours(res.data.value))
-      .catch((err) => console.log(err));
-  };
-  const getWall = () => {
-    getPostWallHelper(token).then((res) => setPost(res.data));
-  };
+
 
  const  toggleLogout =() =>{
   dispatch(logout())

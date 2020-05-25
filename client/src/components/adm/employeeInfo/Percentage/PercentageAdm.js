@@ -1,35 +1,37 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import ProgressBar from '../../../AprovedHours/ProgressBar'
 
 function PercentageAdm({table}){
 const[percentageDays,setPercentageDays]=useState([])
 const[percentageMonths,setPercentageMonths]=useState([])
 
-useEffect(() => {
-    handleWorkDays();
-  }, []);
-  
-  useEffect(() => {
-    handleMonthWorked();
-  }, []);
 
-const handleWorkDays=()=>{
-     const num = table.length
-     console.log(table)
-     setPercentageDays(Math.round((num*100)/20)) 
-  
-  
-    }
+const handleWorkDays=useCallback(()=>{
+  const num = table.length
+  setPercentageDays(Math.round((num*100)/20)) 
 
-    const handleMonthWorked=()=>{
-     let month = [];
-      table.forEach((item) => month.push(item.month))
-     const uniqueMonth= month.filter((v, i) => month.indexOf(v) === i);
+
+ },[table])
+
+ const handleMonthWorked=useCallback(()=>{
+  let month = [];
+   table.forEach((item) => month.push(item.month))
+  const uniqueMonth= month.filter((v, i) => month.indexOf(v) === i);
 const num =uniqueMonth.length
 setPercentageMonths(Math.round((num*100)/12)) 
 
 
-    }
+ },[table])
+
+
+useEffect(() => {
+    handleWorkDays();
+  }, [handleWorkDays]);
+  
+  useEffect(() => {
+    handleMonthWorked();
+  }, [handleMonthWorked]);
+
 
 
     return(
