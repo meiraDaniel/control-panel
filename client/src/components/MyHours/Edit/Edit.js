@@ -17,15 +17,12 @@ const[flagSnack,setFlagSnack] =useState(false)
   return (
     <div className="edit-main">
       <h1 onClick={()=>setFlagSnack(!flagSnack)} className={flagSnack?'snackbar':'snackclose'}>{message}</h1>
-      <form className='edit--center-form'onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div className=" edit--top-circle ">
-  <h1>Edit Hours</h1>
-          </div>
+      <form className='edit-center-form'onSubmit={handleSubmit(onSubmit)}>
+         
          <div className='edit-center-formInput'>
           <label htmlFor="newProject">Project Name</label>
           <input
-          className='edit--input'
+          className='input'
             type="text"
             name="newProject"
             ref={register({ required: true })}
@@ -35,7 +32,7 @@ const[flagSnack,setFlagSnack] =useState(false)
 
           <label htmlFor="newHour">Hours</label>
           <input
-                    className='edit--input'
+                    className='input'
 
             type="number"
             name="newHour"
@@ -43,11 +40,11 @@ const[flagSnack,setFlagSnack] =useState(false)
           />
           {errors.newHour && "Add a number between 0 and 24"}
 
-          <input  id='edit---buton' className='button' type="submit" value="send" />
-          <button id='edit---buton-back'  className='button' onClick={tooglePopUp}>back</button>
+          <input  className='button' type="submit" value="send" />
+          <button   className='button' onClick={tooglePopUp}>back</button>
 
           </div>
-        </div>
+        
       </form>
     </div>
   );

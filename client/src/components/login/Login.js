@@ -41,19 +41,19 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
     <main className='login-main'>
         <h1 onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
 
-      <img src={logo} alt="logo" className='login--logo'/>
+      <img src={logo} alt="logo" className='logo'/>
       
       <form
-        className='login--center-form'
+        className='center-form'
         onSubmit={handleSubmit(onSubmit)}
       >
-      <div className='login-center-formInput'>
-        <div className='login--top-circle'>
+      <div className='center-formInput'>
+        <div id="gloves-circle" className='top-circle'>
           <img src={gloves} alt="gloves"/>
         </div>
        
         <input
-         className='login--input'
+         className='input'
           type="text"
           name="email"
           ref={register({ required: true })}
@@ -64,7 +64,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
 
       
         <input
-                   className='login--input'
+                   className='input'
 
           type="password"
           name="password"

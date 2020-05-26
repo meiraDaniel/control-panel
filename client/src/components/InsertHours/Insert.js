@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm,ErrorMessage  } from "react-hook-form";
+import { useForm, ErrorMessage } from "react-hook-form";
 import insertHelper from "../../services/API/insertHelper";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -61,67 +61,88 @@ function Insert({ token, account_id }) {
       >
         {message}
       </p>
-      <form className="Insert--center-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="Insert-center-formInput">
-          <h1 className="Insert--top-circle">Insert Hours</h1>
+      <div className="bottom">
+        <form className="center-form-big" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-wrapper">
+          <div className="top-circle">
 
-          <label htmlFor="day">Day of the month</label>
-          <input
-            className="Insert--input"
-            type="number"
-            name="day"
-            ref={register({  required: "You must enter a day",min: {
-              value: 1,
-              message: "The value cannot be less than 1"
-            }, max: {
-              value: 31,
-              message:"Day  cannot be greater than 31"
-            } })}
-          />
-          <ErrorMessage errors={errors} name="day">
-        {({ message }) => <p>{message}</p>}
-      </ErrorMessage>
+            <h1>Insert Hours</h1>
+          
+          </div>
+           <div className="center-inputs-big">
+              <label htmlFor="day">Day of the month</label>
+              <input
+                className="input-big"
+                type="number"
+                name="day"
+                ref={register({
+                  required: "You must enter a day",
+                  min: {
+                    value: 1,
+                    message: "The value cannot be less than 1",
+                  },
+                  max: {
+                    value: 31,
+                    message: "Day  cannot be greater than 31",
+                  },
+                })}
+              />
+              <ErrorMessage errors={errors} name="day">
+                {({ message }) => <p>{message}</p>}
+              </ErrorMessage>
+            </div>
+            <div className="center-inputs-big">
+              <label htmlFor="hour">Worked hours</label>
+              <input
+                className="input-big"
+                type="number"
+                name="hour"
+                ref={register({
+                  required: "You must enter a day",
+                  min: {
+                    value: 0,
+                    message: "The value cannot be less than 1",
+                  },
+                  max: {
+                    value: 24,
+                    message: "Day  cannot be greater than 31",
+                  },
+                })}
+              />
+              <ErrorMessage errors={errors} name="hour">
+                {({ message }) => <p>{message}</p>}
+              </ErrorMessage>
+            </div>
+            <div className="center-inputs-big">
+              <label htmlFor="project">Project </label>
+              <input
+                className="input-big"
+                type="text"
+                name="project"
+                ref={register({ required: false })}
+              />
+              </div>
+              <div className="center-inputs-big">
+              <label htmlFor="documents">Upload document</label>
+              <input
+                onChange={handleChange}
+                className="input-big"
+                type="file"
+                name="documents"
+                ref={register({ required: false })}
+              />
+              </div>
+            
+            <div className="insert--buttons">
+            <input  type="submit" value="Send" />
 
-          <label htmlFor="hour">Worked hours</label>
-          <input
-            className="Insert--input"
-            type="number"
-            name="hour"
-            ref={register({  required: "You must enter a day",min: {
-              value: 0,
-              message: "The value cannot be less than 1"
-            }, max: {
-              value: 24,
-              message:"Day  cannot be greater than 31"
-            } })}
-          />
-          <ErrorMessage errors={errors} name="hour">
-        {({ message }) => <p>{message}</p>}
-      </ErrorMessage>
-
-          <label htmlFor="project">Project </label>
-          <input
-            className="Insert--input"
-            type="text"
-            name="project"
-            ref={register({ required: false })}
-          />
-          <label htmlFor="documents">Upload document</label>
-          <input
-            onChange={handleChange}
-            className="Insert--input"
-            type="file"
-            name="documents"
-            ref={register({ required: false })}
-          />
-
-          <input className="button" type="submit" value="Send" />
-
-          <button className="button" onClick={toggleBackMyHours}>
-            Back
-          </button>
-        </div>
-      </form>
+            <button  onClick={toggleBackMyHours}>
+              Back
+            </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </main>
   );
 }

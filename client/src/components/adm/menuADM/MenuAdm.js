@@ -14,8 +14,10 @@ import { useDispatch } from "react-redux";
     
     return (
         <div className='menuAdm--main'>
-            <h2>Employees</h2>
-            <NavLink to ='/adm/employee-add' style={{color:"white", marginLeft:"3%", textDecoration:"none"}}> New employee </NavLink>
+            
+            <NavLink to ='/adm/dashboard' style={{color:"white", marginLeft:"3%", fontSize:"4vh",fontWeight:"700" ,textDecoration:"none"}}> Employees </NavLink>
+
+            <NavLink to ='/adm/employee-add'activeStyle={{color:"#01D3BA"}} style={{color:"white", marginLeft:"3%", textDecoration:"none"}}> New employee </NavLink>
             <img id='logout' onClick={toggleLogout} src={logoutIcon} alt="logout"/>
 
         </div>

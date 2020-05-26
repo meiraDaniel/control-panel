@@ -14,7 +14,7 @@ import EmployeeHours from "./components/adm/employeeInfo/employeeHours/EmployeeH
 import RegisterEmployee from "./components/adm/registerEmployee/RegisterEmployee"
 import EmployeeInfo from './components/adm/employeeInfo/EmployeeInfo'
 import EmployeeDocuments from "./components/adm/employeeInfo/employeeDocuments/EmployeeDocuments"
-
+import "./style/form3Input.scss"
 
 function mapToProps(state) {
   return {

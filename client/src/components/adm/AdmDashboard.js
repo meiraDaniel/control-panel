@@ -32,7 +32,7 @@ function AdmDashboard() {
     <div className="AdmDashboard-main">
             <h1 onClick={()=>setFlagSnack(!flagSnack)} className={flagSnack?'snackbar':'snackclose'}>{message}</h1>
 
-      <div className="AdmDashboard--top-nav">
+      <div className="top-nav">
         <MenuAdm />
       </div>
       <main className="AdmDashboard--display-main">

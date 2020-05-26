@@ -46,31 +46,36 @@ const handleDispach=()=>{
 }).catch(err=>{setMessage('Something is wrong');setSnackFlag(!snackFlag)})}
   return (
     <div className='formProfile--main'>
-      <form className='formProfile--center-form' onSubmit={handleSubmit(onSubmit)}>
+      <form className='center-form' onSubmit={handleSubmit(onSubmit)}>
         <div>
-          
-  <h1>Settings</h1>
-          <div className="formprofile--center-inputs">
+
+          <div className="center-formInput">
           
           <label htmlFor="role">Role</label>
           <input
-          className='formProfile--input'
+          className='input'
             type="text"
             name="role"
             ref={register({ required: false })}
           />
+</div>
+<div className="center-formInput">
 
           <label htmlFor="role">email</label>
           <input
-                    className='formProfile--input'
+                    className='input'
 
             type="email"
             name="email"
             ref={register({ required: false })}
           />
+          </div>
+          <div className="center-formInput">
+
            <label htmlFor="role">password</label>
+
           <input
-                    className='formProfile--input'
+                    className='input'
 
             type="password"
             name="password"
@@ -88,11 +93,14 @@ const handleDispach=()=>{
              <ErrorMessage errors={errors} name="password">
         {({ message }) => <p>{message}</p>}
       </ErrorMessage>
-          
+          </div>        
+            <div className="switch--input">
+<p>OFF</p>
           <label className="switch">
   <input onClick={toggleNotification} type="checkbox" name="notification"/>
   <span className="slider round"></span>
 </label>
+<p>ON</p>
 </div>
 
 

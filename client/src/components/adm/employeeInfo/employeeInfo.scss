@@ -17,14 +17,7 @@
     overflow-x: auto;
 }
 
-.employeeInfo--top-nav{
-    height:10%;
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
 
-}
 .employeeInfo--display-main{
     width:100%;
     height:90%;
@@ -54,3 +47,8 @@
         height:50%;
         
     }
+
+#disable{
+  filter:grayscale(100%);
+  cursor:none;
+}

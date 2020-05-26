@@ -1,0 +1,61 @@
+@import "../../../../style/global.scss";
+
+.employeeDocuments--main{
+    width:100%;
+    height:100vh;
+background:$darkBlue;
+overflow:hidden;
+}
+.employeeDocs--center-main{
+    width:100%;
+    height:100%;
+    display:flex;
+
+}
+.employeeDocs--left-main{
+    height:100%;
+    width:30%;
+   background:$darkGreen;
+   display:flex;
+   flex-direction: column;
+   align-items:center;
+
+}
+.employeeDocs--top-select-year{
+    height:70%;
+    width:100%;
+    margin-top:20%;
+    display:flex;
+    justify-content:center;
+   
+}
+.employeeDocs-rigth-main{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+   
+}
+.employeeDocs-center-display{
+    height:70%;
+    width:90%;
+    display:flex;
+    flex-wrap:wrap;
+    overflow-y:auto ;
+}
+.employeeDocs-center-display img{
+    width:30%;
+    height:30%;
+    box-shadow: -6px 6px 10px black;
+    border:1px solid $gray;
+margin:1%;
+}
+
+.employeeDocs--select{
+    background:$black;
+    height:5%;
+    margin:3%;
+    color:white;
+    border:none;
+}

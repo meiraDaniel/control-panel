@@ -3,37 +3,20 @@
 .formProfile--main{
     display:flex;
     justify-content: center;
-        width:60%;
+        width:100%;
     height:100%;
     flex-direction: column;
-
-}
-.formProfile--center-form{
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content: center;
-
 }
 
-.formProfile--input {
-    background: $green;
-    border: none;
-    border-radius: 5%;
-    height: 10%;
-    width: 70%;
-    font-size: 3vh;
-    margin-top: 4%;
-    padding-left: 5%;
-    color: $gray;
-    
-  }
 
   .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50%;
+    height: 20%;
+    margin-top:5%;
+    margin-left:6%;
+    margin-right:6%;
   }
   
   /* Hide default HTML checkbox */
@@ -59,10 +42,10 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 80%;
+    width: 35%;
     left: 4px;
-    bottom: 4px;
+    bottom:2px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -70,6 +53,7 @@
   
   input:checked + .slider {
     background-color: #2196F3;
+  
   }
   
   input:focus + .slider {
@@ -90,18 +74,21 @@
   .slider.round:before {
     border-radius: 50%;
   }
-  @media only screen and (min-width:800px){
-     
-.formprofile--center-inputs{
-    display:flex;
-    flex-direction:column;
 
-}
-
-.formProfile--input {
-   height:6vh;
-  } 
   #formProfile--buton{
-      height:5vh;
+    width:60%;
+    height:10%;
+align-self:center; 
+position:relative;
+left:15%;
+}
+  .switch--input{
+    position:relative;
+left:15%;
+    width:70%;
+    display:flex;
+    font-size:2vh;
+    align-items:center;
+  
   }
-  }
+ 

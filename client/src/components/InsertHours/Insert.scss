@@ -3,128 +3,52 @@
 .Insert-main {
   height: 100vh;
   width: 100%;
-  background: $black;
+  background: $navy;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Insert--center-form {
-  width: 50%;
-  height: 80%;
-  background: $darkGreen;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius:10px;
-  box-shadow:  -8px 6px 20px rgba(0, 0, 0, 0.726);
-}
 
-.Insert-center-formInput {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 80%;
-  align-items: center;
-  justify-content: center;
-  
-
-}
-
-.Insert--input {
-  background: $black;
-  border: none;
-  border-radius: 5%;
-  height: 10%;
-  width: 70%;
-  font-size: 3vh;
-  margin-top: 4%;
-  padding-left: 5%;
-  color: $gray;
-  
-}
-.Insert--input:focus {
-  border: 1px solid $gray;
-  box-shadow: inset 5px -5px 50px rgba(169, 163, 163, 0.253);
-  transition: 0.5s ease;
-}
-
-.Insert--top-circle {
-  width: 75%;
-  height: 45%;
-  border-radius: 100%;
-  background: $black;
+.insert--buttons{
+  margin-top:10%;
+  width:100%;
+  height:10%;
   display:flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap:wrap;
-  font-size:2.5vh;
-  font-family:$fontHeadLine
-
+  justify-content: center;
 }
-.Insert--top-circle h1{
-  margin-left:15%;
+.insert--buttons button,.insert--buttons input{
+  margin-top:5%;
+  background:$highlightLightBlue;
+  font-family:$fontHeadLine;
+  color:$black;
+  height:80%;
+  width:35%;
+  margin:2%;
+  font-size:80%;
+  font-weight: 600;
+  border:none;
+  box-shadow: 0 8px 6px -6px black;
+cursor:pointer;
 }
-.Insert-center-formInput img {
-  height: 100%;
-  width: 100%;
-  animation: balance;
- 
-  animation-duration: 3s;
-  transform: rotate(0deg);
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+.insert--wrapper-avatar{
+  height:25%;
+  width:40%;
 
+border-radius: 100%;
+overflow: hidden;
+display:flex;
+justify-content: center;
+align-items: center;
+background:$navy;
 }
-#Insert{
-    margin-top:10%;
+.insert--wrapper-avatar h1{
+  font-size:160%;
+width:90%;
+height:90%;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-wrap:wrap; 
+text-align: center;
 }
-
-
-    @media only screen and (orientation:landscape) {
-        
-    .Insert--center-form {
-        width: 30%;
-        height: 80%;
-        
-      }
-      
-      
-      .Insert--input {
-        
-        border-radius: 15px;
-        height: 20%;
-       
-      }
-      
-      .Insert--top-circle {
-        width: 40%;
-        height: 100%;
-        border-radius: 100%;
-        background: $black;
-
-      
-      }
-      .Insert-center-formInput img {
-        height: 100%;
-        width: 100%;
-        animation: balance;
-          animation-duration: 3s;
-        transform: rotate(0deg);
-        animation-delay: 2s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      
-      }
-      #Insert{
-          margin-top:10%;
-      }
-      .logo{
-          width:5%;
-          height:5%;
-          position:absolute;
-          right: 92%;
-          top:5%;
-      }
-      }

@@ -33,48 +33,75 @@ function RegisterEmployee({ token, account_id }) {
 
   return (
     <main className="register--main">
-      <div className="register--top-nav">
+      <div className="top-nav">
         <MenuAdm />
       </div>
+      <div className="bottom">
+        <form
+          className="center-form-big"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="form-wrapper">
+            {image.preview ? (
+                            <div className="register--wrapper-avatar">
 
-      <form
-        className="register---center-form"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div>
-          <h1>Add new Employee</h1>
-          <label htmlFor="avatar">Avatar</label>
-
-          <input onChange={handleChange} type="file" name="avatar" />
-          {image.preview ? <img src={image.preview} alt="avatar" /> : null}
-
-          <label htmlFor="firstname">First Name</label>
-          <input
-            type="text"
-            name="firstname"
-            ref={register({ required: true })}
-          />
-          {errors.firstname && "This field is required"}
-
-          <label htmlFor="lastname">Last Name</label>
-          <input
-            type="text"
-            name="lastname"
-            ref={register({ required: true })}
-          />
-          {errors.lastname && "This field is required"}
-
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" ref={register({ required: true })} />
-          {errors.email && "This field is required"}
-
-          <label htmlFor="role">Role</label>
-          <input type="text" name="role" ref={register({ required: true })} />
-          {errors.role && "This field is required"}
-
-          <input type="submit" value="send" />
-        </div>
-      </form>
+              <img src={image.preview} id="avatar" alt="avatar" />
+              </div>
+            ) : (
+              <div className="register--wrapper-avatar">
+                <input
+                  className="register--center-avatar"
+                  onChange={handleChange}
+                  type="file"
+                  name="avatar"
+                />
+               
+              </div>
+            )}
+            <div className="center-inputs-big">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                className="input-big"
+                type="text"
+                name="firstname"
+                ref={register({ required: true })}
+              />
+              {errors.firstname && "This field is required"}
+            </div>
+            <div className="center-inputs-big">
+              <label htmlFor="lastname">Last Name</label>
+              <input
+                className="input-big"
+                type="text"
+                name="lastname"
+                ref={register({ required: true })}
+              />
+              {errors.lastname && "This field is required"}
+            </div>
+            <div className="center-inputs-big">
+              <label htmlFor="email">Email</label>
+              <input
+                className="input-big"
+                type="text"
+                name="email"
+                ref={register({ required: true })}
+              />
+              {errors.email && "This field is required"}
+            </div>
+            <div className="center-inputs-big">
+              <label htmlFor="role">Role</label>
+              <input
+                className="input-big"
+                type="text"
+                name="role"
+                ref={register({ required: true })}
+              />
+              {errors.role && "This field is required"}
+            </div>
+            <input className='button' type="submit" value="SEND" />
+          </div>
+        </form>
+      </div>
     </main>
   );
 }

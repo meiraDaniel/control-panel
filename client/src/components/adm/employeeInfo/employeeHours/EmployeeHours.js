@@ -34,7 +34,7 @@ const[snakflag, setSnackflag]= useState(false)
 
   useEffect(() => {
     toggleEmployeeHours();
-  }, [toggleEmployeeHours]);
+  }, [flag]);
 
   
 
@@ -55,8 +55,8 @@ const[snakflag, setSnackflag]= useState(false)
 
   return (
     <div className="employeeHours--main">
-      <p onClick={()=>setSnackflag(!snakflag)} className={snakflag?"snackbar":"snackclose"} >{message}</p>
-      <div className="employeeHours--top">
+{message?      <p onClick={()=>setSnackflag(!snakflag)} className={snakflag?"snackbar":"snackclose"} >{message}</p>:null
+}      <div className="top-nav">
         <h2>Employees</h2>
       </div>
       <div className="employeeHours--center-main">

@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
  export default function EmployeeInfo ()  {
     return (
         <div className="EmployeeInfo-main">
-             <div className="employeeInfo--top-nav">
+             <div className="top-nav">
         <MenuAdm />
       </div>
       <main className="employeeInfo--display-main">
@@ -21,8 +21,8 @@ import { NavLink } from "react-router-dom";
                  Employee Hours
                 </NavLink>
               </div>
-              <div className="employeeInfo--row" style={{color:"white", textDecoration:"none", cursor:'pointer'}}>
-              <img src={shoes} alt="shoes"/>
+              <div  className="employeeInfo--row" style={{color:"white", textDecoration:"none", cursor:'pointer'}}>
+              <img id="disable"  src={shoes} alt="shoes"/>
 
              <NavLink to="/adm/employee-documents" style={{color:"white", textDecoration:"none"}}>
               Employee Holidays
