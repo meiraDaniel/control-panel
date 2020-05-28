@@ -10,14 +10,14 @@ export default function Menu(props) {
   return (
     <div>
       <div className="app--top-menuButton" onClick={toggleonMenu}>
-        <span className="app--hamburguerMenu-span"></span>
-        <span className="app--hamburguerMenu-span"></span>
-        <span className="app--hamburguerMenu-span"></span>
+        <span data-testid ="menu-span" className="app--hamburguerMenu-span"></span>
+        <span  data-testid ="menu-span"  className="app--hamburguerMenu-span"></span>
+        <span data-testid ="menu-span"  className="app--hamburguerMenu-span"></span>
       </div>
-      <nav className={onMenu ? "app-show-menu" : "app-hidden-menu"}>
+      <nav data-testid ="menu-nav"  className={onMenu ? "app-show-menu" : "app-hidden-menu"}>
         <div className="menu--top-navLinks">
           <div className="menu--linkImage">
-            <img src={dashboard} alt="dashboard" className="menu--icons" />
+            <img  data-testid ="menu-image"  src={dashboard} alt="dashboard" className="menu--icons" />
             <NavLink
               onClick={toggleonMenu}
                activeStyle={{
@@ -39,7 +39,7 @@ export default function Menu(props) {
             </NavLink>
           </div>
           <div className="menu--linkImage">
-          <img src={welding} alt="dashboard" className="menu--icons" />
+          <img  data-testid ="menu-image"  src={welding} alt="dashboard" className="menu--icons" />
 
             <NavLink
               onClick={toggleonMenu}
@@ -62,7 +62,7 @@ export default function Menu(props) {
             </NavLink>
           </div>
           <div className="menu--linkImage">
-          <img src={dashboard} alt="dashboard" className="menu--icons" />
+          <img  data-testid ="menu-image" src={dashboard} alt="dashboard" className="menu--icons" />
 
             <NavLink
               onClick={toggleonMenu}
@@ -84,7 +84,7 @@ export default function Menu(props) {
             </NavLink>
           </div>
           <div className="menu--linkImage">
-          <img src={wrench} alt="dashboard" className="menu--icons" />
+          <img  data-testid ="menu-image" src={wrench} alt="dashboard" className="menu--icons" />
 
             <NavLink
               onClick={toggleonMenu}
