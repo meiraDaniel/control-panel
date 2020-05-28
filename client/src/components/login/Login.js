@@ -39,20 +39,22 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
 
   return (
     <main className='login-main'>
-        <h1 onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
+        <h1 data-testid='snackbar' onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
 
-      <img src={logo} alt="logo" className='logo'/>
+      <img data-testid='logo' src={logo} alt="logo" className='logo'/>
       
       <form
+      data-testid='form'
         className='center-form'
         onSubmit={handleSubmit(onSubmit)}
       >
       <div className='center-formInput'>
         <div id="gloves-circle" className='top-circle'>
-          <img src={gloves} alt="gloves"/>
+          <img data-testid='image' src={gloves} alt="gloves"/>
         </div>
        
         <input
+        data-testid='input-email'
          className='input'
           type="text"
           name="email"
@@ -64,6 +66,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
 
       
         <input
+        data-testid='input-password'
                    className='input'
 
           type="password"

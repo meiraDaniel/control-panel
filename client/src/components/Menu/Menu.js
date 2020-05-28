@@ -25,7 +25,7 @@ export default function Menu(props) {
               }}
 
               style={{
-                fontfamily: "Titillium Web",
+                fontFamily: "Titillium Web",
                 color: "#888787",
                 textDecoration: "none",
                
@@ -48,7 +48,7 @@ export default function Menu(props) {
               }}
 
               style={{
-                fontfamily: "Titillium Web",
+                fontFamily: "Titillium Web",
                 color: "#888787",
                 textDecoration: "none",
                
@@ -71,7 +71,7 @@ export default function Menu(props) {
               }}
 
               style={{
-                fontfamily: "Titillium Web",
+                fontFamily: "Titillium Web",
                 color: "#888787",
                 textDecoration: "none",
                
@@ -93,7 +93,7 @@ export default function Menu(props) {
               }}
 
               style={{
-                fontfamily: "Titillium Web",
+                fontFamily: "Titillium Web",
                 color: "#888787",
                 textDecoration: "none",
                
