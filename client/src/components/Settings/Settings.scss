@@ -2,7 +2,7 @@
 
 .settings-main{
     width:100%;
-    height:100%;
+    height:100vh;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -15,13 +15,20 @@
     display:flex;
 }
 .settings-left-main{
-    width:50%;
+    width:35%;
     height:100%;
     background:$darkBlue;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-left:5%;
 }
 
 .settings-rigth-main{
-width:50%;
+width:65%;
 height:100%;
-background:$navy
+background:$navy;
+display:flex;
+justify-content: center;
+align-items: center;
 }

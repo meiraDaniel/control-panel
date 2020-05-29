@@ -1,41 +1,60 @@
 @import "../../style/global.scss";
 
-.login-main{
-    height:100vh;
-    width:100%;
-    background:$navy;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.login-main {
+  height: 100vh;
+  width: 100%;
+  background: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-formInput img {
+  height: 100%;
+  width: 100%;
+  animation: balance;
+ 
+  animation-duration: 3s;
+  transform: rotate(0deg);
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 
 }
-.login--center-form{
-    width:50%;
-    height:80%;
-    background:$green;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-
+#gloves-circle{
+  background:$black;
 }
 
-.login-center-formInput{
-    display:flex;
-    flex-direction: column;
-    width:60%;
-    height:80%;
-    align-items:center;
-    justify-content: center;
+#login{
+  margin-top:10%;
 }
 
-.login--top-circle{
-    width:30%;
-    height:15%;
-    border-radius:100%;
-    background:$darkBlue;
+@keyframes balance {
+  0% {
+    transform: rotate(-30deg);
+  }
+  
+ 
+  100% {
+    transform: rotate(30deg);
+  }
 }
-.login--top-circle{
-width:60%;
-height:50%;
-}
+
+@media only screen and (min-width:1030px){
+
+
+  .center-formInput img {
+    height: 100%;
+    width: 100%;
+    animation: balance;
+      animation-duration: 3s;
+    transform: rotate(0deg);
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  
+  }
+  #login{
+      margin-top:10%;
+  }
+
+  }

@@ -1,23 +1,24 @@
 import getAllDataFromHours from '../../services/API/getAllDataFromHours'
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import ProgressBar from './ProgressBar'
 import "./Percentage.scss"
 
 function Percentage({token,account_id}){
    
     const [percentage,setPercentage] =useState(0)
-
-    useEffect(() => {
-        handleAllHours(); 
-       },[  ]);
-      
-      const handleAllHours = ()=>{
+    const handleAllHours = useCallback(()=>{
         getAllDataFromHours(account_id,token).then(res=>
            {  const num =(res.data.filter(e => e.approved ===true).length);
              const per= (res.data.length);
             findPercentage(num,per)
              
-            }).catch(err=>console.log(err))}
+            }).catch(err=>console.log(err))},[account_id,token])
+            
+    useEffect(() => {
+        handleAllHours(); 
+       },[handleAllHours]);
+      
+     
       
     const findPercentage=(num,per)=>{
        setPercentage(Math.round((num*100)/per)) 

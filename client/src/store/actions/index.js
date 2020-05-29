@@ -28,7 +28,8 @@ export const logout = () => ({
     email:''
 });
 
-export const getId =(account_id)=>({
+export const getId =(account_id,avatar)=>({
     type : actionTypes.GET_ID,
     account_id:account_id,
+    avatar:avatar
 })

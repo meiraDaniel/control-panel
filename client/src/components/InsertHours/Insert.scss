@@ -1,41 +1,54 @@
 @import "../../style/global.scss";
 
-.Insert-main{
-    height:100vh;
-    width:100%;
-    background:$navy;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.Insert--center-form{
-    width:50%;
-    height:80%;
-    background:$green;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content: center;
-
+.Insert-main {
+  height: 100vh;
+  width: 100%;
+  background: $navy;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Insert-center-formInput{
-    display:flex;
-    flex-direction: column;
-    width:60%;
-    height:80%;
-    align-items:center;
-    justify-content: center;
+.insert--buttons{
+  margin-top:10%;
+  width:100%;
+  height:10%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
+.insert--buttons button,.insert--buttons input{
+  margin-top:5%;
+  background:$highlightLightBlue;
+  font-family:$fontHeadLine;
+  color:$black;
+  height:80%;
+  width:35%;
+  margin:2%;
+  font-size:80%;
+  font-weight: 600;
+  border:none;
+  box-shadow: 0 8px 6px -6px black;
+cursor:pointer;
+}
+.insert--wrapper-avatar{
+  height:25%;
+  width:40%;
 
-.Insert--top-circle{
-    width:30%;
-    height:15%;
-    border-radius:100%;
-    background:$darkBlue;
+border-radius: 100%;
+overflow: hidden;
+display:flex;
+justify-content: center;
+align-items: center;
+background:$navy;
 }
-.Insert--top-circle{
-width:60%;
-height:50%;
+.insert--wrapper-avatar h1{
+  font-size:160%;
+width:90%;
+height:90%;
+display:flex;
+justify-content: center;
+align-items: center;
+flex-wrap:wrap; 
+text-align: center;
 }

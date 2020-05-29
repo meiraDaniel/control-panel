@@ -7,30 +7,48 @@
     display: none;
   }
   
-.employeeInfo--main{
+.EmployeeInfo-main{
     height:100vh;
     width:100%;
     margin:0%;
     background:$darkBlue;
     display:flex;
-   flex-direction:column;
+    flex-direction:column;
+    overflow-x: auto;
 }
-.employeeInfo--top{
-    height:10%;
+
+
+.employeeInfo--display-main{
     width:100%;
+    height:90%;
     display:flex;
-    justify-content: space-between;
-    background: $green;
-    border:1px $gray solid;
-}
-.employeeInto--center-main{
-    width:100%;
-    height:100%;
-    display:flex;
-}
-.employeeInfo--left-selectYear{
-    width:20%;
-    height:100%;
-    background:$green;
-    border:1px $gray solid;
+    flex-wrap:wrap;
+    justify-content: center;
+
+    }
+    .employeeInfo--row{
+        margin-top:2%;
+        width:33.3%;
+        height:35%;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border:1px solid $gray;
+        font-size:3vh;
+        font-family: $fontHeadLine;
+        margin-left: 3%;
+        box-shadow: -6px 6px 10px black;
+       
+    }
+    .employeeInfo--row img{
+        width:40%;
+        height:50%;
+        
+    }
+
+#disable{
+  filter:grayscale(100%);
+  cursor:none;
 }
