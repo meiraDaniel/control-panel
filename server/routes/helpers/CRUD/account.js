@@ -18,7 +18,7 @@ module.exports = {
     const hash = await bcrypt.hash(password, 10);
 
     await file.mv(
-      path.join(__dirname, "../../../../client/public/uploads", file.name),
+      path.join(__dirname, "../../../../client/public/uploads", file.name.replace(/\s/g, '')),
       (err) => {
         if (err) {
           return console.log(err);

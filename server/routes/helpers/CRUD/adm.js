@@ -20,7 +20,7 @@ module.exports = {
           data.push({
             account_id: employee.dataValues.id,
             firstname: employee.dataValues.firstname,
-            avatar_name: `/uploads/${employee.dataValues.avatar_name}`,
+            avatar_name: `/uploads/${employee.dataValues.avatar_name.replace(/\s/g, '')}`,
             lastname: employee.dataValues.lastname,
             avatar: employee.dataValues.avatar,
             role: employee.dataValues.role,
@@ -183,7 +183,7 @@ module.exports = {
                            response[0].dataValues.account.dataValues.firstname
                          }
                          Your hours from ${getMonthName(
-                           response[0].dataValues.month
+                           response[0].dataValues.month +1
                          )} were all aproved by the manager
                           Kind regards `,
             html: `
@@ -191,7 +191,7 @@ module.exports = {
                            response[0].dataValues.account.dataValues.firstname
                          }, </h1>
                          <p>  Your hours from ${getMonthName(
-                           response[0].dataValues.month
+                           response[0].dataValues.month +1
                          )} were all aproved by the manager</p>
                                                  <p><b> Kind regards,</b></p>`,
           });
