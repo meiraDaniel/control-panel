@@ -1,13 +1,16 @@
 import React from 'react'
 import MenuAdm from "../menuADM/MenuAdm"
-import './EmployeeInfo.scss'
+import './employeeInfo.scss'
 import mask from '../../../images/welding-mask.svg'
 import shoes from '../../../images/shoes.svg'
 import doc from '../../../images/portable-document-format.svg'
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
  export default function EmployeeInfo ()  {
+  const history = useHistory();
+
     return (
         <div className="EmployeeInfo-main">
              <div className="top-nav">
@@ -15,7 +18,7 @@ import { NavLink } from "react-router-dom";
       </div>
       <main className="employeeInfo--display-main">
          
-              <div className="employeeInfo--row" >
+              <div onClick={()=>history.push("/adm/employee-hours")} style={{cursor:"pointer"}} className="employeeInfo--row" >
              <img src={mask} alt="welding mask"/>
                 <NavLink to="/adm/employee-hours" style={{color:"white", textDecoration:"none", cursor:'pointer'}}>
                  Employee Hours
@@ -24,11 +27,11 @@ import { NavLink } from "react-router-dom";
               <div  className="employeeInfo--row" style={{color:"white", textDecoration:"none", cursor:'pointer'}}>
               <img id="disable"  src={shoes} alt="shoes"/>
 
-             <NavLink to="/adm/employee-documents" style={{color:"white", textDecoration:"none"}}>
+             <li to="/adm/employee-documents" style={{color:"white", textDecoration:"none"}}>
               Employee Holidays
-             </NavLink>
+             </li>
            </div>
-           <div className="employeeInfo--row" >
+           <div  onClick={()=>history.push("/adm/employee-hours")} style={{cursor:"pointer"}}className="employeeInfo--row" >
            <img src={doc} alt="documents"/>
 
              <NavLink to="/adm/employee-documents" style={{color:"white", textDecoration:"none", cursor:'pointer'}}>

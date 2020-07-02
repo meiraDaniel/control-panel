@@ -4,7 +4,6 @@ import  getAllDataFromHours from '../../services/API/getAllDataFromHours'
 import { getMonthName } from "../../services/services";
 import Table from './Table'
 import {useHistory} from 'react-router-dom'
-import logo from '../../images/logo.svg'
   import './MyHours.scss'
 
 const MyHours = ({account_id,token}) => {
@@ -35,7 +34,6 @@ const handlemountFlag =()=>{
        <div className="dashboard--top-nav">
        <h2 className='page-name'>My Hours</h2>
 
-          <img src={logo} alt="logo" />
       </div> 
       <div className='myHours--top'>
       {data.length>0? <h2>{getMonthName(data[0].month +1)}</h2>:<h2>Month</h2>}

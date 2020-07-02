@@ -6,6 +6,7 @@ import { getId } from "../../store/actions";
 import displayAllAccounts from "../../services/API/displayAllAccounts";
 import { useHistory } from "react-router-dom";
 import MenuAdm from "./menuADM/MenuAdm";
+import placeholder from '../../images/employees.svg'
 
 function AdmDashboard() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function AdmDashboard() {
   const[flagSnack, setFlagSnack]= useState(false)
   const[message, setMessage]= useState(false)
 
-  useEffect(() => {
+   useEffect(() => {
     getEmployees();
   }, []);
 
@@ -22,7 +23,7 @@ function AdmDashboard() {
     displayAllAccounts()
       .then((res) => setData(res.data))
       .catch((err) => {setMessage(err);setFlagSnack(!flagSnack)});
-  };
+  }; 
 
   const goEmployeeInformation = (account_id, avatar) => {
     dispatch(getId(account_id, avatar));
@@ -37,19 +38,22 @@ function AdmDashboard() {
       </div>
       <main className="AdmDashboard--display-main">
         <div className="AdmDashboard--top-rows">
-          {data.length > 0 ? (
+           {data.length > 0 ? (
             data.map((employee, i) => (
-              <div   onClick={() =>
+              <div   onClick={() => employee.avatar_name?
                 goEmployeeInformation(
                   employee.account_id,
                   employee.avatar_name
+                ):  goEmployeeInformation(
+                  employee.account_id,
+                  placeholder
                 )
               }className="AdmDashboard--eachEmployee-row" key={i}>
                 <img
                   className="Adm--avatar"
                 
-                  src={employee.avatar_name}
-                  alt="placeholder"
+                  src={employee.avatar_name?employee.avatar_name:placeholder}
+                  alt="avatar"
                 />
                 <h1>
                   {employee.firstname} {employee.lastname}
@@ -57,8 +61,8 @@ function AdmDashboard() {
               </div>
             ))
           ) : (
-            <h1>Loading</h1>
-          )}
+            <h1>Loading...</h1>
+          )} 
         </div>
       </main>
     </div>

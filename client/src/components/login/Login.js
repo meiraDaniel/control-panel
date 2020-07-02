@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import loginHelper from '../../services/API/loginHelper'
 import {createSession} from '../../store/actions'
-import gloves from '../../images/Gloves.svg'
+import landingpageicon from '../../images/landingpageicon.png'
 import './Login.scss'
-import logo from '../../images/logo.svg'
+
+
 function Login() {
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit } = useForm();
@@ -41,7 +42,6 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
     <main className='login-main'>
         <h1 data-testid='snackbar' onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
 
-      <img data-testid='logo' src={logo} alt="logo" className='logo'/>
       
       <form
       data-testid='form'
@@ -50,7 +50,7 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
       >
       <div className='center-formInput'>
         <div id="gloves-circle" className='top-circle'>
-          <img data-testid='image' src={gloves} alt="gloves"/>
+          <img data-testid='image' src={landingpageicon} alt="gloves"/>
         </div>
        
         <input

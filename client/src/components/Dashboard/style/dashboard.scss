@@ -165,7 +165,6 @@ background:$darkBlue;
         
     }
     .dashboard--left-top-welcome{
-        background-image: url('../../../images//dashbordImage.jpg');
         
         background-position:50% 20%;
         background-size: cover;
@@ -174,19 +173,25 @@ background:$darkBlue;
         width:73.3%;
         border:0.3px solid $gray;
         color:$white;
-    
-       
-    
-    }
-    .dashboard--left-top-welcome h1{
-        flex-wrap:wrap;
-        background:rgba(4, 4, 93, 0.493);
-        width:100%;
-        font-size:10vh;
-    }
-    .dashboard--left-top-welcome h1 span{
+    padding:0;
+        img{
+            margin:0;
+            width:50%;
+            height:100%;
+        }
+        h1{
+            margin:0 0 0 2%;
+            flex-wrap:wrap;
+            width:45%;
+            font-size:13vh;
+            span{
         color:$highlightBlue;
     }
+        }
+    
+    }
+ 
+ 
     .dashboard--center-top-totalHours{
        width:30%;
         height:100%;

@@ -5,10 +5,10 @@ import getTotalHoursHelper from "../../services/API/getTotalHoursHelper";
 import getPostWallHelper from "../../services/API/getPostWallHelper";
 import PostDash from './PostDash'
 import { useDispatch } from "react-redux";
-import logo from '../../images/logo.svg'
 import logoutImage from '../../images/logout.svg'
 import {logout} from '../../store/actions'
 import Percentage from '../AprovedHours/Percentage'
+import dashImage from "../../images/dashImage.svg"
 
 function Dashboard({ firstname, token, account_id }) {
   const [totalHours, setTotalHours] = useState("0");
@@ -46,13 +46,14 @@ function Dashboard({ firstname, token, account_id }) {
         <div className="dashboard--top-nav">
        <h2 className='page-name'>Dashboard</h2>
 
-          <img src={logo} alt="logo" />
       </div>
       <main className="dashboard--display-main">
         <div className="dashboard--top">
        
           <div className="dashboard--left-top-welcome">
             <h1>Welcome, <span >{firstname}</span></h1>
+
+            <img src={dashImage} alt="phone"/>
           </div>
 
        

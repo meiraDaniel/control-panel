@@ -11,13 +11,7 @@
 .center-formInput img {
   height: 100%;
   width: 100%;
-  animation: balance;
- 
-  animation-duration: 3s;
-  transform: rotate(0deg);
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+
 
 }
 #gloves-circle{
@@ -28,16 +22,6 @@
   margin-top:10%;
 }
 
-@keyframes balance {
-  0% {
-    transform: rotate(-30deg);
-  }
-  
- 
-  100% {
-    transform: rotate(30deg);
-  }
-}
 
 @media only screen and (min-width:1030px){
 

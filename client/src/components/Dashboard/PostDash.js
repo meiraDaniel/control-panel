@@ -3,6 +3,7 @@ import "./style/post.scss";
 import likes from '../../images/like.svg'
 import likePost from '../../services/API/likePost'
 import dislikePost from '../../services/API/dislikePost'
+import PostImage from "../../images/PostImage.svg"
 
 export default function PostDash({ post, i,token }) {
 
@@ -26,7 +27,7 @@ else{
   return (
     <div key={i} className="dashboard--center-postDash">
       <div className="postDash--left">
-       <img src={post.avatar_name} alt={post.firstname} />
+       <img src={post.avatar_name?post.avatar_name:PostImage} alt={post.firstname} />
  
      </div>
       <div className='postDash--right'>

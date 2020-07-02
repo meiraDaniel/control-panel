@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import Posts from "./Posts";
 import { useForm, ErrorMessage } from "react-hook-form";
 import postOnWAllHelper from "../../services/API/postOnWallHelper";
-import logo from "../../images/logo.svg";
 
 function Wall({ account_id, token, firstname }) {
   const [data, setData] = useState([]);
@@ -64,7 +63,6 @@ function Wall({ account_id, token, firstname }) {
       <div className="dashboard--top-nav">
         <h2 className="page-name">My Wall</h2>
 
-        <img src={logo} alt="logo" />
       </div>
       <div className="wall--main">
         <div className="wall--left-posts">

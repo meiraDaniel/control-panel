@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm,ErrorMessage } from "react-hook-form";
 import MenuAdm from "../menuADM/MenuAdm";
 import "./registerEmployee.scss";
 import registerEmployeeHelper from "../../../services/API/registerEmployeeHelper";
@@ -7,6 +7,8 @@ import registerEmployeeHelper from "../../../services/API/registerEmployeeHelper
 function RegisterEmployee({ token, account_id }) {
   const { register, errors, handleSubmit } = useForm();
   const [image, setImage] = useState({ preview: "", raw: "" });
+  const[message, setMessage]= useState("")
+  const[snackBarFlag,setSnackBarFlag]=useState(false)
 
   const onSubmit = async (value, e) => {
     e.preventDefault();
@@ -18,10 +20,12 @@ function RegisterEmployee({ token, account_id }) {
       value.lastname,
       value.email,
       value.role,
+      value.password,
+
     ];
     data.forEach((e) => formData.append("file", e));
 
-    registerEmployeeHelper(formData);
+    registerEmployeeHelper(formData).then(response=> {setMessage(response.data);setSnackBarFlag(true)}).catch(err=>{setMessage(err.response.data.message);setSnackBarFlag(true)});
   };
 
   const handleChange = (e) => {
@@ -33,6 +37,8 @@ function RegisterEmployee({ token, account_id }) {
 
   return (
     <main className="register--main">
+              <h1 data-testid='snackbar' onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
+
       <div className="top-nav">
         <MenuAdm />
       </div>
@@ -103,6 +109,30 @@ function RegisterEmployee({ token, account_id }) {
               {errors.email && "Email field is required"}
             </div>
             <div className="center-inputs-big">
+              <label  aria-labelledby='password' data-testid="register-employee-label" htmlFor="email">
+              Password
+              </label>
+              <input
+                data-testid="register-employee-input-password"
+                className="input-big"
+           
+                type="password"
+                name="password"
+                ref={register({
+                  minLength: {
+                    value: 8,
+                    message: 'Your password is too short'
+                  },
+                  pattern: {
+                    value: /(?=.*[A-Z])/,
+                    message: 'The string must contain at least 1 uppercase alphabetical character' 
+                  }
+                })}
+              />
+         <ErrorMessage errors={errors} name="password">
+        {({ message }) => <p>{message}</p>}
+      </ErrorMessage>            </div>
+            <div className="center-inputs-big">
               <label aria-labelledby='role' data-testid="register-employee-label" htmlFor="role">
                 Role
               </label>
@@ -111,9 +141,9 @@ function RegisterEmployee({ token, account_id }) {
                 className="input-big"
                 type="text"
                 name="role"
-                ref={register({ required: true })}
+                ref={register({ required: false })}
               />
-              {errors.role && "Role field is required"}
+         
             </div>
             <input
               data-testid="register-employee-button"

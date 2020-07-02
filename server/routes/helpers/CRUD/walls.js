@@ -63,7 +63,7 @@ module.exports = {
               title: e.dataValues.title,
               message: e.dataValues.message,
               firstname: e.dataValues.account.dataValues.firstname,
-              avatar_name: `/uploads/${e.dataValues.account.dataValues.avatar_name.replace(/\s/g, '')}`,
+              avatar_name: e.dataValues.account.dataValues.avatar_name? `/uploads/${e.dataValues.account.dataValues.avatar_name.replace(/\s/g, '')}`:null,
             })
           );
 

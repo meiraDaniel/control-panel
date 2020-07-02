@@ -3,7 +3,6 @@ import  './Settings.scss'
 import { connect } from "react-redux";
 import DisplayProfile from './DisplayProfile'
 import FormProfile from "./FormProfile"
-import logo from '../../images/logo.svg'
 function Settings ({data}) {
 
 
@@ -12,7 +11,6 @@ function Settings ({data}) {
         <div className="dashboard--top-nav">
        <h2 className='page-name'>Settings</h2>
 
-          <img src={logo} alt="logo" />
       </div> 
         <div  className='settings-main'>
             <div className='settings-center-main'>
