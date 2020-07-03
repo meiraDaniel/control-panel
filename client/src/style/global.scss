@@ -1,3 +1,11 @@
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
 // main pallet
 
 $navy:#050633;
@@ -24,7 +32,14 @@ $highlightLightGreen:#01D3BA;
 $fontBody:'Titillium Web';
 $fontHeadLine:'Amaranth';
 
-.button{
+$um:#0C3E59;
+$dois:#649BF5;
+$tres:#293F71;
+$quatro:#080808a4;
+$cinco:#72B894;
+$seis:#B7A84D;
+$sete:#F2F0F3;
+/* .button{
     margin-top:5%;
     background:$highlightLightBlue;
     font-family:$fontHeadLine;
@@ -103,4 +118,4 @@ cursor:pointer;
     border: 1px solid $gray;
     box-shadow: inset 5px -5px 50px rgba(169, 163, 163, 0.253);
     transition: 0.5s ease;
-  }
+  } */

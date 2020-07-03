@@ -1,44 +1,32 @@
 @import "../../style/global.scss";
 
-.login-main {
-  height: 100vh;
-  width: 100%;
-  background: $black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.copyrigth{
+  color:white;
+  font-weight: 500;
+  text-align: center;
 }
-.center-formInput img {
-  height: 100%;
-  width: 100%;
+  .center-form{
+    height:100%;
+    width:100%;
 
-
-}
-#gloves-circle{
-  background:$black;
-}
-
-#login{
-  margin-top:10%;
-}
-
-
-@media only screen and (min-width:1030px){
-
-
-  .center-formInput img {
-    height: 100%;
-    width: 100%;
-    animation: balance;
-      animation-duration: 3s;
-    transform: rotate(0deg);
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  
+ 
   }
-  #login{
-      margin-top:10%;
+ 
+  #gloves-circle{
+    height:100%;
+    width:40%;
+   border-radius:100%;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+img{
+  width:70%;
+  height:70%;
+}
   }
 
+  @media only screen and (orientation:landscape){
+    #gloves-circle{
+      height:100%;
+      width:40%;}
   }

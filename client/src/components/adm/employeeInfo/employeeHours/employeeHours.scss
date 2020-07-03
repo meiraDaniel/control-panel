@@ -1,103 +1,16 @@
-@import "../../../../style/global.scss";
-::-webkit-scrollbar {
-    display: none;
-  }
-  
-  ::-webkit-scrollbar-button {
-    display: none;
-  }
-  
-.employeeHours--main{
-    height:100vh;
-    width:100%;
-    margin:0%;
-    background:$darkBlue;
-    display:flex;
-   flex-direction:column;
 
-}
-.employee--bottom-table{
-  width:100%;
-  max-height:95%;
-  overflow-y:auto;
-}
-.employeeHours--top{
-    height:10%;
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    background: $green;
-    border:1px $gray solid;
-}
-.employeeHours--center-main{
-    width:100%;
-    height:100%;
-    display:flex;
-}
-.employeeHours--left-selectYear{
-    width:20%;
-    height:100%;
-    background:$green;
-    border:1px $gray solid;
-    display:flex;
-    flex-direction: column;
-align-items: center;
-}
-.employeeHours-left-top-avatar{
-  width:100%;
-  
-}
-.employeeHours--left-bottom-yearlist{
-  width:100%;
-  height:70%;
-  margin-left:10%;
-  
-}
-#employeeHours--button-back{
-height:5%;
-}
-.employeeHours--rigth-information{
-  width:100%;
-  height:100%;
-  display:flex;
-justify-content: center;
-flex-direction:column;
-background:$darkBlue;
+
+.image-employee {
+  opacity: 0;
+      transition: 0.4s ease-in-out;
 
 }
 
-.employeeHours--right-top-select{
-  margin-top: 10%;
-  width: 100%;
-  height:10%;
-
-}
-
-.employeeHours--select{
-  background:$darkGray;
-  color:white;
-  padding:15%;
-  border:none;
-  border-radius:20px;
-}
-.employeeHours-right-center-table{
-  height:80%;
-
-}
-@media only screen and (min-width:700px){
- 
-.employeeHours--select{
- height:40%;
- width: 30%;
- padding:0%;
- margin:auto;
- text-align: center;
-}
-  .employeeHours--right-top-select{
-    margin-top: 0%;
-    justify-self: center;
-  width:100%;
-  height:10%;
-  margin-bottom:3% ;
+@media only screen and (min-width:700px) {
+  .image-employee {
+    opacity: 1;   
+     width: 100%;
+    height: 100%;
+    transition: 0.4s ease-in-out;
   }
 }
