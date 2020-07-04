@@ -10,12 +10,8 @@ import { logout } from "../../store/actions";
 import Percentage from "../AprovedHours/Percentage";
 import dashboard from "../../images/icons/dashboard.svg";
 import {
-  Button,
   Grid,
-  Paper,
-  TextField,
-  Box,
-  Snackbar,
+
 } from "@material-ui/core";
 function Dashboard({ firstname, token, account_id }) {
   const [totalHours, setTotalHours] = useState("0");
@@ -46,14 +42,15 @@ function Dashboard({ firstname, token, account_id }) {
   return (
     <Grid
       container
+      justify='center'
       style={{
-        background: "blue",
         height: "100%",
-        display: "flex",
-        justifyContent: "center",
+    
+        background: "#0C3E59" ,
+         color:"white"
       }}
     >
-      <Grid item xs={9} sm={10} style={{ background: "blue", height: "10%" }}>
+      <Grid item xs={9} sm={10} style={{ height: "10%"}}>
         {" "}
         <h2 className="page-name">Dashboard</h2>
       </Grid>
@@ -61,49 +58,50 @@ function Dashboard({ firstname, token, account_id }) {
         item
         xs={12}
         style={{
-          background: "pink",
           height: "45%",
           display: "flex",
           flexWrap: "wrap",
-          overflow: "auto",
+                    overflow: window.innerWidth > 600 ? "hidden" : "auto",
         }}
       >
         <Grid
           item
           xs={12}
           sm={8}
-          style={{ background: "yellow", height: "100%", display:"flex", padding:'1%' }}
+          style={{
+            height: "100%",
+            display: "flex",
+            padding: "1%",
+            background: "#0C3E59",
+            color:"white",
+          }}
         >
           {" "}
-          <Grid
-          item
-          xs={6}
-          
-        >
-          <h1 className="welcome">
-            Welcome, <span>{firstname}</span>
-          </h1>
+          <Grid item xs={6}>
+            <h1 className="welcome">
+              Welcome, <span>{firstname}</span>
+            </h1>
           </Grid>
-          <Grid
-          item
-          xs={6}
-          
-        >
-          <img className="image-dash" src={dashboard} alt="dashboard" />
+          <Grid item xs={6}>
+            <img className="image-dash" src={dashboard} alt="dashboard" />
           </Grid>
-
         </Grid>
         <Grid
           item
           xs={12}
           sm={4}
-          style={{ background: "black", height: "100%" , display:"flex", justifyContent:"center"}}
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            background: "#293F71",
+            color:"white",
+          }}
         >
           {" "}
           <p className="hours-worked">
             {" "}
-            You worked <span >{totalHours}</span> hours this
-            month{" "}
+            You worked <span>{totalHours}</span> hours this month{" "}
           </p>{" "}
         </Grid>
       </Grid>
@@ -111,34 +109,63 @@ function Dashboard({ firstname, token, account_id }) {
         item
         xs={12}
         style={{
-          background: "brown",
           height: "45%",
           display: "flex",
           flexWrap: "wrap",
-          overflow: "auto",
+          overflow: window.innerWidth > 600 ? "hidden" : "auto",
         }}
       >
         <Grid
           item
           xs={12}
           sm={4}
-          style={{ background: "pink", height: "100%" , display:"flex", justifyContent:"center"}}
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            background: "#0C3E59",
+            color:"white",
+          }}
         >
           <h3>My Wall</h3>
           {post.map((e, i) => (
             <PostDash key={i} post={e} token={token} />
           ))}
         </Grid>
-        <Grid xs={12} sm={4} item style={{ background: "red", height: "100%" , display:"flex", justifyContent:"center"}}>
+        <Grid
+          xs={12}
+          sm={4}
+          item
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            background: "#293F71",
+            color:"white",
+          }}
+        >
           <Percentage token={token} account_id={account_id} />
         </Grid>
         <Grid
           xs={12}
           sm={4}
           item
-          style={{ background: "white", height: "100%", display:"flex", justifyContent:"center", alignItems:"center" }}
+          style={{
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#0C3E59",
+         
+             
+          }}
         >
-          <img  className="image-logout" onClick={toggleLogout} src={logoutImage} alt="logout" />
+          <img
+            className="image-logout"
+            onClick={toggleLogout}
+            src={logoutImage}
+            alt="logout"
+          />
         </Grid>
       </Grid>
     </Grid>

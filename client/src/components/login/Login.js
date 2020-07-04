@@ -20,15 +20,7 @@ export function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles((theme) => ({
-  input: {
-    border: "#FFFFF",
-    color: "#FFFFF",
-  },
-}));
-
 function Login() {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit, control } = useForm();
@@ -76,7 +68,7 @@ function Login() {
       container
       style={{ height: "100%", background: "#0C3E59" }}
       justify="center"
-      alignItems="center"
+      align="center"
     >
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert severity="error"> {message}</Alert>
@@ -119,6 +111,7 @@ function Login() {
                 }}
               >
                 <Controller
+               
                   data-testid="Controller-email"
                   as={<TextField />}
                   fullWidth
@@ -130,7 +123,6 @@ function Login() {
                   color="secondary"
                   autoComplete="email"
                   autoFocus
-                  className={classes.input}
                 />
               </Grid>
 
@@ -144,6 +136,7 @@ function Login() {
                 }}
               >
                 <Controller
+               
                   data-testid="Controller-password"
                   as={<TextField />}
                   fullWidth
@@ -155,8 +148,6 @@ function Login() {
                   color="secondary"
                   size="medium"
                   autoFocus
-                  className={classes.input}
-
                 />
               </Grid>
 
@@ -174,7 +165,7 @@ function Login() {
                   color="secondary"
                   id="login"
                   type="submmit"
-                  style={{marginTop:"5%"}}
+                  style={{ marginTop: "5%" }}
                 >
                   {" "}
                   LOGIN{" "}

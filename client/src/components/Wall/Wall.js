@@ -3,12 +3,21 @@ import getAllMyPosts from "../../services/API/getAllMyPosts";
 import "./Wall.scss";
 import { connect } from "react-redux";
 import Posts from "./Posts";
-import { useForm, ErrorMessage } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import postOnWAllHelper from "../../services/API/postOnWallHelper";
+import {
+  Button,
+  Grid,
+  Paper,
+  TextField,
+  Box,
+  Snackbar,
+} from "@material-ui/core";
+import phone from "../../images/phone.svg";
 
 function Wall({ account_id, token, firstname }) {
   const [data, setData] = useState([]);
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit, control } = useForm();
   const [message, setMessage] = useState("");
   const [flag, setFlag] = useState(false);
   const [snackFlag, setSnackFlag] = useState(false);
@@ -53,33 +62,174 @@ function Wall({ account_id, token, firstname }) {
     setMaxCharsTitle(20 - input.length);
   };
   return (
-    <div>
-      <p
-        onClick={() => setSnackFlag(!snackFlag)}
-        className={snackFlag ? "snackbar" : "snackclose"}
+    <Grid container justify="center" style={{ background: "black", height: "100%" }}>
+      <Grid
+        item
+        xs={9}
+        sm={10}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          height: "10%",
+          margin: "0%",
+          color: "#293F71",
+          background: "pink",
+        }}
       >
-        {message}
-      </p>
-      <div className="dashboard--top-nav">
         <h2 className="page-name">My Wall</h2>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        style={{ background: "brown", height: "90%", display: "flex" }}
+      >
+        <Grid
+          item
+          xs={6}
+          style={{
+            background: "purple",
+            height: "100%",
+            justifyContent: "center",
+          }}
+        >
+          <Grid
+            item
+            xs={12}
+            style={{
+              height: "50%",
+              overflow: "auto",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {data.length > 0 ? (
+              data.map((post, i) => (
+                <Grid item xs={12} stle={{display:"flex", flexWrap:"wrap"}}>
+                <Posts firstname={firstname} post={post} i={i} />
+                </Grid>
+              ))
+            ) : (
+              <h1>Loading ...</h1>
+            )}
+          </Grid>
+          <Grid item xs={12} style={{ height: "50%" }}>
+            <img src={phone} alt="phone" />
+          </Grid>
+          <Grid />
+        </Grid>
 
-      </div>
-      <div className="wall--main">
-        <div className="wall--left-posts">
-          {data.length > 0 ? (
-            data.map((post, i) => (
-              <Posts firstname={firstname} post={post} i={i} />
-            ))
-          ) : (
-            <h1>Loading</h1>
-          )}
-        </div>
-        <div className="wall--rigth-insertPosts">
+        <Grid item xs={6} style={{ background: "blue", height: "100%" }}>
           <form className="wall--center-form" onSubmit={handleSubmit(onSubmit)}>
-            <div className="wall-center-formInput">
+            <Grid
+              container
+              style={{ height: "100%" }}
+              justify="center"
+              alignContent="center"
+            >
+              <Grid
+                item
+                xs={11}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "30%",
+                }}
+              >
+                <div id="gloves-circle">
+                  <img data-testid="image" src="" alt="gloves" />
+                </div>
+              </Grid>
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Controller
+                  data-testid="Controller-message"
+                  as={<TextField />}
+                  fullWidth
+                  control={control}
+                  name="message"
+                  label="Message"
+                  margin="normal"
+                  size="medium"
+                  color="secondary"
+                  autoComplete="message"
+                  autoFocus
+                />
+                     <p id="chars--title" className="lighGreen">
+                  {" "}
+                  Characters left:{" "}
+                  <span className={maxCharsTitle > 10 ? "lighGreen" : "red"}>
+                    {" "}
+                    {maxCharsTitle}
+                  </span>{" "}
+                </p>
+              </Grid>
+
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Controller
+                  data-testid="Controller-title"
+                  as={<TextField />}
+                  fullWidth
+                  control={control}
+                  name="title"
+                  label="title"
+                  margin="normal"
+                  color="secondary"
+                  size="medium"
+                  autoFocus
+                />
+                      <p id="chars--post" className="lighGreen">
+                  {" "}
+                  Characters left:{" "}
+                  <span className={maxCharsPost > 10 ? "lighGreen" : "red"}>
+                    {" "}
+                    {maxCharsPost}
+                  </span>{" "}
+                </p>
+              </Grid>
+
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                  id="login"
+                  type="submmit"
+                  style={{ marginTop: "5%" }}
+                >
+                  {" "}
+                  Send{" "}
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+          {/* 
               <h1 className="wall--top-circle">Create Post</h1>
 
-              <div className="wall--right-inputs">
+ 
                 <label htmlFor="title">title</label>
                 <input
                   onChange={(e) => handleChangeTittle(e.target.value)}
@@ -94,9 +244,7 @@ function Wall({ account_id, token, firstname }) {
                     },
                   })}
                 />
-                <ErrorMessage errors={errors} name="title">
-                  {({ message }) => <p>{message}</p>}
-                </ErrorMessage>
+            
 
                 <p id="chars--title" className="lighGreen">
                   {" "}
@@ -123,18 +271,9 @@ function Wall({ account_id, token, firstname }) {
                   })}
                 />
 
-                <p id="chars--post" className="lighGreen">
-                  {" "}
-                  Characters left:{" "}
-                  <span className={maxCharsPost > 10 ? "lighGreen" : "red"}>
-                    {" "}
-                    {maxCharsPost}
-                  </span>{" "}
-                </p>
+          
 
-                <ErrorMessage errors={errors} name="message">
-                  {({ message }) => <p>{message}</p>}
-                </ErrorMessage>
+            
 
                 <input
                   id="wall-button"
@@ -142,12 +281,11 @@ function Wall({ account_id, token, firstname }) {
                   type="submit"
                   value="Send"
                 />
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+         
+          </form> */}
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 

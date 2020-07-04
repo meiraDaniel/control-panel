@@ -27,7 +27,7 @@ function Percentage({token,account_id}){
         <main className="percentage--center-main">
         <h1> Hours approved</h1>
          <ProgressBar    
-    size={200}
+    size={180}
     strokeWidth={14}
     circleOneStroke='#888787'
     circleTwoStroke='#01D3BA' 

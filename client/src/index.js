@@ -12,7 +12,14 @@ import { Provider } from "react-redux";
 import allReducers from "./store/index";
 import { loadState, saveState } from "./services/loadState";
 import { ThemeProvider } from "@material-ui/core/styles";
-import {palette} from "./theme";
+import { createMuiTheme } from '@material-ui/core/styles';
+
+ const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#3A579B' },
+    secondary: { main: '#E96A4A' }
+  }
+});
 
 const store = createStore(
   allReducers,
@@ -31,7 +38,7 @@ store.subscribe(
 
 
 ReactDOM.render(
-  <ThemeProvider theme={palette}>
+  <ThemeProvider theme={theme}>
     <Provider store={store}>
       <BrowserRouter>
         <React.StrictMode>

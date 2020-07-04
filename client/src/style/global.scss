@@ -26,19 +26,26 @@ $reallyDarkGray:#161515;
 //highlights
 $highlightBlue:#2892E9;
 $highlightpurple:#4A4C87;
-$highlightLightBlue:#02B2DB;
+$highlightLightBlue:#85dcf0;
 $highlightLightGreen:#01D3BA;
 
 $fontBody:'Titillium Web';
 $fontHeadLine:'Amaranth';
 
+$lightOrange:#F4A471;
+$orange:#F26628;
+
 $um:#0C3E59;
 $dois:#649BF5;
 $tres:#293F71;
-$quatro:#080808a4;
+$quatro:#0c0303a4;
 $cinco:#72B894;
-$seis:#B7A84D;
 $sete:#F2F0F3;
+
+span{
+  color:$highlightLightBlue;
+}
+
 /* .button{
     margin-top:5%;
     background:$highlightLightBlue;

@@ -110,8 +110,8 @@ module.exports = {
         },
         { where: { id: hourId } }
       )
-      .then((response) => {
-        if (response.dataValues.account.dataValues.notification) {
+      .then((response) => { console.log(response)
+        /* if (response.dataValues.account.dataValues.notification) {
           const usuario = process.env.EMAIL_USER;
           const senha = process.env.PASSWORD_EMAIL;
 
@@ -144,7 +144,7 @@ module.exports = {
             } were approved by your manager</p>
                  <p><b> Kind regards,</b></p>`,
           });
-        }
+        } */
       })
       .catch((err) => console.log(err));
   },
@@ -172,8 +172,8 @@ module.exports = {
           },
         ],
       })
-      .then((response) => {
-        if (response[0].dataValues.account.dataValues.notification) {
+      .then((response) => {console.log(response)
+       /*  if (response[0].dataValues.account.dataValues.notification) {
           const usuario = process.env.EMAIL_USER;
           const senha = process.env.PASSWORD_EMAIL;
 
@@ -207,7 +207,7 @@ module.exports = {
                          )} were all aproved by the manager</p>
                                                  <p><b> Kind regards,</b></p>`,
           });
-        }
+        } */
       })
       .catch((err) => console.log(err));
   },
