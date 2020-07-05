@@ -87,18 +87,10 @@ function Insert({ token, account_id }) {
       <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleClose}>
         <Alert severity="warning"> {message}</Alert>
       </Snackbar>
-      <Grid
-        item
-        xs={9}
-        sm={10}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          height: "10%",
-          margin: "0%",
-          color: "#F26628",
-        }}
-      >
+    
+            <Grid item xs={11} sm={9} style={{           color: "#F26628",
+height: "10%", justifySelf:"flex-end",display:'flex',justifyContent:"flex-end" }}>
+
         <h1 className="page-name">Insert Hours</h1>
       </Grid>
       <Grid item xs={12} sm={8} md={5} style={{ height: "90%" }}>

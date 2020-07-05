@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar {
   display: none;
 }
@@ -8,121 +7,92 @@
 }
 // main pallet
 
-$navy:#050633;
-$darkBlue:#061438;
-$black:#051421;
-$darkGreen:#062F38;
-$green:#05332F;
-
+$navy: #050633;
+$darkBlue: #061438;
+$black: #051421;
+$darkGreen: #062f38;
+$green: #05332f;
 
 //gray scale
 
-$white:white;
-$gray:#888787;
-$darkGray:#535252;
-$reallyDarkGray:#161515;
-
+$white: white;
+$gray: #888787;
+$darkGray: #535252;
+$reallyDarkGray: #161515;
 
 //highlights
-$highlightBlue:#2892E9;
-$highlightpurple:#4A4C87;
-$highlightLightBlue:#85dcf0;
-$highlightLightGreen:#01D3BA;
+$highlightBlue: #2892e9;
+$highlightpurple: #4a4c87;
+$highlightLightBlue: #85dcf0;
+$highlightLightGreen: #01d3ba;
 
-$fontBody:'Titillium Web';
-$fontHeadLine:'Amaranth';
+$fontBody: "Titillium Web";
+$fontHeadLine: "Amaranth";
 
-$lightOrange:#F4A471;
-$orange:#F26628;
+$lightOrange: #f4a471;
+$orange: #f26628;
 
-$um:#0C3E59;
-$dois:#649BF5;
-$tres:#293F71;
-$quatro:#0c0303a4;
-$cinco:#72B894;
-$sete:#F2F0F3;
+$um: #0c3e59;
+$dois: #649bf5;
+$tres: #293f71;
+$quatro: #0c0303a4;
+$cinco: #72b894;
+$sete: #f2f0f3;
 
-span{
-  color:$highlightLightBlue;
+span {
+  color: $highlightLightBlue;
 }
 
-/* .button{
-    margin-top:5%;
-    background:$highlightLightBlue;
-    font-family:$fontHeadLine;
-    color:$black;
-    height:10%;
-    width:60%;
-    font-size:80%;
-    font-weight: 600;
-    border:none;
-    box-shadow: 0 8px 6px -6px black;
-cursor:pointer;
-}
-@media only screen and (min-width:1000px){
-  .button{
-     
-      height:7vh;
-      width:60%;
-      font-size:100%;
-
-  } 
-}
-.snackbar {
-    position:absolute;
-    bottom:77%;
-    justify-self: center;
-    display:block;
-    background:$reallyDarkGray;
-    border:#f2f2f2;
-    padding:10px 40px 10px 20px;
-    color:#fff;
-    font-family:$fontHeadLine;
-    font-size:3.5vh;
-    transition: top 1s ease-in-out;
-    z-index:9;
-    cursor:pointer;
-  } 
- .snackclose {
-    display:none;
-    z-index:10;
-  }
-
-.page-name{
-    color:$highlightLightGreen;
-}
-.lighblue{
-    color:$highlightBlue;
-}
-.lighGreen{
-    color:$highlightLightGreen; 
+img {
+  width: 80%;
+  height: 80%;
 }
 
-.red{
-    color:rgb(158, 7, 7);
+.post-h3 {
+  font-size: 1vh;
+
+  margin: 0 0 2% 0;
 }
-.logo{
-    width:5%;
-    height:5%;
-    align-self: flex-start;
-    justify-self: flex-start;
-    position:absolute;
-    right: 85%;
-  }
-  .input {
-    background: $black;
-    border: none;
-    border-radius: 5%;
-    height: 10%;
-    width: 70%;
-    font-size: 3vh;
-    margin-top: 4%;
-    padding-left: 5%;
-    color: $gray;
-    
-  }
-  .input:focus {
-    border: 1px solid $gray;
-    box-shadow: inset 5px -5px 50px rgba(169, 163, 163, 0.253);
+
+.post-p {
+  font-size: 1vh;
+  word-break: break-all;
+  margin: 0;
+}
+.lighGreen {
+  color: $orange;
+  margin: 0;
+}
+.red {
+  color: red;
+}
+.page-name {
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.myWall {
+  display: none;
+}
+.post-wall{
+  opacity:0;
+  transition: 0.5s ease;
+}
+.dashboard-row{
+  overflow:"auto"
+}
+@media only screen and (min-width: 700px) {
+  .page-name {
+    opacity: 1;
     transition: 0.5s ease;
-  } */
+  }
+  .myWall {
+    display: block;
+  }
+  .post-wall{
+    opacity:1;
+    transition: 0.5s ease;
+  }
+  .dashboard-row{
+    overflow:"hidden"
+  }
+}

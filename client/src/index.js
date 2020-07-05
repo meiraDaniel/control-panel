@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import "./style/topNavAdm.scss";
-import "./style/formMoreInputs.scss";
+import "./style/index.scss";
+
+
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import throttle from "lodash/throttle";

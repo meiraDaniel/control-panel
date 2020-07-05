@@ -40,7 +40,18 @@ const MyHours = ({ account_id, token }) => {
         color: "white",
       }}
     >
-      <Grid item xs={9} sm={10} style={{ color: "#F26628", height: "10%" }}>
+      <Grid
+        item
+        xs={11}
+        sm={9}
+        style={{
+          color: "#F26628",
+          height: "10%",
+          justifySelf: "flex-end",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
         {" "}
         <h2 className="page-name">My Hours</h2>
       </Grid>

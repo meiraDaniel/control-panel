@@ -7,11 +7,9 @@ import doc from "../../../images/portable-document-format.svg";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import {
-  Button,
   Grid,
 
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 export default function EmployeeInfo() {
   const history = useHistory();
@@ -20,7 +18,7 @@ export default function EmployeeInfo() {
     <Grid
       container
       justify="center"
-      style={{ height: "100%", background: "#293F71" }}
+      style={{ height: "100%", background: "#293F71", overflow:"auto" }}
     >
       <Grid item xs={11} style={{ height: "10%", marginTop: "0%" }}>
         <MenuAdm />

@@ -1,4 +1,4 @@
-@import './style/global.scss';
+@import './global.scss';
 body{
     color:$white;
     font-family:$fontBody
@@ -8,5 +8,7 @@ height:100vh;
 width:100%;
 margin:0%;
 overflow-y:auto;
+overflow-y:"hidden"
+
 }
 

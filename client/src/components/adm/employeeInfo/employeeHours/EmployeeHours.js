@@ -59,7 +59,7 @@ function EmployeeHours({ account_id, token, avatar }) {
   };
 
   return (
-    <Grid container style={{ height: "100%", background: "#305D7A" }}>
+    <Grid container style={{ height: "100%", background: "#305D7A",width:'100%' }}>
       <Grid
         item
         xs={12}

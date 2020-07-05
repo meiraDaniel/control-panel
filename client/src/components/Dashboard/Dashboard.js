@@ -9,10 +9,7 @@ import logoutImage from "../../images/logout.svg";
 import { logout } from "../../store/actions";
 import Percentage from "../AprovedHours/Percentage";
 import dashboard from "../../images/icons/dashboard.svg";
-import {
-  Grid,
-
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 function Dashboard({ firstname, token, account_id }) {
   const [totalHours, setTotalHours] = useState("0");
   const [post, setPost] = useState([]);
@@ -42,15 +39,15 @@ function Dashboard({ firstname, token, account_id }) {
   return (
     <Grid
       container
-      justify='center'
+      justify="center"
       style={{
         height: "100%",
-    
-        background: "#0C3E59" ,
-         color:"white"
+
+        background: "#0C3E59",
+        color: "white",
       }}
     >
-      <Grid item xs={9} sm={10} style={{ height: "10%"}}>
+      <Grid item xs={11} sm={9} style={{ height: "10%", justifySelf:"flex-end",display:'flex',justifyContent:"flex-end" }}>
         {" "}
         <h2 className="page-name">Dashboard</h2>
       </Grid>
@@ -61,7 +58,7 @@ function Dashboard({ firstname, token, account_id }) {
           height: "45%",
           display: "flex",
           flexWrap: "wrap",
-                    overflow: window.innerWidth > 600 ? "hidden" : "auto",
+          
         }}
       >
         <Grid
@@ -73,7 +70,7 @@ function Dashboard({ firstname, token, account_id }) {
             display: "flex",
             padding: "1%",
             background: "#0C3E59",
-            color:"white",
+            color: "white",
           }}
         >
           {" "}
@@ -95,7 +92,7 @@ function Dashboard({ firstname, token, account_id }) {
             display: "flex",
             justifyContent: "center",
             background: "#293F71",
-            color:"white",
+            color: "white",
           }}
         >
           {" "}
@@ -112,26 +109,65 @@ function Dashboard({ firstname, token, account_id }) {
           height: "45%",
           display: "flex",
           flexWrap: "wrap",
-          overflow: window.innerWidth > 600 ? "hidden" : "auto",
+          
         }}
+        className="dashboard-row"
       >
         <Grid
           item
           xs={12}
           sm={4}
           style={{
+            overflow:"auto",
             height: "100%",
-            display: "flex",
-            justifyContent: "center",
             background: "#0C3E59",
-            color:"white",
+            color: "white",
           }}
+          
         >
-          <h3>My Wall</h3>
-          {post.map((e, i) => (
-            <PostDash key={i} post={e} token={token} />
-          ))}
+          <Grid
+            item
+            xs={12}
+            style={{
+              textAlign: "center",
+            }}
+          
+          >
+            <h3>My Wall</h3>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            style={{
+              height: "95%",
+              overflow: "auto",
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "1%",
+
+            }}
+          >
+            {post.map((e, i) => (
+              <Grid
+                item
+                key={i}
+                xs={10}
+                sm={9}
+                               
+                style={{
+                  height: "55%",
+                  padding: "3%",
+                  background: "#F26628",
+                  margin: "3%",
+                  borderRadius: "30px",
+                }}
+              >
+                <PostDash key={i} post={e} token={token} />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
+
         <Grid
           xs={12}
           sm={4}
@@ -141,7 +177,7 @@ function Dashboard({ firstname, token, account_id }) {
             display: "flex",
             justifyContent: "center",
             background: "#293F71",
-            color:"white",
+            color: "white",
           }}
         >
           <Percentage token={token} account_id={account_id} />
@@ -156,8 +192,6 @@ function Dashboard({ firstname, token, account_id }) {
             justifyContent: "center",
             alignItems: "center",
             background: "#0C3E59",
-         
-             
           }}
         >
           <img

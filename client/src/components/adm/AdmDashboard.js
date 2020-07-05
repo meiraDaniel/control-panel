@@ -8,11 +8,9 @@ import { useHistory } from "react-router-dom";
 import MenuAdm from "./menuADM/MenuAdm";
 import placeholder from "../../images/icons/presentation.svg";
 import {
-  Button,
   Grid,
 
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 function AdmDashboard() {
   const dispatch = useDispatch();
@@ -48,15 +46,14 @@ function AdmDashboard() {
         <MenuAdm />
       </Grid>
       <Grid
-        item
-        xs={11}
+        container
         style={{
           height: "80%",
           marginTop: "3%",
           overflow: "auto",
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "center",
+          justifyContent:"center"
         }}
       >
         {data.length > 0 ? (
@@ -67,8 +64,8 @@ function AdmDashboard() {
               sm={4}
               md={3}
               style={{
+                height:'40%',
                 boxShadow: "-6px 10px 10px #080808a4",
-                heigth: "20%",
                 margin: "1%",
                 display: "flex",
                 flexDirection: "column",
@@ -86,7 +83,7 @@ function AdmDashboard() {
                 className="Adm--avatar"
                 src={employee.avatar_name ? employee.avatar_name : placeholder}
                 alt="avatar"
-              />
+              /> 
               <h1>
                 {employee.firstname} {employee.lastname}
               </h1>

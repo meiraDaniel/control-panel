@@ -19,8 +19,15 @@ import { makeStyles } from "@material-ui/core/styles";
 export function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+const useStyle = makeStyles((theme) => ({
+  root: {
+    color:'white'
+  }
+}))
 
 function Login() {
+  const classes = useStyle()
+
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const { register, errors, handleSubmit, control } = useForm();
@@ -68,13 +75,13 @@ function Login() {
       container
       style={{ height: "100%", background: "#0C3E59" }}
       justify="center"
-      align="center"
+      alignItems="center"
     >
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert severity="error"> {message}</Alert>
       </Snackbar>
 
-      <Grid item xs={12} sm={8} md={4} style={{ height: "70%" }}>
+      <Grid item xs={11} sm={8} md={4} style={{ height: "80%" }}>
         <Paper elevation={1} style={{ height: "100%", background: "#0E5072" }}>
           <form
             data-testid="form"
@@ -111,7 +118,7 @@ function Login() {
                 }}
               >
                 <Controller
-               
+                  className={classes.root}
                   data-testid="Controller-email"
                   as={<TextField />}
                   fullWidth

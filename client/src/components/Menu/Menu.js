@@ -1,112 +1,54 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import "./Menu.scss";
-import welding from "../../images/welding-mask.svg";
-import dashboard from "../../images/dashboard.svg";
-import wrench from "../../images/wrench.png";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import SettingsIcon from "@material-ui/icons/Settings";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import WorkIcon from "@material-ui/icons/Work";
+import { useHistory } from "react-router-dom";
 
-export default function Menu(props) {
-  const { onMenu, toggleonMenu } = props;
+export default function LabelBottomNavigation() {
+  const history = useHistory();
+  const [value, setValue] = React.useState("recents");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
-    <div>
-      <div className="app--top-menuButton" onClick={toggleonMenu}>
-        <span data-testid ="menu-span" className="app--hamburguerMenu-span"></span>
-        <span  data-testid ="menu-span"  className="app--hamburguerMenu-span"></span>
-        <span data-testid ="menu-span"  className="app--hamburguerMenu-span"></span>
-      </div>
-      <nav data-testid ="menu-nav"  className={onMenu ? "app-show-menu" : "app-hidden-menu"}>
-        <div className="menu--top-navLinks">
-          <div className="menu--linkImage">
-            <img  data-testid ="menu-image"  src={dashboard} alt="dashboard" className="menu--icons" />
-            <NavLink
-              onClick={toggleonMenu}
-               activeStyle={{
-                color:'#02B2DB'
-              }}
-
-              style={{
-                fontFamily: "Titillium Web",
-                color: "#888787",
-                textDecoration: "none",
-               
-                fontSize: "3vh",
-              }}
-            
-              to="/dashboard"
-            >
-              {" "}
-              Dashboard{" "}
-            </NavLink>
-          </div>
-          <div className="menu--linkImage">
-          <img  data-testid ="menu-image"  src={welding} alt="dashboard" className="menu--icons" />
-
-            <NavLink
-              onClick={toggleonMenu}
-               activeStyle={{
-                color:'#02B2DB'
-              }}
-
-              style={{
-                fontFamily: "Titillium Web",
-                color: "#888787",
-                textDecoration: "none",
-               
-                fontSize: "3vh",
-              }}
-              to="/myhours"
-            >
-              {" "}
-              My Hours{" "}
-
-            </NavLink>
-          </div>
-          <div className="menu--linkImage">
-          <img  data-testid ="menu-image" src={dashboard} alt="dashboard" className="menu--icons" />
-
-            <NavLink
-              onClick={toggleonMenu}
-               activeStyle={{
-                color:'#02B2DB'
-              }}
-
-              style={{
-                fontFamily: "Titillium Web",
-                color: "#888787",
-                textDecoration: "none",
-               
-                fontSize: "3vh",
-              }}
-              to="/wall"
-            >
-              {" "}
-              My wall{" "}
-            </NavLink>
-          </div>
-          <div className="menu--linkImage">
-          <img  data-testid ="menu-image" src={wrench} alt="dashboard" className="menu--icons" />
-
-            <NavLink
-              onClick={toggleonMenu}
-               activeStyle={{
-                color:'#02B2DB'
-              }}
-
-              style={{
-                fontFamily: "Titillium Web",
-                color: "#888787",
-                textDecoration: "none",
-               
-                fontSize: "3vh",
-              }}
-              to="/settings"
-            >
-              {" "}
-              Settings{" "}
-            </NavLink>
-          </div>
-        </div>
-      </nav>
-    </div>
+    <BottomNavigation
+      value={value}
+      onChange={handleChange}
+      style={{
+        background: "transparent",
+        position: "absolute",
+      }}
+      className="navegation"
+    >
+      <BottomNavigationAction
+        onClick={() => history.push("/dashboard")}
+        label="Dashboard"
+        value="folder"
+        icon={<DashboardIcon />}
+      />
+      <BottomNavigationAction
+        onClick={() => history.push("/wall")}
+        label="My wall"
+        value="nearby"
+        icon={<PostAddIcon />}
+      />
+      <BottomNavigationAction
+        onClick={() => history.push("/myhours")}
+        label="My hours"
+        value="recents"
+        icon={<WorkIcon />}
+      />
+      <BottomNavigationAction
+        onClick={() => history.push("/settings")}
+        label="Settings"
+        value="favorites"
+        icon={<SettingsIcon />}
+      />
+    </BottomNavigation>
   );
 }

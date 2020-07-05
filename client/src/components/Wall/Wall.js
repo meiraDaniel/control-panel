@@ -1,37 +1,38 @@
 import React, { useState, useEffect, useCallback } from "react";
 import getAllMyPosts from "../../services/API/getAllMyPosts";
-import "./Wall.scss";
 import { connect } from "react-redux";
 import Posts from "./Posts";
 import { useForm, Controller } from "react-hook-form";
 import postOnWAllHelper from "../../services/API/postOnWallHelper";
-import {
-  Button,
-  Grid,
-  Paper,
-  TextField,
-  Box,
-  Snackbar,
-} from "@material-ui/core";
+import { Button, Grid, TextField, Snackbar } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+
 import phone from "../../images/phone.svg";
+import owner from "../../images/icons/owner.svg";
+
+export function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Wall({ account_id, token, firstname }) {
   const [data, setData] = useState([]);
-  const { register, errors, handleSubmit, control } = useForm();
-  const [message, setMessage] = useState("");
+  const { register, handleSubmit, control } = useForm();
   const [flag, setFlag] = useState(false);
-  const [snackFlag, setSnackFlag] = useState(false);
   const [maxCharsTitle, setMaxCharsTitle] = useState(21);
   const [maxCharsPost, setMaxCharsPost] = useState(50);
+  const [open, setOpen] = useState(false);
+  const [openFalse, setOpenFalse] = useState(false);
+
+  const [message, setMessage] = useState("");
 
   const getDataFromWall = useCallback(() => {
     getAllMyPosts(account_id, token)
       .then((res) => setData(res.data))
       .catch((err) => {
         setMessage(err.response.data.message);
-        setSnackFlag(!snackFlag);
+        setOpenFalse(!openFalse);
       });
-  }, [account_id, token, snackFlag]);
+  }, [account_id, token, open]);
 
   useEffect(() => {
     getDataFromWall();
@@ -44,36 +45,61 @@ function Wall({ account_id, token, firstname }) {
       .then((res) => {
         setMessage(res.data.message);
         toggleFlag();
+        setOpen(true);
       })
       .catch((err) => {
         setMessage(err.response.data.message);
-        setSnackFlag(!snackFlag);
+        setOpenFalse(!openFalse);
       });
   };
   const toggleFlag = () => {
     setFlag(!flag);
   };
-
-  const handleChangePost = (input) => {
-    setMaxCharsPost(50 - input.length);
+  /*
+  const handleChangePost = (e) => {
+    const input = e.target.value;
+    console.log(input);
+       setMaxCharsPost(50 - input.length);
+    console.log("here"); 
   };
 
-  const handleChangeTittle = (input) => {
-    setMaxCharsTitle(20 - input.length);
+  const handleChangeTittle = (e) => {
+    const input = e.target.value;
+    console.log(input);
+
+        setMaxCharsTitle(20 - input.length);
+  }; */
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+    setOpenFalse(false);
   };
   return (
-    <Grid container justify="center" style={{ background: "black", height: "100%" }}>
+    <Grid
+      container
+      justify="center"
+      style={{ background: "#0C3E59", height: "100%" }}
+    >
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert severity="success"> {message}</Alert>
+      </Snackbar>
+      <Snackbar open={openFalse} autoHideDuration={6000} onClose={handleClose}>
+        <Alert severity="error"> {message}</Alert>
+      </Snackbar>
       <Grid
         item
-        xs={9}
-        sm={10}
+        xs={11}
+        sm={9}
         style={{
-          display: "flex",
-          alignItems: "center",
+          color: "white",
           height: "10%",
-          margin: "0%",
-          color: "#293F71",
-          background: "pink",
+          justifySelf: "flex-end",
+          display: "flex",
+          justifyContent: "flex-end",
         }}
       >
         <h2 className="page-name">My Wall</h2>
@@ -81,45 +107,76 @@ function Wall({ account_id, token, firstname }) {
       <Grid
         item
         xs={12}
-        style={{ background: "brown", height: "90%", display: "flex" }}
+        style={{ background: "#0C3E59", height: "90%", display: "flex" }}
       >
         <Grid
           item
-          xs={6}
+          xs={4}
           style={{
-            background: "purple",
             height: "100%",
             justifyContent: "center",
           }}
+          className="post-wall"
         >
           <Grid
             item
             xs={12}
             style={{
-              height: "50%",
+              height: "55%",
               overflow: "auto",
               display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              flexDirection: "column",
+              marginTop: "5%",
             }}
           >
             {data.length > 0 ? (
               data.map((post, i) => (
-                <Grid item xs={12} stle={{display:"flex", flexWrap:"wrap"}}>
-                <Posts firstname={firstname} post={post} i={i} />
+                <Grid
+                  item
+                  key={i}
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={6}
+                  style={{
+                    height: "60%",
+                    padding: "3%",
+                    background: "#F26628",
+                    margin: "3%",
+                    borderRadius: "30px",
+                  }}
+                >
+                  <Posts post={post} i={i} />
                 </Grid>
               ))
             ) : (
-              <h1>Loading ...</h1>
+              <Grid
+                item
+                xs={12}
+                sm={8}
+                md={5}
+                style={{ height: "50%", margin: "auto" }}
+              >
+                <h1>Loading ...</h1>
+              </Grid>
             )}
           </Grid>
-          <Grid item xs={12} style={{ height: "50%" }}>
-            <img src={phone} alt="phone" />
+          <Grid item xs={12} style={{ height: "40%" }}>
+            <img className="image-employee" src={phone} alt="phone" />
           </Grid>
           <Grid />
         </Grid>
 
-        <Grid item xs={6} style={{ background: "blue", height: "100%" }}>
+        <Grid
+          item
+          xs={8}
+          style={{
+            background: "#F2F0F3",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <form className="wall--center-form" onSubmit={handleSubmit(onSubmit)}>
             <Grid
               container
@@ -138,7 +195,7 @@ function Wall({ account_id, token, firstname }) {
                 }}
               >
                 <div id="gloves-circle">
-                  <img data-testid="image" src="" alt="gloves" />
+                  <img data-testid="image" src={owner} alt="gloves" />
                 </div>
               </Grid>
               <Grid
@@ -148,22 +205,23 @@ function Wall({ account_id, token, firstname }) {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  flexDirection: "column",
                 }}
               >
                 <Controller
-                  data-testid="Controller-message"
+                  data-testid="Controller-title"
                   as={<TextField />}
                   fullWidth
                   control={control}
-                  name="message"
-                  label="Message"
+                  name="title"
+                  label="title"
                   margin="normal"
-                  size="medium"
                   color="secondary"
-                  autoComplete="message"
+                  size="medium"
                   autoFocus
                 />
-                     <p id="chars--title" className="lighGreen">
+
+                <p id="chars--title" className="lighGreen">
                   {" "}
                   Characters left:{" "}
                   <span className={maxCharsTitle > 10 ? "lighGreen" : "red"}>
@@ -180,21 +238,25 @@ function Wall({ account_id, token, firstname }) {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  flexDirection: "column",
                 }}
               >
                 <Controller
-                  data-testid="Controller-title"
+                  data-testid="Controller-message"
                   as={<TextField />}
                   fullWidth
                   control={control}
-                  name="title"
-                  label="title"
+                  name="message"
+                  label="Message"
                   margin="normal"
+                  multiline
                   color="secondary"
-                  size="medium"
+                  rows={4}
+                  variant="outlined"
                   autoFocus
                 />
-                      <p id="chars--post" className="lighGreen">
+
+                <p id="chars--post" className="lighGreen">
                   {" "}
                   Characters left:{" "}
                   <span className={maxCharsPost > 10 ? "lighGreen" : "red"}>
@@ -226,63 +288,6 @@ function Wall({ account_id, token, firstname }) {
               </Grid>
             </Grid>
           </form>
-          {/* 
-              <h1 className="wall--top-circle">Create Post</h1>
-
- 
-                <label htmlFor="title">title</label>
-                <input
-                  onChange={(e) => handleChangeTittle(e.target.value)}
-                  className="wall--input"
-                  type="text"
-                  name="title"
-                  ref={register({
-                    required: "You must enter a title",
-                    maxLength: {
-                      value: 21,
-                      message: "Your title is too big",
-                    },
-                  })}
-                />
-            
-
-                <p id="chars--title" className="lighGreen">
-                  {" "}
-                  Characters left:{" "}
-                  <span className={maxCharsTitle > 10 ? "lighGreen" : "red"}>
-                    {" "}
-                    {maxCharsTitle}
-                  </span>{" "}
-                </p>
-
-                <label htmlFor="message">message</label>
-                <input
-                  onChange={(e) => handleChangePost(e.target.value)}
-                  className="wall--input"
-                  id="wall--input-textarea"
-                  type="text"
-                  name="message"
-                  ref={register({
-                    required: "You must write a post",
-                    maxLength: {
-                      value: 50,
-                      message: "Your post is too big",
-                    },
-                  })}
-                />
-
-          
-
-            
-
-                <input
-                  id="wall-button"
-                  className="button"
-                  type="submit"
-                  value="Send"
-                />
-         
-          </form> */}
         </Grid>
       </Grid>
     </Grid>
