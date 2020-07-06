@@ -1,11 +1,17 @@
-@import '../../style/global.scss';
-.percentage--center-main{
-    width:100%;
-    height:100%;
-    
+@import "../../style/global.scss";
+.percentage--center-main {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
-.percentage--center-main h1{
-    font-size:4vh;
-    
+.percentage--center-main h1 {
+  color:white;
+  font-size: 4vh;
+  width: 70%;
 }

@@ -1,81 +1,161 @@
-import React,{useState} from "react";
-import Edit from'./Edit/Edit'
-import deleteDataFromHours from '../../services/API/deleteDataFromHours'
+import React, { useState } from "react";
+import Edit from "./Edit/Edit";
+import deleteDataFromHours from "../../services/API/deleteDataFromHours";
 import { connect } from "react-redux";
-import edit from '../../images/edit.svg'
-import del from '../../images/delete.svg'
-import './Table.scss'
+import edit from "../../images/edit.svg";
+import del from "../../images/delete.svg";
+import {EditSharp, Delete} from '@material-ui/icons';
+import {
+  Button,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@material-ui/core";
 
+function Tables({ data, token, account_id, handlemountFlag }) {
+  const [popUpEdit, setPopUpEdit] = useState(false);
+  const [rowId, setRowid] = useState();
+  const [message, setMessage] = useState("");
 
-function Table({ data,token,account_id,handlemountFlag}) {
-const[popUpEdit,setPopUpEdit]=useState(false)
-const[rowId, setRowid]=useState()
-const[message,setMessage]=useState('')
+  const [snackFlag, setSnackFlag] = useState(false);
 
-const[snackFlag,setSnackFlag]=useState(false)
+  const tooglePopUp = () => {
+    setPopUpEdit(!popUpEdit);
+    handlemountFlag();
+  };
+  const toggleIdEdit = (rowId) => {
+    setRowid(rowId);
+    tooglePopUp();
+  };
+  const toggleIdDelete = (rowId) => {
+    if (data.aproved) return setMessage("You cannot delete aproved hour");
+    else {
+      deleteDataFromHours(parseInt(rowId), token)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      handlemountFlag();
+    }
+  };
 
-const tooglePopUp=()=>{
-  setPopUpEdit(!popUpEdit)
-  handlemountFlag()
-
-}
-  const toggleIdEdit=(rowId)=>{
-    setRowid(rowId)
-   tooglePopUp()
-
-  }
-  const toggleIdDelete=(rowId)=>{
-    if(data.aproved) return setMessage('You cannot delete aproved hour');
-   else{ deleteDataFromHours(parseInt(rowId),token).then(res=>console.log(res)).catch(err=>console.log(err))
-    handlemountFlag()}
-   }
-
-   
-
-  
   return (
-    <div className='Table--main'>
+    <Grid container 
+    style={{
+      height: "80%",
+      width: "90%",
+        overflowY: "auto", marginTop:"2%"}}>
 
-    {popUpEdit?<Edit rowId={rowId} tooglePopUp={tooglePopUp}/>:
-<table className='Table--center-table'>
-        <thead>
-          <tr>
-            <td className='table--top-headlines'>Day</td>
-            <td className='table--top-headlines'>Hour</td>
-            <td className='table--top-headlines'>Project</td>
-            <td className='table--top-headlines'>Aproved</td>
-            <td className='table--top-headlines'>Edit</td>
-            <td className='table--top-headlines'>Delete</td>
-
-
-          </tr>
-        </thead>
-        {data.map((row, index) => (
-          <tbody key={index}>
-            <tr>
-              <td>{row.day}</td>
-              <td>{row.hour}</td>
-              <td>{row.project}</td>
-              <td>{row.approved? 'Yes': 'No'}</td>
-              <td> {row.approved? < img className='icons-disable' src={edit} alt='edit' onClick={()=>setMessage('You cannot edit approved hours')}/>: < img className='icons' src={edit} alt='delete' onClick={()=>toggleIdEdit(row.id)}/>}</td>
-              <td> {row.approved?  < img className='icons-disable' src={del} alt='delete' onClick={()=>setMessage('You cannot delete approved hours')}/>: <img  className='icons' src={del} alt='edit' onClick={()=>toggleIdDelete(row.id)}/>}</td>
-
-            </tr>
-          </tbody>
-        ))}
-      </table>}
+      {popUpEdit ? (
+        <Edit rowId={rowId} tooglePopUp={tooglePopUp} />
+      ) : (
+        <Table className="Table--center-table"     >
+          <TableContainer
+            style={{
             
-    
-    {message?<p onClick={()=> setSnackFlag(!snackFlag)} className={snackFlag?'snackclose':'snackbar'}>{message}</p>: null}
-    </div>
+              height: "95%",
+              width: "100%",
+            }}
+          >
+            <TableHead style={{ background: "#0C3E59", width: "100%" }}>
+              <TableRow style={{ width: "100%" }}>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Day
+                </TableCell>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Hour
+                </TableCell>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Project
+                </TableCell>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Aproved
+                </TableCell>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Edit
+                </TableCell>
+                <TableCell
+                  align="left"
+                  style={{ color: "white", width: "25%" }}
+                  className="table--top-headlines"
+                >
+                  Delete
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            {data.map((row, index) => (
+              <TableBody key={index}>
+                <TableRow style={{ width: "100%" }}>
+                  <TableCell  style={{ color: "white"}}>{row.day}</TableCell>
+                  <TableCell  style={{ color: "white"}}>{row.hour}</TableCell>
+                  <TableCell  style={{ color: "white"}}>{row.project}</TableCell>
+                  <TableCell  style={{ color: "white"}}>{row.approved ? "Yes" : "No"}</TableCell>
+                  <TableCell>
+                    {" "}
+                    {row.approved ? (
+                      <EditSharp
+                      style={{color:"gray"}}
+                                          />
+                    ) : (
+                      <EditSharp
+                      style={{color:"#F26628", cursor:'pointer'}}
+
+                        onClick={() => toggleIdEdit(row.id)}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    {row.approved ? (
+                      <Delete
+                      style={{color:"gray"}}
+                      
+                      />
+                    ) : (
+                      <Delete
+                      style={{color:"#F26628", cursor:'pointer'}}
+
+                        onClick={() => toggleIdDelete(row.id)}
+                      />
+                    )}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            ))}
+          </TableContainer>
+        </Table>
+      )}
+    </Grid>
   );
 }
 function mapToProps(state) {
   return {
     token: state.createSession.token,
     account_id: state.createSession.account_id,
-
   };
 }
 
-export default connect(mapToProps)(Table);
+export default connect(mapToProps)(Tables);

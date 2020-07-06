@@ -3,7 +3,7 @@ import Login from "./components/login/Login";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Dashboard from "./components/Dashboard/Dashboard";
-import "./App.scss";
+import "./style/App.scss";
 import MyHours from "./components/MyHours/MyHours";
 import Insert from "./components/InsertHours/Insert";
 import Wall from "./components/Wall/Wall";
@@ -14,7 +14,6 @@ import EmployeeHours from "./components/adm/employeeInfo/employeeHours/EmployeeH
 import RegisterEmployee from "./components/adm/registerEmployee/RegisterEmployee"
 import EmployeeInfo from './components/adm/employeeInfo/EmployeeInfo'
 import EmployeeDocuments from "./components/adm/employeeInfo/employeeDocuments/EmployeeDocuments"
-import "./style/form3Input.scss"
 
 function mapToProps(state) {
   return {

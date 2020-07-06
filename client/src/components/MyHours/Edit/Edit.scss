@@ -1,51 +1,8 @@
 @import "../../../style/global.scss";
 
-.edit-main {
-  height: 100%;
-  width: 100%;
-  margin:0;
- 
-}
-
-.edit-center-form {
-  width: 85%;
-  height: 80%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $darkGreen;
-  border-radius:10px;
-  box-shadow:  -8px 6px 20px rgba(0, 0, 0, 0.726);
-}
-.edit-center-formInput {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 90%;
-  align-items: center;
-  justify-content: center;
- 
-}
-
-@media only screen and (min-width:560px) and (max-width:1030px){
-  .edit-center-form {
-    width: 50%;
-    height: 80%;
-    
-  }
-}
-
-
-@media only screen and (min-width:1030px){
-
-
-.edit-center-form {
-  width: 30%;
-  height: 80%;
-  
-}
+.edit-image{
+  width:100%;
+  height:100%;
 
 }
-
 

@@ -1,28 +1,50 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import loginHelper from '../../services/API/loginHelper'
-import {createSession} from '../../store/actions'
-import gloves from '../../images/Gloves.svg'
-import './Login.scss'
-import logo from '../../images/logo.svg'
+import loginHelper from "../../services/API/loginHelper";
+import { createSession } from "../../store/actions";
+import landingpageicon from "../../images/icons/jigsaw.svg";
+import MuiAlert from "@material-ui/lab/Alert";
+import "./Login.scss";
+import {
+  Button,
+  Grid,
+  Paper,
+  TextField,
+  Box,
+  Snackbar,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+export function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+const useStyle = makeStyles((theme) => ({
+  root: {
+    color:'white'
+  }
+}))
+
 function Login() {
+  const classes = useStyle()
+
+  const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit, control } = useForm();
   const dispatch = useDispatch();
-const[snackBarFlag,setSnackBarFlag]=useState(false)
   /**
    * @function onSubmit -
    *  target the values inserted by the user and send it to the server
    *then send the response to the redux store.
-   * @param {string} data -Values passed in the input
+   * @param {string} data -Values passed in the Controller
    * @param {*} e - event
    */
 
   const onSubmit = (value, e) => {
     e.preventDefault();
-    loginHelper(value.email, value.password).then((res) =>   
-   dispatch(
+    loginHelper(value.email, value.password)
+      .then((res) =>
+        dispatch(
           createSession(
             res.data.id,
             res.data.token,
@@ -32,56 +54,141 @@ const[snackBarFlag,setSnackBarFlag]=useState(false)
             res.data.role,
             res.data.avatar,
             res.data.email
-          ) 
-        )).catch((err) =>{ setMessage(err.response.data.message); setSnackBarFlag(!snackBarFlag)});
-      
+          )
+        )
+      )
+      .catch((err) => {
+        setMessage(err.response.data.message);
+        setOpen(true);
+      });
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
-    <main className='login-main'>
-        <h1 data-testid='snackbar' onClick={()=>setSnackBarFlag(!snackBarFlag)} className={snackBarFlag?'snackbar':'snackclose'}>{message}</h1>
+    <Grid
+      container
+      style={{ height: "100%", background: "#0C3E59" }}
+      justify="center"
+      alignItems="center"
+    >
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert severity="error"> {message}</Alert>
+      </Snackbar>
 
-      <img data-testid='logo' src={logo} alt="logo" className='logo'/>
-      
-      <form
-      data-testid='form'
-        className='center-form'
-        onSubmit={handleSubmit(onSubmit)}
-      >
-      <div className='center-formInput'>
-        <div id="gloves-circle" className='top-circle'>
-          <img data-testid='image' src={gloves} alt="gloves"/>
-        </div>
-       
-        <input
-        data-testid='input-email'
-         className='input'
-          type="text"
-          name="email"
-          ref={register({ required: true })}
-          placeholder="E-mail"
-        />
-        {errors.email && "Ops, don't forget to enter your email"}
-        
+      <Grid item xs={11} sm={8} md={4} style={{ height: "80%" }}>
+        <Paper elevation={1} style={{ height: "100%", background: "#0E5072" }}>
+          <form
+            data-testid="form"
+            className="center-form"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <Grid
+              container
+              style={{ height: "100%" }}
+              justify="center"
+              alignContent="center"
+            >
+              <Grid
+                item
+                xs={11}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "30%",
+                }}
+              >
+                <div id="gloves-circle">
+                  <img data-testid="image" src={landingpageicon} alt="gloves" />
+                </div>
+              </Grid>
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Controller
+                  className={classes.root}
+                  data-testid="Controller-email"
+                  as={<TextField />}
+                  fullWidth
+                  control={control}
+                  name="email"
+                  label="E-mail"
+                  margin="normal"
+                  size="medium"
+                  color="secondary"
+                  autoComplete="email"
+                  autoFocus
+                />
+              </Grid>
 
-      
-        <input
-        data-testid='input-password'
-                   className='input'
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Controller
+               
+                  data-testid="Controller-password"
+                  as={<TextField />}
+                  fullWidth
+                  control={control}
+                  name="password"
+                  label="password"
+                  type="password"
+                  margin="normal"
+                  color="secondary"
+                  size="medium"
+                  autoFocus
+                />
+              </Grid>
 
-          type="password"
-          name="password"
-          ref={register({ required: true })}
-          placeholder="password"
-        />
-        {errors.password && "Ops, don't forget to enter your password"}
-        
-          <input id='login' className='button' type='submit' value="LOGIN"/>
-          </div>
-      </form>
-    
-      
-    </main>
+              <Grid
+                item
+                xs={9}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                  id="login"
+                  type="submmit"
+                  style={{ marginTop: "5%" }}
+                >
+                  {" "}
+                  LOGIN{" "}
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+          <Box mt={5}>
+            <p className="copyrigth">
+              {" "}
+              Copyright © Lígia Souza {new Date().getFullYear()}
+            </p>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 }
 

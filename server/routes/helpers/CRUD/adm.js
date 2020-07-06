@@ -3,10 +3,7 @@ require("dotenv").config();
 const db = require("../../../database/configuration/sequelizeConfig");
 const { hours, accounts } = db;
 
-const {
- 
-  getMonthName,
-} = require("../../../utilities/utilities");
+const { getMonthName } = require("../../../utilities/utilities");
 const Sequelize = require("sequelize");
 const nodemailer = require("nodemailer");
 
@@ -15,17 +12,32 @@ module.exports = {
     accounts
       .findAll({ where: { adm: false } })
       .then((employees) => {
+        if (!employees) return { message: "There are no employees registered" };
+
         let data = [];
-        employees.forEach((employee) =>
-          data.push({
-            account_id: employee.dataValues.id,
-            firstname: employee.dataValues.firstname,
-            avatar_name: `/uploads/${employee.dataValues.avatar_name.replace(/\s/g, '')}`,
-            lastname: employee.dataValues.lastname,
-            avatar: employee.dataValues.avatar,
-            role: employee.dataValues.role,
-          })
-        );
+        employees.forEach((employee) => {
+          if (employee.dataValues.avatar_name) {
+            data.push({
+              account_id: employee.dataValues.id,
+              firstname: employee.dataValues.firstname,
+              avatar_name: `/uploads/${employee.dataValues.avatar_name.replace(
+                /\s/g,
+                ""
+              )}`,
+              lastname: employee.dataValues.lastname,
+              avatar: employee.dataValues.avatar,
+              role: employee.dataValues.role,
+            });
+          }
+          else{
+            data.push({
+              account_id: employee.dataValues.id,
+              firstname: employee.dataValues.firstname,
+              lastname: employee.dataValues.lastname,
+              role: employee.dataValues.role,
+            });
+          }
+        });
         res.status(200).send(data);
       })
       .catch((err) =>
@@ -98,8 +110,8 @@ module.exports = {
         },
         { where: { id: hourId } }
       )
-      .then((response) => {
-        if (response.dataValues.account.dataValues.notification) {
+      .then((response) => { console.log(response)
+        /* if (response.dataValues.account.dataValues.notification) {
           const usuario = process.env.EMAIL_USER;
           const senha = process.env.PASSWORD_EMAIL;
 
@@ -132,7 +144,7 @@ module.exports = {
             } were approved by your manager</p>
                  <p><b> Kind regards,</b></p>`,
           });
-        }
+        } */
       })
       .catch((err) => console.log(err));
   },
@@ -160,8 +172,8 @@ module.exports = {
           },
         ],
       })
-      .then((response) => {
-        if (response[0].dataValues.account.dataValues.notification) {
+      .then((response) => {console.log(response)
+       /*  if (response[0].dataValues.account.dataValues.notification) {
           const usuario = process.env.EMAIL_USER;
           const senha = process.env.PASSWORD_EMAIL;
 
@@ -183,7 +195,7 @@ module.exports = {
                            response[0].dataValues.account.dataValues.firstname
                          }
                          Your hours from ${getMonthName(
-                           response[0].dataValues.month +1
+                           response[0].dataValues.month + 1
                          )} were all aproved by the manager
                           Kind regards `,
             html: `
@@ -191,11 +203,11 @@ module.exports = {
                            response[0].dataValues.account.dataValues.firstname
                          }, </h1>
                          <p>  Your hours from ${getMonthName(
-                           response[0].dataValues.month +1
+                           response[0].dataValues.month + 1
                          )} were all aproved by the manager</p>
                                                  <p><b> Kind regards,</b></p>`,
           });
-        }
+        } */
       })
       .catch((err) => console.log(err));
   },

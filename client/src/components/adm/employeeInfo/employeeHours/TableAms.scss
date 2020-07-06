@@ -1,69 +1,16 @@
 @import '../../../../style/global.scss';
 
-.tableAdm--main{
-    width:100%;
-    height:100%;
-}
-.tableAdm-top-totalInfo{
-    display:flex;
-    height:30%;
 
+.name-progress{
+    font-size:3vh;
+    width:40%;
+    margin-right:20%;
+    color:$tres;
 }
-.percentageAdm--center-main{
-    display:flex;
-    width:100%;
-    height: 30%;
-}
-.percentage--daysWorked{
-    width:50%;
-    height:100%;
-
-}
-.percentage--daysWorked h2{
-    font-size:2vh;
-
-}
-@media only screen and ( min-width:700px){
-    .percentage--daysWorked{
-        width:50%;
-        height:100%;
-    
-    }
-    .percentage--daysWorked h2{
-        font-size:5vh;
-    
-    }
-}
-
-.tableAdm---header{
-    color:$highlightLightGreen;
-    border:1px solid $gray;
-    
-   
-}
-.tableAdm---header td{
-    border:1px solid $gray;
-}
-
-.tableAdm--table-main td{
-    border:1px solid $gray;
-    width:5%;
-    height:5vh;
-
-}
-#tableadm--buton-approveall{
-    height:5vh;
-    width:50%;
-    margin: 5% ;
-}
-.tableAdm--table-main img{
-  width: 40%;
-  height:100%;
- 
- 
-
-}
-#button-approveHour{
-    width:100%;
-    height:100%;
+@media only screen and (min-width:800px){
+    .name-progress{
+     
+        margin-right:10%;
+     
+    }  
 }

@@ -1,3 +1,5 @@
+@import '../../style/global.scss';
+
 .svg {
     display: block;
     margin: 20px auto;
@@ -12,8 +14,15 @@
     fill: none;
 }
 .svg-circle-text {
-   font-size: 2rem;
+   font-size: 1rem;
     text-anchor: middle;
-    fill: #fff;
-    font-weight: bold;
+     font-weight: bold;
+    fill:$dois;
+}
+
+@media only screen and (min-width:800px){
+    .svg-circle-text {
+        font-size: 2rem;
+     
+     } 
 }
